@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,111 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-html&amp;jquery" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/28/html&jquery/" class="article-date">
+  <time datetime="2016-11-28T08:12:05.000Z" itemprop="datePublished">2016-11-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h2>jquery功能整理</h2><br><br><p></p>
+<h4>· 页面的初始加载函数 <br><br>&nbsp; &nbsp; 1.  jquery —-  $(document).ready(function () {} ) <br><br>&nbsp; &nbsp; 2. javascript – window.onload=function(){ }   或  $(function(){ }<br><br> 区别：<br><br>&nbsp; &nbsp; 1.会在DOM完全就绪并可以使用时调用。虽然这也意味着所有元素对脚本而言都是可以访问的，但是，并不意味着所有关联的文件都已经下载完毕。换句话说，当HMTL下载完成并解析为DOM树之后，代码就会执行。 <br><br>&nbsp; &nbsp; 2. 当一个文档完全下载到浏览器中时，才会触发window.onload事件。这意味着页面上的全部元素对js而言都是可以操作的，也就是说页面上的所有元素加载完毕才会执行。这种情况对编写功能性代码非常有利，因为无需考虑加载的次序<br></h4><br><br><br><br>——————————————-<br><br><br><br><h4><br>· ajaxRequest异步调用<br><br>&nbsp; &nbsp; 代码：<br><br><br><pre><code><br>var tseg = {<br>    _ajax_timeout: 60 <em> 1000,// 全局默认ajax请求超时时间<br>    _data_refresh: 60 </em> 1000,// 数据默认刷新频率 3分钟<br><br>    /<em> 请求Url </em>/<br>    getUrl: function (code) {<br>        if (!code)<br>            return;<br>        switch (code) {<br>            default:<br>                console.log(code);<br>                break;<br>        }<br>        return code;<br>    }<br>};<br><br>/<em> ajax调用 </em>/<br>var ajaxRequest = function (success, error, code, params, type) {<br><br>    $.ajax({<br>        url: tseg.getUrl(code),// 此处url需要在调用处赋值<br>        type: “get”,<br>        dataType: type,<br>        traditional: true,<br>        async: true,<br>        data: params || {},<br>        timeout: tseg._ajax_timeout,<br>        success: function (JsonStr) {<br>            success(JsonStr);<br>        },<br>        error: function (XMLHttpRequest, textStatus, errorThrown) {<br>            error(textStatus);<br>        }<br>    });<br>}<br><br>var error = function (msg) {<br>    console.log(“happend exception:”);<br>    console.log(msg);<br>};<br><br>window.tseg = tseg;<br>window.ajaxRequest = ajaxRequest;<br>window.error = error;<br></code></pre><br></h4><br><br><br><br><br>——————<br><br><h4><br>·  下拉框的插件<br><br><a href="https://github.com/ehynds/jquery-ui-multiselect-widget" target="_blank" rel="external">https://github.com/ehynds/jquery-ui-multiselect-widget</a><br><br>引入文件 –一共5个文件<br><br><pre><br>js/jquery.min.js<br>js/jquery-ui.min.js<br>js/jquery.multiselect.js<br>css/jquery-ui.css<br>css/jquery.multiselect.css<br></pre><br>html代码：<br><br>申明:<br><pre>select id=”s_office” multiple=”multiple” name=”example-basic”<br></pre><br>初始化：<br><pre><br>$(“选择器”).multiselect({<br>   noneSelectedText: “”,<br>   multiple: false,<br>   header: false,<br>   selectedList: 1…<br>});<br></pre><br>插入option：<br><pre><br>1.var temp = $(“<option value="" + units[j] + "">“ + units[j] + “</option>“);<br>   temp.appendTo(父级选择器);<br>}<br>2.调用refresh接口<br>$(“#department”).multiselect(‘refresh’);<br></pre><br>重加载：<br><pre><br> 1.$(“选择器”).empty();<br> 2.再次调用初始化的代码<br></pre><br>事件：<br><pre><br>1.一般会使用change事件<br>$(“选择器”).change(function () {})<br></pre><br>获取选中的值：<br><pre><br>var val = $(“选择器”).multiselect(“getChecked”).map(function () {<br>    return this.value;<br>}).get()[0]; //可能有多选的情况<br></pre><br></h4>
+
+<hr>
+<p></p><h4>·  表格的插件<br></h4><br><a href="https://www.datatables.net/" target="_blank" rel="external">文档说明</a><p></p>
+<p></p><h5>引用文件 </h5><p></p>
+<pre>
+js/jquery-2.1.1.js
+js/jquery.dataTables.js
+js/dataTables.bootstrap.js
+
+css/bootstrap.css
+css/dataTables.bootstrap.css
+</pre>
+<h5>声明</h5>
+<pre>
+table class="table table-hover table-striped table-bordered" id="att_table"
+</pre>
+
+<p></p><h5>表格重加载</h5><p></p>
+<pre>
+var table = $(选择器).DataTable();
+table.destroy();
+$(选择器).empty();
+</pre>
+
+<p></p><h5>异步插入数据</h5><p></p>
+<pre>
+var option = {
+            paging : true,
+            pageLength : 10,
+            order : [],
+            ordering : true,
+            searching : true,
+            bRetrieve : true,
+            language : {
+                lengthMenu : '<select class="form-control input-xsmall items-select">'
+                + '<option value="6">6</option>'
+                + '<option value="10">10</option>'
+                + '</select>条记录',// 左上角的分页大小显示。
+                search : '<span class="label label-success">搜索：</span>',
+                paginate : {
+                    previous : "上一页",
+                    next : "下一页",
+                    first : "第一页",
+                    last : "最后"
+                },
+                zeroRecords : "没有内容",
+                info : "总共_PAGES_ 页，显示第_START_ 到第 _END_ ，筛选之后得到 _TOTAL_ 条，初始_MAX_ 条 ",
+                infoEmpty : "0条记录",
+                infoFiltered : ""
+            },
+            paging : true,
+            pagingType : "full_numbers"
+};
+$(table_id).dataTable(option);
+</pre>
+
+<hr>
+<p></p><h4>· 关系网络(图)的插件<br></h4><br><a href="http://visjs.org/" target="_blank" rel="external"> 文档说明</a><p></p>
+<p></p><h5>声明</h5><p></p>
+<pre>
+div id="graph" style="height:500px;" //需要指定高度
+</pre>
+
+<p></p><h5>异步加载数据</h5><p></p>
+<pre>
+jQuery(function() {
+     var network = new vis.Network(container, g, options);
+}
+// container 容器
+// g              数据
+// options    选项
+</pre>
+
+<hr>
+<p></p><h4>杂项</h4><br><p></p>
+<p></p><p>1.获取文本框的值</p><br><strong>var val = document.getElementById(“h_name”).value;<br></strong><p></p>
+<p></p><p>    2.在前端实现页面的跳转</p><br>在函数中添加   <strong>window.location.href = encodeURI( url );</strong><p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/11/28/html&jquery/" data-id="ciw348ro500027t400sxbctsn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Dynamic-Programming" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -159,27 +264,49 @@ dp数组：dp[i][j] = Math.min(dp[i - 1][j - 1],dp[i][j - 1],dp[i - 1][j]) + 1
 初始化：全部元素的dp数组初始化为0
 dp数组：dp[j] = dp[j - 1] + num[j]
 复杂度：O(n)的时间复杂度和空间复杂度
-</code></pre><p>####least num of perfect square numbers which sum to n 使用最少的完全平方数相加得到n(Leetcode279)<br>    想要获取sum为n的情况，通常会利用dp数组得到sum为0…n-1的情况，逐步迭代直至获取n<br>    此种情况和非连续的子序列相类似，当前的dp数组需要通过遍历前面的dp数组从而获取到最优的值，但是本题中完全平方数的个数有限，所以可以进一步缩小内部循环的次数 利用Math.sqrt(i)来获取内部循环的最大值</p>
-<pre><code>初始化：全部元素初始化为最大值
+</code></pre><h4 id="least-num-of-perfect-square-numbers-which-sum-to-n-使用最少的完全平方数相加得到n-Leetcode279"><a href="#least-num-of-perfect-square-numbers-which-sum-to-n-使用最少的完全平方数相加得到n-Leetcode279" class="headerlink" title="least num of perfect square numbers which sum to n 使用最少的完全平方数相加得到n(Leetcode279)"></a>least num of perfect square numbers which sum to n 使用最少的完全平方数相加得到n(Leetcode279)</h4><pre><code>想要获取sum为n的情况，通常会利用dp数组得到sum为0...n-1的情况，逐步迭代直至获取n
+此种情况和非连续的子序列相类似，当前的dp数组需要通过遍历前面的dp数组从而获取到最优的值，但是本题中完全平方数的个数有限，所以可以进一步缩小内部循环的次数 利用Math.sqrt(i)来获取内部循环的最大值
+
+初始化：全部元素初始化为最大值
 dp数组：dp[i] = Math.min(dp[i - k] + 1) 其中k = 1，4，9，16，25....
 复杂度：时间复杂度为O()  ??
-</code></pre><p>####NTH ugly number 第n个丑数(Leetcode264)<br>    丑数的定义：质因数只包含2，3，5，同时默认1为第一个丑数<br>    如何获取第n个丑数，我们可以发现，所有的丑数都是通过不断的乘以2，3，5得到的<br>    所以为了保证获取到的元素的有序性，我们通过比较2，3，5当前对应的元素分别乘以2，3，5得到的最小值作为下一个元素，所以需要三个下标存放2，3，5对应的元素下标<br>    dp[i] = Math.min(2 <em> dp[m],3 </em> dp[n],5 * dp[k])<br>    本题的特点在于当前dp数组的元素值的确定需要三个不同下标的元素来确定</p>
-<pre><code>初始化：m=n=k = 0;
+</code></pre><h4 id="NTH-ugly-number-第n个丑数-Leetcode264"><a href="#NTH-ugly-number-第n个丑数-Leetcode264" class="headerlink" title="NTH ugly number 第n个丑数(Leetcode264)"></a>NTH ugly number 第n个丑数(Leetcode264)</h4><pre><code>丑数的定义：质因数只包含2，3，5，同时默认1为第一个丑数
+如何获取第n个丑数，我们可以发现，所有的丑数都是通过不断的乘以2，3，5得到的
+所以为了保证获取到的元素的有序性，我们通过比较2，3，5当前对应的元素分别乘以2，3，5得到的最小值作为下一个元素，所以需要三个下标存放2，3，5对应的元素下标 
+dp[i] = Math.min(2 * dp[m],3 * dp[n],5 * dp[k]) 
+本题的特点在于当前dp数组的元素值的确定需要三个不同下标的元素来确定
+
+初始化：m=n=k = 0;
 dp数组：dp[i] = Math.min(2 * dp[m],3 * dp[n],5 * dp[k]) 
 复杂度： O(N) 每获取一个元素需要O(1)的时间
-</code></pre><p>####Partition equal subset sum 将集合内的元素切分成sum相等的两个子集(Leetcode416)<br>    要切分成sum相等的两个部分，首先可以计算获取所有元素的总和<br>    因为同样是涉及到sum值所以dp数组通常设计为dp[0…sum]通过迭代获取<br>    所以题目就转化为选取集合中的部分元素使之和为sum/2<br>    这种类型的题目通常需要O(N^2)的时间，通过两层循环，外层为数组的下标，通过不断获取数组中新的元素更新dp数组内层循环则为sum值得迭代, 内层循环需要从大到小保证元素不会重复使用<br>    需要注意集合内的每个元素只能使用一次</p>
-<pre><code>初始化：dp数组的全部元素初始化为0
+</code></pre><h4 id="Partition-equal-subset-sum-将集合内的元素切分成sum相等的两个子集-Leetcode416"><a href="#Partition-equal-subset-sum-将集合内的元素切分成sum相等的两个子集-Leetcode416" class="headerlink" title="Partition equal subset sum 将集合内的元素切分成sum相等的两个子集(Leetcode416)"></a>Partition equal subset sum 将集合内的元素切分成sum相等的两个子集(Leetcode416)</h4><pre><code>要切分成sum相等的两个部分，首先可以计算获取所有元素的总和
+因为同样是涉及到sum值所以dp数组通常设计为dp[0...sum]通过迭代获取
+所以题目就转化为选取集合中的部分元素使之和为sum/2
+这种类型的题目通常需要O(N^2)的时间，通过两层循环，外层为数组的下标，通过不断获取数组中新的元素更新dp数组内层循环则为sum值得迭代, 内层循环需要从大到小保证元素不会重复使用
+需要注意集合内的每个元素只能使用一次
+
+初始化：dp数组的全部元素初始化为0
 dp数组： dp[i] = || (dp[i - num[j]]) 其中0 &lt;= j &lt;= num.length-1
 复杂度：O(NK)
-</code></pre><p>####num of arithmetric in array 数组中arithmetric的个数(Leetcode413)<br>    随着数组下标的增加，序列的长度和个数也随之增加，所以dp数组以数组元素的下标作为元素<br>    则我们可以得到dp[j] = dp[j - 1] + 1 if num[j] - num[j - 1] = num[j - 1] - num[j - 2]<br>                        0             otherwise.<br>    然后求sum = sum(dp[k]) 其中0 &lt;= k &lt;= num.length - 1<br>    面对这种情况的时候，可以省略到O(N)的空间复杂度 因为我们最终的结果只需要一个sum</p>
-<pre><code>初始化：cur = 0 sum = 0
+</code></pre><h4 id="num-of-arithmetric-in-array-数组中arithmetric的个数-Leetcode413"><a href="#num-of-arithmetric-in-array-数组中arithmetric的个数-Leetcode413" class="headerlink" title="num of arithmetric in array 数组中arithmetric的个数(Leetcode413)"></a>num of arithmetric in array 数组中arithmetric的个数(Leetcode413)</h4><pre><code>随着数组下标的增加，序列的长度和个数也随之增加，所以dp数组以数组元素的下标作为元素
+则我们可以得到dp[j] = dp[j - 1] + 1 if num[j] - num[j - 1] = num[j - 1] - num[j - 2]
+                    0             otherwise.
+然后求sum = sum(dp[k]) 其中0 &lt;= k &lt;= num.length - 1          
+面对这种情况的时候，可以省略到O(N)的空间复杂度 因为我们最终的结果只需要一个sum
+
+初始化：cur = 0 sum = 0
 dp数组：
 复杂度：O(N)的时间复杂度  
-</code></pre>
+</code></pre><h4 id="max-number-of-evenlopes-信封嵌套的最大数量-Leetcode354"><a href="#max-number-of-evenlopes-信封嵌套的最大数量-Leetcode354" class="headerlink" title="max number of evenlopes 信封嵌套的最大数量(Leetcode354)"></a>max number of evenlopes 信封嵌套的最大数量(Leetcode354)</h4><pre><code>信封为二维变量 包含x和y
+这类题目需要对数组事先进行排序，排序的定义需要根据题目决定，例如本题的信封就需要先对x进行升序排序，当x相等的时候，需要对y进行降序排序，接着题目就转变成求最长的递增子序列
+</code></pre><h4 id="sum-of-paths-from-top-left-to-right-bottom-从左上角到右下角的路径总数-Leetcode62"><a href="#sum-of-paths-from-top-left-to-right-bottom-从左上角到右下角的路径总数-Leetcode62" class="headerlink" title="sum of paths from top-left to right-bottom 从左上角到右下角的路径总数(Leetcode62)"></a>sum of paths from top-left to right-bottom 从左上角到右下角的路径总数(Leetcode62)</h4><pre><code>初始化：
+dp数组：
+复杂度: O(NM)的时间复杂度 O(MIN(m，n))的空间复杂度
+</code></pre><h4 id="minimum-number-of-steps-convert-s-to-t-使用最少的操作将字符串s转换成t"><a href="#minimum-number-of-steps-convert-s-to-t-使用最少的操作将字符串s转换成t" class="headerlink" title="minimum number of steps convert s to t 使用最少的操作将字符串s转换成t"></a>minimum number of steps convert s to t 使用最少的操作将字符串s转换成t</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/06/Dynamic-Programming/" data-id="civ6enltx0001b640hea5qbac" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/11/06/Dynamic-Programming/" data-id="ciw348ro100017t40pdbshwbr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li></ul>
@@ -226,7 +353,7 @@ dp数组：
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/06/hello-world/" data-id="civ6enltr0000b640gzxmaws5" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/11/06/hello-world/" data-id="ciw348rnv00007t4038ptyu88" class="article-share-link">Share</a>
       
       
     </footer>
@@ -246,7 +373,7 @@ dp数组：
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li></ul>
     </div>
@@ -256,7 +383,7 @@ dp数组：
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a>
     </div>
@@ -275,9 +402,13 @@ dp数组：
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/11/28/html&jquery/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2016/11/06/Dynamic-Programming/">Dynamic Programming</a>
@@ -300,7 +431,7 @@ dp数组：
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 John Doe<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
