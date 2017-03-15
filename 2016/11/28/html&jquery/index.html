@@ -1,11 +1,93 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+<!doctype html>
+
+
+
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jquery功能整理
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="jquery功能整理
 · 页面的初始加载函数 &amp;nbsp; &amp;nbsp; 1.  jquery —-  $(document).ready(function () {} ) &amp;nbsp; &amp;nbsp; 2. javascript – window.onload=function(){ }   或  $(function(){ } 区别：&amp;nbsp; &amp;nbsp; 1.会在DOM完全就绪并可以使用时">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
@@ -18,65 +100,229 @@
 <meta name="twitter:title" content="Hexo">
 <meta name="twitter:description" content="jquery功能整理
 · 页面的初始加载函数 &amp;nbsp; &amp;nbsp; 1.  jquery —-  $(document).ready(function () {} ) &amp;nbsp; &amp;nbsp; 2. javascript – window.onload=function(){ }   或  $(function(){ } 区别：&amp;nbsp; &amp;nbsp; 1.会在DOM完全就绪并可以使用时">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
 
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/28/html&jquery/"/>
+
+
+
+
+
+  <title>  | Hexo </title>
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
+        <p class="site-subtitle"></p>
+      
   </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-html&amp;jquery" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/28/html&jquery/" class="article-date">
-  <time datetime="2016-11-28T08:12:05.000Z" itemprop="datePublished">2016-11-28</time>
-</a>
-    
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
   </div>
-  <div class="article-inner">
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/28/html&jquery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
     
-    <div class="article-entry" itemprop="articleBody">
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-28T16:12:05+08:00">
+                2016-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
       
         <p></p><h2>jquery功能整理</h2><br><br><p></p>
 <h4>· 页面的初始加载函数 <br><br>&nbsp; &nbsp; 1.  jquery —-  $(document).ready(function () {} ) <br><br>&nbsp; &nbsp; 2. javascript – window.onload=function(){ }   或  $(function(){ }<br><br> 区别：<br><br>&nbsp; &nbsp; 1.会在DOM完全就绪并可以使用时调用。虽然这也意味着所有元素对脚本而言都是可以访问的，但是，并不意味着所有关联的文件都已经下载完毕。换句话说，当HMTL下载完成并解析为DOM树之后，代码就会执行。 <br><br>&nbsp; &nbsp; 2. 当一个文档完全下载到浏览器中时，才会触发window.onload事件。这意味着页面上的全部元素对js而言都是可以操作的，也就是说页面上的所有元素加载完毕才会执行。这种情况对编写功能性代码非常有利，因为无需考虑加载的次序<br></h4><br><br><br><br>——————————————-<br><br><br><br><h4><br>· ajaxRequest异步调用<br><br>&nbsp; &nbsp; 代码：<br><br><br><pre><code><br>var tseg = {<br>    _ajax_timeout: 60 <em> 1000,// 全局默认ajax请求超时时间<br>    _data_refresh: 60 </em> 1000,// 数据默认刷新频率 3分钟<br><br>    /<em> 请求Url </em>/<br>    getUrl: function (code) {<br>        if (!code)<br>            return;<br>        switch (code) {<br>            default:<br>                console.log(code);<br>                break;<br>        }<br>        return code;<br>    }<br>};<br><br>/<em> ajax调用 </em>/<br>var ajaxRequest = function (success, error, code, params, type) {<br><br>    $.ajax({<br>        url: tseg.getUrl(code),// 此处url需要在调用处赋值<br>        type: “get”,<br>        dataType: type,<br>        traditional: true,<br>        async: true,<br>        data: params || {},<br>        timeout: tseg._ajax_timeout,<br>        success: function (JsonStr) {<br>            success(JsonStr);<br>        },<br>        error: function (XMLHttpRequest, textStatus, errorThrown) {<br>            error(textStatus);<br>        }<br>    });<br>}<br><br>var error = function (msg) {<br>    console.log(“happend exception:”);<br>    console.log(msg);<br>};<br><br>window.tseg = tseg;<br>window.ajaxRequest = ajaxRequest;<br>window.error = error;<br></code></pre><br></h4><br><br><br><br><br>——————<br><br><h4><br>·  下拉框的插件<br><br><a href="https://github.com/ehynds/jquery-ui-multiselect-widget" target="_blank" rel="external">https://github.com/ehynds/jquery-ui-multiselect-widget</a><br><br>引入文件 –一共5个文件<br><br><pre><br>js/jquery.min.js<br>js/jquery-ui.min.js<br>js/jquery.multiselect.js<br>css/jquery-ui.css<br>css/jquery.multiselect.css<br></pre><br>html代码：<br><br>申明:<br><pre>select id=”s_office” multiple=”multiple” name=”example-basic”<br></pre><br>初始化：<br><pre><br>$(“选择器”).multiselect({<br>   noneSelectedText: “”,<br>   multiple: false,<br>   header: false,<br>   selectedList: 1…<br>});<br></pre><br>插入option：<br><pre><br>1.var temp = $(“<option value="" + units[j] + "">“ + units[j] + “</option>“);<br>   temp.appendTo(父级选择器);<br>}<br>2.调用refresh接口<br>$(“#department”).multiselect(‘refresh’);<br></pre><br>重加载：<br><pre><br> 1.$(“选择器”).empty();<br> 2.再次调用初始化的代码<br></pre><br>事件：<br><pre><br>1.一般会使用change事件<br>$(“选择器”).change(function () {})<br></pre><br>获取选中的值：<br><pre><br>var val = $(“选择器”).multiselect(“getChecked”).map(function () {<br>    return this.value;<br>}).get()[0]; //可能有多选的情况<br></pre><br></h4>
@@ -160,134 +406,338 @@ jQuery(function() {
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/28/html&jquery/" data-id="cj0b10nex0005t040fp2mf6o2" class="article-share-link">Share</a>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/06/Dynamic-Programming/" rel="next" title="Dynamic Programming">
+                <i class="fa fa-chevron-left"></i> Dynamic Programming
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/29/shell_command/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
       
       
     </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
-  
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
     
-<nav id="article-nav">
-  
-    <a href="/2016/11/29/shell_command/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+  </div>
+
+
+        </div>
         
-          (no title)
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">jquery功能整理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">· 页面的初始加载函数     1.  jquery —-  $(document).ready(function () {} )     2. javascript – window.onload=function(){ }   或  $(function(){ } 区别：    1.会在DOM完全就绪并可以使用时调用。虽然这也意味着所有元素对脚本而言都是可以访问的，但是，并不意味着所有关联的文件都已经下载完毕。换句话说，当HMTL下载完成并解析为DOM树之后，代码就会执行。     2. 当一个文档完全下载到浏览器中时，才会触发window.onload事件。这意味着页面上的全部元素对js而言都是可以操作的，也就是说页面上的所有元素加载完毕才会执行。这种情况对编写功能性代码非常有利，因为无需考虑加载的次序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.2.</span> <span class="nav-text">· ajaxRequest异步调用    代码：var tseg = {    _ajax_timeout: 60  1000,// 全局默认ajax请求超时时间    _data_refresh: 60  1000,// 数据默认刷新频率 3分钟    / 请求Url /    getUrl: function (code) {        if (!code)            return;        switch (code) {            default:                console.log(code);                break;        }        return code;    }};/ ajax调用 /var ajaxRequest = function (success, error, code, params, type) {    $.ajax({        url: tseg.getUrl(code),// 此处url需要在调用处赋值        type: “get”,        dataType: type,        traditional: true,        async: true,        data: params || {},        timeout: tseg._ajax_timeout,        success: function (JsonStr) {            success(JsonStr);        },        error: function (XMLHttpRequest, textStatus, errorThrown) {            error(textStatus);        }    });}var error = function (msg) {    console.log(“happend exception:”);    console.log(msg);};window.tseg = tseg;window.ajaxRequest = ajaxRequest;window.error = error;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.3.</span> <span class="nav-text">·  下拉框的插件https://github.com/ehynds/jquery-ui-multiselect-widget引入文件 –一共5个文件js/jquery.min.jsjs/jquery-ui.min.jsjs/jquery.multiselect.jscss/jquery-ui.csscss/jquery.multiselect.csshtml代码：申明:select id=”s_office” multiple=”multiple” name=”example-basic”初始化：$(“选择器”).multiselect({   noneSelectedText: “”,   multiple: false,   header: false,   selectedList: 1…});插入option：1.var temp = $(““ + units[j] + ““);   temp.appendTo(父级选择器);}2.调用refresh接口$(“#department”).multiselect(‘refresh’);重加载： 1.$(“选择器”).empty(); 2.再次调用初始化的代码事件：1.一般会使用change事件$(“选择器”).change(function () {})获取选中的值：var val = $(“选择器”).multiselect(“getChecked”).map(function () {    return this.value;}).get()[0]; //可能有多选的情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.4.</span> <span class="nav-text">·  表格的插件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">引用文件 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">表格重加载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.4.4.</span> <span class="nav-text">异步插入数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.5.</span> <span class="nav-text">· 关系网络(图)的插件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">异步加载数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.6.</span> <span class="nav-text">杂项</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
         
       </div>
-    </a>
-  
-  
-    <a href="/2016/11/06/Dynamic-Programming/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Dynamic Programming</div>
-    </a>
-  
-</nav>
+    </main>
 
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
   
-</article>
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
 
-</section>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
         
-          <aside id="sidebar">
-  
-    
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Arkiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Siste innlegg</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/03/15/JVM-的GC机制/">JVM 的GC机制</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/09/shell/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/09/DynamicProgramming/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2016/11/29/virtual_machine/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2016/11/29/shell_command/">(no title)</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+    </footer>
+
     
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
   </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
 </body>
 </html>
