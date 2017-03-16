@@ -87,12 +87,40 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/Dynamic-Programming/index.html">
+<meta name="description" content="Mysql知识点总结并发控制涉及两个层面的控制：服务器层和存储引擎层
+锁策略：在锁的开销和数据的安全性之间寻求平衡  同时需要根据特定的场景进行选取
+锁粒度在mysql中涉及到的对象 数据库 表 属性 行记录
+表锁 即锁定整张表
+用户在对表进行写操作的时候，需要获取写锁，此时会阻塞其他用户对表的所有读写操作 读锁不会相互阻塞
+行级锁 只在存储引擎层实现
+
+schema和数据类型优化
+添加计数表和汇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql">
+<meta property="og:url" content="http://yoursite.com/2017/03/16/Mysql/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Mysql知识点总结并发控制涉及两个层面的控制：服务器层和存储引擎层
+锁策略：在锁的开销和数据的安全性之间寻求平衡  同时需要根据特定的场景进行选取
+锁粒度在mysql中涉及到的对象 数据库 表 属性 行记录
+表锁 即锁定整张表
+用户在对表进行写操作的时候，需要获取写锁，此时会阻塞其他用户对表的所有读写操作 读锁不会相互阻塞
+行级锁 只在存储引擎层实现
+
+schema和数据类型优化
+添加计数表和汇">
+<meta property="og:updated_time" content="2017-03-16T10:27:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Mysql">
+<meta name="twitter:description" content="Mysql知识点总结并发控制涉及两个层面的控制：服务器层和存储引擎层
+锁策略：在锁的开销和数据的安全性之间寻求平衡  同时需要根据特定的场景进行选取
+锁粒度在mysql中涉及到的对象 数据库 表 属性 行记录
+表锁 即锁定整张表
+用户在对表进行写操作的时候，需要获取写锁，此时会阻塞其他用户对表的所有读写操作 读锁不会相互阻塞
+行级锁 只在存储引擎层实现
+
+schema和数据类型优化
+添加计数表和汇">
 
 
 
@@ -120,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Dynamic-Programming/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/16/Mysql/"/>
 
 
 
 
 
-  <title> Tag: Dynamic Programming | Hexo </title>
+  <title> Mysql | Hexo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -151,7 +179,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,46 +263,161 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Dynamic Programming
-        <small>Tag</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/16/Mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Mysql
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-16T09:20:22+08:00">
+                2017-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="Mysql知识点总结"><a href="#Mysql知识点总结" class="headerlink" title="Mysql知识点总结"></a>Mysql知识点总结</h1><h3 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h3><p>涉及两个层面的控制：服务器层和存储引擎层</p>
+<p>锁策略：在锁的开销和数据的安全性之间寻求平衡  同时需要根据特定的场景进行选取</p>
+<h4 id="锁粒度"><a href="#锁粒度" class="headerlink" title="锁粒度"></a><strong>锁粒度</strong></h4><p>在mysql中涉及到的对象 数据库 表 属性 行记录</p>
+<p><strong>表锁</strong> 即锁定整张表</p>
+<p>用户在对表进行写操作的时候，需要获取写锁，此时会阻塞其他用户对表的所有读写操作 读锁不会相互阻塞</p>
+<p><strong>行级锁</strong> 只在存储引擎层实现</p>
+<hr>
+<p>schema和数据类型优化</p>
+<p>添加计数表和汇总表<!--：待查询--></p>
+<p>1.尽量使用可以正确存储数据的最小数据类型</p>
+<p>2.尽量避免Null 对MyISAM来说，可为Null的列需要更多的存储空间，索引的构建也更加复杂</p>
+<p>3.</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/11/06/Dynamic-Programming/" itemprop="url">
-              
-                <span itemprop="name">Dynamic Programming</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-06T13:27:24+08:00"
-              content="2016-11-06" >
-          11-06
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/Java-关键字/" rel="next" title="Java 关键字">
+                <i class="fa fa-chevron-left"></i> Java 关键字
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -282,6 +425,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -301,8 +448,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -355,6 +511,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql知识点总结"><span class="nav-number">1.</span> <span class="nav-text">Mysql知识点总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并发控制"><span class="nav-number">1.0.1.</span> <span class="nav-text">并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#锁粒度"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">锁粒度</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -460,6 +632,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 

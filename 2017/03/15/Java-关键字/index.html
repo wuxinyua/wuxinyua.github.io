@@ -87,12 +87,71 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX参考链接：http://www.cnblogs.com/paddix/p/5405678.html
+
+volatile含义：volatile修饰变量 保证对变量的读取是对该变量最后一次的写入 即不会读取该变量的缓存
+首先了解一下线程安全的概念：
+当多个线程访问同一个类的时候，不用考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 关键字">
+<meta property="og:url" content="http://yoursite.com/2017/03/15/Java-关键字/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX参考链接：http://www.cnblogs.com/paddix/p/5405678.html
+
+volatile含义：volatile修饰变量 保证对变量的读取是对该变量最后一次的写入 即不会读取该变量的缓存
+首先了解一下线程安全的概念：
+当多个线程访问同一个类的时候，不用考">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/787876/201603/787876-20160313202200007-1111796802.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/787876/201603/787876-20160313202224241-2101542210.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/787876/201603/787876-20160313202245210-345198166.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/787876/201603/787876-20160313202333460-377269897.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/787876/201603/787876-20160313202355694-2106931487.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20160316084831378">
+<meta property="og:image" content="http://img.blog.csdn.net/20160316085031092">
+<meta property="og:image" content="http://img.blog.csdn.net/20160316085142734">
+<meta property="og:image" content="http://img.blog.csdn.net/20160316085319130">
+<meta property="og:image" content="http://img.blog.csdn.net/20160316085415800">
+<meta property="og:image" content="http://img.blog.csdn.net/20160316085627162">
+<meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337910943_1128.jpg">
+<meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337910956_9817.jpg">
+<meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337910963_6079.jpg">
+<meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337910967_8133.jpg">
+<meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337910978_9542.jpg">
+<meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337910993_8515.jpg">
+<meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337911478_8471.jpg">
+<meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337911485_7934.jpg">
+<meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337911008_5159.jpg">
+<meta property="og:image" content="http://images.cnitblog.com/blog/73542/201411/160024418595945.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/73542/201411/160024432651715.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/73542/201411/160024451258114.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/73542/201411/160024471405297.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/73542/201411/160024492181696.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20161205181623207">
+<meta property="og:image" content="http://img.blog.csdn.net/20161206085522582">
+<meta property="og:image" content="http://files.jb51.net/file_images/article/201609/201609240910374.png">
+<meta property="og:image" content="http://files.jb51.net/file_images/article/201609/201609240910375.png">
+<meta property="og:image" content="http://files.jb51.net/file_images/article/201609/201609240910376.png">
+<meta property="og:image" content="http://files.jb51.net/file_images/article/201609/201609240910377.png">
+<meta property="og:image" content="http://files.jb51.net/file_images/article/201609/201609240910378.png">
+<meta property="og:image" content="http://files.jb51.net/file_images/article/201609/201609240910379.png">
+<meta property="og:image" content="http://files.jb51.net/file_images/article/201609/2016092409103710.png">
+<meta property="og:image" content="http://files.jb51.net/file_images/article/201609/2016092409103711.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20160805132326366">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:updated_time" content="2017-03-16T16:40:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Java 关键字">
+<meta name="twitter:description" content="同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX参考链接：http://www.cnblogs.com/paddix/p/5405678.html
+
+volatile含义：volatile修饰变量 保证对变量的读取是对该变量最后一次的写入 即不会读取该变量的缓存
+首先了解一下线程安全的概念：
+当多个线程访问同一个类的时候，不用考">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/787876/201603/787876-20160313202200007-1111796802.png">
 
 
 
@@ -120,13 +179,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/15/Java-关键字/"/>
 
 
 
 
 
-  <title> Hexo </title>
+  <title> Java 关键字 | Hexo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -151,9 +210,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -236,141 +293,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/16/Mysql/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/16/Mysql/" itemprop="url">
-                  Mysql
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-16T09:20:22+08:00">
-                2017-03-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Mysql知识点总结"><a href="#Mysql知识点总结" class="headerlink" title="Mysql知识点总结"></a>Mysql知识点总结</h1><h3 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h3><p>涉及两个层面的控制：服务器层和存储引擎层</p>
-<p>锁策略：在锁的开销和数据的安全性之间寻求平衡  同时需要根据特定的场景进行选取</p>
-<h4 id="锁粒度"><a href="#锁粒度" class="headerlink" title="锁粒度"></a><strong>锁粒度</strong></h4><p>在mysql中涉及到的对象 数据库 表 属性 行记录</p>
-<p><strong>表锁</strong> 即锁定整张表</p>
-<p>用户在对表进行写操作的时候，需要获取写锁，此时会阻塞其他用户对表的所有读写操作 读锁不会相互阻塞</p>
-<p><strong>行级锁</strong> 只在存储引擎层实现</p>
-<hr>
-<p>schema和数据类型优化</p>
-<p>添加计数表和汇总表<!--：待查询--></p>
-<p>1.尽量使用可以正确存储数据的最小数据类型</p>
-<p>2.尽量避免Null 对MyISAM来说，可为Null的列需要更多的存储空间，索引的构建也更加复杂</p>
-<p>3.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
 
   
 
@@ -400,10 +325,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/03/15/Java-关键字/" itemprop="url">
-                  Java 关键字
-                </a>
+                Java 关键字
               
             
           </h1>
@@ -454,9 +376,7 @@
       
 
       
-        
-          
-            <h4 id="同步-1-synchronized-2-volatile-3-lock-4-AtomicXX"><a href="#同步-1-synchronized-2-volatile-3-lock-4-AtomicXX" class="headerlink" title="同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX"></a><strong>同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX</strong></h4><p>参考链接：<a href="http://www.cnblogs.com/paddix/p/5405678.html" target="_blank" rel="external">http://www.cnblogs.com/paddix/p/5405678.html</a></p>
+        <h4 id="同步-1-synchronized-2-volatile-3-lock-4-AtomicXX"><a href="#同步-1-synchronized-2-volatile-3-lock-4-AtomicXX" class="headerlink" title="同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX"></a><strong>同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX</strong></h4><p>参考链接：<a href="http://www.cnblogs.com/paddix/p/5405678.html" target="_blank" rel="external">http://www.cnblogs.com/paddix/p/5405678.html</a></p>
 <hr>
 <h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>含义：volatile修饰变量 保证对变量的读取是对该变量最后一次的写入 即不会读取该变量的缓存</p>
 <p>首先了解一下线程安全的概念：</p>
@@ -1491,20 +1411,27 @@
 <p>MySQL 加锁处理分析：</p>
 <p><a href="http://hedengcheng.com/?p=771" target="_blank" rel="external">http://hedengcheng.com/?p=771</a></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
@@ -1512,1271 +1439,42 @@
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/15/JVM-的GC机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
         
-        
-          <h1 class="post-title" itemprop="name headline">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/15/JVM-的GC机制/" rel="next" title="JVM 的GC机制">
+                <i class="fa fa-chevron-left"></i> JVM 的GC机制
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2017/03/15/JVM-的GC机制/" itemprop="url">
-                  JVM 的GC机制
-                </a>
-              
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+              <a href="/2017/03/16/Mysql/" rel="prev" title="Mysql">
+                Mysql <i class="fa fa-chevron-right"></i>
+              </a>
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-15T20:36:40+08:00">
-                2017-03-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="Java的垃圾回收机制"><a href="#Java的垃圾回收机制" class="headerlink" title="Java的垃圾回收机制"></a>Java的垃圾回收机制</h1><p>参考链接：Where Has the Java PermGen Gone?    <a href="https://www.infoq.com/articles/Java-PERMGEN-Removed" target="_blank" rel="external">https://www.infoq.com/articles/Java-PERMGEN-Removed</a></p>
-<h3 id="永久代和元空间"><a href="#永久代和元空间" class="headerlink" title="永久代和元空间"></a>永久代和元空间</h3><h4 id="1-7以及1-7之前"><a href="#1-7以及1-7之前" class="headerlink" title="1.7以及1.7之前"></a><strong>1.7以及1.7</strong>之前</h4><p>Java<u>类对象的元数据</u>存放在<strong>方法区</strong>，也就是所谓的<strong><em>老年代</em></strong></p>
-<p>类对象的元数据<!--：待查询--></p>
-<h5 id="永久代的性质："><a href="#永久代的性质：" class="headerlink" title="永久代的性质："></a>永久代的性质：</h5><p>1.使用<strong><u>-XX:MaxPermSize</u></strong>来设置内存的大小  默认情况下32位为64M 64位为85M</p>
-<p>2.当类的元数据超过设置的阈值，发生OOM的错误</p>
-<p>3.永久代和老年代的垃圾回收是绑定的，一旦一个区域被占满，两个区都要进行回收</p>
-<h4 id="1-8以及之后"><a href="#1-8以及之后" class="headerlink" title="1.8以及之后"></a>1.8以及之后</h4><p>Java的<u>类对象的元数据</u>存放在<strong>元空间</strong>—<u>本地的内存区域</u></p>
-<p><em>为什么发生这个改变？</em></p>
-<p>1.永久代的调优很困难<!--：待查询--> 垃圾回收器需要特殊处理永久代的元数据</p>
-<p>2.每一次Full GC永久代的数据都可能发生移动</p>
-<p><em>好处呢？</em></p>
-<p>1.实现对元空间的无缝管理 简化Full GC</p>
-<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>perm gen 含class metadata、class static variables 和 interned string<!--：待查询--> </p>
-<p>metaspace只含class metadata了，class static variables 和 interned string被移到java heap上</p>
-<h4 id="如何管理"><a href="#如何管理" class="headerlink" title="如何管理"></a>如何管理</h4><p>负责管理对象：元空间虚拟机(C++)</p>
-<h5 id="内存分配方式及其特点："><a href="#内存分配方式及其特点：" class="headerlink" title="内存分配方式及其特点："></a>内存分配方式及其特点：</h5><p>1.虚拟机中存在一个全局的空闲组块链表，每个类加载器可以从中获取并自己维护，当类加载不再存活时，释放相应的组块，同时由该类加载器加载的类对象元数据也会被清空<!--：类加载器什么时候不存活？--></p>
-<p>2.组块的大小因类加载的类型而异<!--：什么意思？ 就是每个组块的大小不同而且与分配的区块大小不一致，导致内存碎片！！！--></p>
-<p>3.每个组块实际上是虚拟内存映射区域的内存，虚拟内存映射区域以链表的形式链接<!--：VM是啥？--></p>
-<p>4.组块由更小的单元块组成，每个块存储一个单元的元信息</p>
-<h4 id="如何调优"><a href="#如何调优" class="headerlink" title="如何调优"></a>如何调优</h4><p>可以使用-XX:MaxMetaspaceSize限制其大小 64位的服务器JVM来说默认值为21M 建议设置为一个较高值</p>
-<h5 id="什么时候回收"><a href="#什么时候回收" class="headerlink" title="什么时候回收"></a>什么时候回收</h5><p>1.一旦触及这个值，便会触发<strong>Full GC</strong>，并重新设置该值(根据释放的元空间大小进行调整)</p>
-<p>2.使用-XX:MinMetaspaceFreeRatio和-XX:MaxMetaspaceFreeRatio设置元空间空闲比例的最大值和最小值</p>
-<h5 id="JVM调优工具"><a href="#JVM调优工具" class="headerlink" title="JVM调优工具"></a>JVM调优工具</h5><p><strong>jmap -clstats PID</strong> (JDK8)   打印类加载数据</p>
-<p><strong>jstat -gc LVMID</strong>                打印元空间的信息</p>
-<p><strong>jcmd PID GC.class_stats</strong>   打印类对象元数据的统计信息</p>
-<hr>
-<p>参考链接：<a href="https://www.javacodegeeks.com/2015/03/minor-gc-vs-major-gc-vs-full-gc.html" target="_blank" rel="external">https://www.javacodegeeks.com/2015/03/minor-gc-vs-major-gc-vs-full-gc.html</a></p>
-<p>​            <a href="http://blog.csdn.net/chenleixing/article/details/46706039" target="_blank" rel="external">http://blog.csdn.net/chenleixing/article/details/46706039</a></p>
-<p>​            <a href="http://blog.csdn.net/yhyr_ycy/article/details/52566105" target="_blank" rel="external">http://blog.csdn.net/yhyr_ycy/article/details/52566105</a></p>
-<h3 id="Minor-GC和Full-GC"><a href="#Minor-GC和Full-GC" class="headerlink" title="Minor GC和Full GC"></a>Minor GC和Full GC</h3><h4 id="gc"><a href="#gc" class="headerlink" title="gc"></a>gc</h4><p>什么时候：外部调用System.gc()  或者 JVM根据内存的使用情况决定进行GC</p>
-<p>回收什么：回收通过可达性分析搜索不到的对象</p>
-<p>回收过程：具体过程：当GC线程启动时，会通过可达性分析法把Eden区和From Space区的存活对象复制到To Space区，然后把Eden Space和From Space区的对象释放掉。当GC轮询扫描To Space区一定次数后，把依然存活的对象复制到老年代(对象的年龄超过设置的阈值)，然后释放To Space区的对象</p>
-<p>回收一个对象，至少需要经过<strong>两次标记</strong>的过程</p>
-<p>第一次标记：对于一个没有其他引用的对象，筛选该对象是否有必要执行finalize()方法，如果没有执行必要，则可直接回收。（筛选依据：是否复写或执行过finalize()方法；因为finalize方法只能被执行一次）。</p>
-<p>第二次标记：如果被筛选判定为有必要执行，则会放入FQueue队列，并自动创建一个低优先级的finalize线程来执行释放操作。如果在一个对象释放前被其他对象引用，则该对象会被移除FQueue队列</p>
-<h4 id="minor-GC"><a href="#minor-GC" class="headerlink" title="minor GC"></a>minor GC</h4><p>从年轻代(Eden和survivor区)回收的内存</p>
-<p>1.执行Minor GC时不会影响永久代(！！！1.8之后不存在永久代的概念)</p>
-<p>触发条件：eden的内存满了</p>
-<h4 id="Full-GC"><a href="#Full-GC" class="headerlink" title="Full GC"></a>Full GC</h4><p><em>major GC</em>    清理老年代</p>
-<p><em>Full GC</em>         清理整个堆空间</p>
-<h5 id="触发Full-GC的条件："><a href="#触发Full-GC的条件：" class="headerlink" title="触发Full GC的条件："></a>触发Full GC的条件：</h5><p>1.System.gc()方法调用会建议JVM进行Full GC</p>
-<p>2.老年代空间不足  </p>
-<p>原因：进行Minor GC新生代转入大量大对象或者大数组</p>
-<p>优化:   让对象在Minor GC阶段被回收  不要创建过大的对象那个或者数组</p>
-<p>3.CMS GC出现<strong>promotion failed</strong> 和<strong>concurrent mode failure</strong></p>
-<p>promotion failed  进行Minor GC时 survivor space空间放不下 同时老年代也放不下的时候抛出的异常</p>
-<p>cocurrent mode failure  同时有对象需要放入老年代，同时老年代空间不足导致</p>
-<p>优化：增大survivor和老年代的空间 降低触发并发gc的比率</p>
-<p>4.统计得到的Minor GC晋升到老年代的平均大小超过老年代剩余的空间</p>
-<p>5.堆中分配需要很大连续内存的对象需要直接分配到老年代，并且老年代没有足够连续的内存存放对象</p>
-<p>优化：使用-XX:+UseCMSCompactAtFullCollection 进行碎片整理</p>
-<p>​       也可以使用-XX:CMSFullGCsBeforeCompaction设置在进行k次full GC之后进行压缩式的Full GC</p>
-<h5 id="另一种分类方法：-针对HotSpot的实现"><a href="#另一种分类方法：-针对HotSpot的实现" class="headerlink" title="另一种分类方法： 针对HotSpot的实现"></a>另一种分类方法： 针对HotSpot的实现</h5><p>Partial GC：并不收集整个GC堆的模式</p>
-<ul>
-<li>Young GC：只收集young gen的GC</li>
-<li>Old GC：     只收集old gen的GC。只有CMS的concurrent collection是这个模式</li>
-<li>Mixed GC：收集整个young gen以及部分old gen的GC。只有G1有这个模式</li>
-</ul>
-<p>Full GC：收集整个堆</p>
-<h5 id="serial-GC"><a href="#serial-GC" class="headerlink" title="serial GC"></a>serial GC<!--：其他gc收集器待补充--></h5><ol>
-<li>young GC：当young gen中的eden区分配满的时候触发。注意young GC中有部分存活对象会晋升到old gen，所以young GC后old gen的占用量通常会有所升高。</li>
-<li>full GC：当准备要触发一次young GC时，如果发现<strong>统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大</strong>，则不会触发young GC而是转为触发full GC（因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC）；或者，如果有<strong>perm gen的话，要在perm gen分配空间但已经没有足够空间时，也要触发一次full GC</strong>；或者<strong>System.gc()、heap dump带GC</strong>，默认也是触发full GC</li>
-</ol>
-<p>并发GC的触发条件就不太一样。以CMS GC为例，它主要是<strong>定时去检查old gen的使用量，当使用量超过了触发比例就会启动一次CMS GC</strong>，对old gen做并发收集</p>
-<hr>
-<h3 id="垃圾回收的算法"><a href="#垃圾回收的算法" class="headerlink" title="垃圾回收的算法"></a>垃圾回收的算法</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/09/shell/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/09/shell/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-09T23:24:08+08:00">
-                2017-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>远程执行hadoop job和shell命令</p>
-<p>1.</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/09/DynamicProgramming/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/09/DynamicProgramming/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-09T22:00:16+08:00">
-                2017-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Dynamic Programming</p>
-<p>1.字符串匹配<br>   String s     匹配串<br>   String p     模式串 包含.和<em><br>   ‘.’ Matches any single character.<br>   ‘</em>‘ Matches zero or more of the preceding element.</p>
-<p>   字符串匹配的动态规划数组通常以字符串的长度和位置作为数组的下标</p>
-<p>   boolean[][] state = new boolean[s.length + 1][p.length + 1]</p>
-<p>   边界条件<br>   state[0][j]  : 匹配串为空 查看模式串能否匹配空字符串<br>   state[0][j] =  state[0][j - 1]                         j = 1 &amp; p.charAt(j - 1) = <em><br>                   =  state[0][j - 2] || state[0][j - 1] j &gt; 1 &amp; p.charAt(j - 1) = </em><br>                   =  false                                    p.charAt(j - 1) != *</p>
-<pre><code>状态转移方程：
-state[i][j] =  state[i - 1][j - 1]  s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == &apos;.&apos;
-              =  state[i][j - 2]        p.charAt(j - 1) == &apos;*&apos; &amp;&amp; s.charAt(i - 1) != p.charAt(j - 2) &amp;&amp; p.charAt(j - 2) != &apos;.&apos;
-              =  state[i - 1][j] || state[i][j - 1] || state[i][j - 2]
-</code></pre><p>2.LongestValidParentheses</p>
-<p>3.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/29/virtual_machine/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/29/virtual_machine/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-29T16:22:36+08:00">
-                2016-11-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>###title: 虚拟机</p>
-<p>###tags:虚拟机</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/29/shell_command/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/29/shell_command/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-29T14:57:04+08:00">
-                2016-11-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>###title: shell command</p>
-<p>###date: 2016-11-06 13:27:24</p>
-<p>###tags: shell command</p>
-<hr>
-<p>xargs</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/28/html&jquery/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/28/html&jquery/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-28T16:12:05+08:00">
-                2016-11-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p></p><h2>jquery功能整理</h2><br><br><p></p>
-<h4>· 页面的初始加载函数 <br><br>&nbsp; &nbsp; 1.  jquery —-  $(document).ready(function () {} ) <br><br>&nbsp; &nbsp; 2. javascript – window.onload=function(){ }   或  $(function(){ }<br><br> 区别：<br><br>&nbsp; &nbsp; 1.会在DOM完全就绪并可以使用时调用。虽然这也意味着所有元素对脚本而言都是可以访问的，但是，并不意味着所有关联的文件都已经下载完毕。换句话说，当HMTL下载完成并解析为DOM树之后，代码就会执行。 <br><br>&nbsp; &nbsp; 2. 当一个文档完全下载到浏览器中时，才会触发window.onload事件。这意味着页面上的全部元素对js而言都是可以操作的，也就是说页面上的所有元素加载完毕才会执行。这种情况对编写功能性代码非常有利，因为无需考虑加载的次序<br></h4><br><br><br><br>——————————————-<br><br><br><br><h4><br>· ajaxRequest异步调用<br><br>&nbsp; &nbsp; 代码：<br><br><br><pre><code><br>var tseg = {<br>    _ajax_timeout: 60 <em> 1000,// 全局默认ajax请求超时时间<br>    _data_refresh: 60 </em> 1000,// 数据默认刷新频率 3分钟<br><br>    /<em> 请求Url </em>/<br>    getUrl: function (code) {<br>        if (!code)<br>            return;<br>        switch (code) {<br>            default:<br>                console.log(code);<br>                break;<br>        }<br>        return code;<br>    }<br>};<br><br>/<em> ajax调用 </em>/<br>var ajaxRequest = function (success, error, code, params, type) {<br><br>    $.ajax({<br>        url: tseg.getUrl(code),// 此处url需要在调用处赋值<br>        type: “get”,<br>        dataType: type,<br>        traditional: true,<br>        async: true,<br>        data: params || {},<br>        timeout: tseg._ajax_timeout,<br>        success: function (JsonStr) {<br>            success(JsonStr);<br>        },<br>        error: function (XMLHttpRequest, textStatus, errorThrown) {<br>            error(textStatus);<br>        }<br>    });<br>}<br><br>var error = function (msg) {<br>    console.log(“happend exception:”);<br>    console.log(msg);<br>};<br><br>window.tseg = tseg;<br>window.ajaxRequest = ajaxRequest;<br>window.error = error;<br></code></pre><br></h4><br><br><br><br><br>——————<br><br><h4><br>·  下拉框的插件<br><br><a href="https://github.com/ehynds/jquery-ui-multiselect-widget" target="_blank" rel="external">https://github.com/ehynds/jquery-ui-multiselect-widget</a><br><br>引入文件 –一共5个文件<br><br><pre><br>js/jquery.min.js<br>js/jquery-ui.min.js<br>js/jquery.multiselect.js<br>css/jquery-ui.css<br>css/jquery.multiselect.css<br></pre><br>html代码：<br><br>申明:<br><pre>select id=”s_office” multiple=”multiple” name=”example-basic”<br></pre><br>初始化：<br><pre><br>$(“选择器”).multiselect({<br>   noneSelectedText: “”,<br>   multiple: false,<br>   header: false,<br>   selectedList: 1…<br>});<br></pre><br>插入option：<br><pre><br>1.var temp = $(“<option value="" + units[j] + "">“ + units[j] + “</option>“);<br>   temp.appendTo(父级选择器);<br>}<br>2.调用refresh接口<br>$(“#department”).multiselect(‘refresh’);<br></pre><br>重加载：<br><pre><br> 1.$(“选择器”).empty();<br> 2.再次调用初始化的代码<br></pre><br>事件：<br><pre><br>1.一般会使用change事件<br>$(“选择器”).change(function () {})<br></pre><br>获取选中的值：<br><pre><br>var val = $(“选择器”).multiselect(“getChecked”).map(function () {<br>    return this.value;<br>}).get()[0]; //可能有多选的情况<br></pre><br></h4>
-
-<hr>
-<p></p><h4>·  表格的插件<br></h4><br><a href="https://www.datatables.net/" target="_blank" rel="external">文档说明</a><p></p>
-<p></p><h5>引用文件 </h5><p></p>
-<pre>
-js/jquery-2.1.1.js
-js/jquery.dataTables.js
-js/dataTables.bootstrap.js
-
-css/bootstrap.css
-css/dataTables.bootstrap.css
-</pre>
-<h5>声明</h5>
-<pre>
-table class="table table-hover table-striped table-bordered" id="att_table"
-</pre>
-
-<p></p><h5>表格重加载</h5><p></p>
-<pre>
-var table = $(选择器).DataTable();
-table.destroy();
-$(选择器).empty();
-</pre>
-
-<p></p><h5>异步插入数据</h5><p></p>
-<pre>
-var option = {
-            paging : true,
-            pageLength : 10,
-            order : [],
-            ordering : true,
-            searching : true,
-            bRetrieve : true,
-            language : {
-                lengthMenu : '<select class="form-control input-xsmall items-select">'
-                + '<option value="6">6</option>'
-                + '<option value="10">10</option>'
-                + '</select>条记录',// 左上角的分页大小显示。
-                search : '<span class="label label-success">搜索：</span>',
-                paginate : {
-                    previous : "上一页",
-                    next : "下一页",
-                    first : "第一页",
-                    last : "最后"
-                },
-                zeroRecords : "没有内容",
-                info : "总共_PAGES_ 页，显示第_START_ 到第 _END_ ，筛选之后得到 _TOTAL_ 条，初始_MAX_ 条 ",
-                infoEmpty : "0条记录",
-                infoFiltered : ""
-            },
-            paging : true,
-            pagingType : "full_numbers"
-};
-$(table_id).dataTable(option);
-</pre>
-
-<hr>
-<p></p><h4>· 关系网络(图)的插件<br></h4><br><a href="http://visjs.org/" target="_blank" rel="external"> 文档说明</a><p></p>
-<p></p><h5>声明</h5><p></p>
-<pre>
-div id="graph" style="height:500px;" //需要指定高度
-</pre>
-
-<p></p><h5>异步加载数据</h5><p></p>
-<pre>
-jQuery(function() {
-     var network = new vis.Network(container, g, options);
-}
-// container 容器
-// g              数据
-// options    选项
-</pre>
-
-<hr>
-<p></p><h4>杂项</h4><br><p></p>
-<p></p><p>1.获取文本框的值</p><br><strong>var val = document.getElementById(“h_name”).value;<br></strong><p></p>
-<p></p><p>    2.在前端实现页面的跳转</p><br>在函数中添加   <strong>window.location.href = encodeURI( url );</strong><p></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/06/Dynamic-Programming/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/06/Dynamic-Programming/" itemprop="url">
-                  Dynamic Programming
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-06T13:27:24+08:00">
-                2016-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><pre><code>一般的dp数组需要记录以下几种信息:
-1.当探索的元素为数组或者字符串的时候，通常会利用当前元素的下标作为数组的下标
-    以当前元素作为子问题的最后一个元素时满足条件的值 
-        -&gt; 该问题一般只需要一个边界 即子问题的形式类似sub_problem(i)
-    以子问题第一个元素的下标和最后一个元素的下标作为子问题的范围边界
-        -&gt; 该问题的形式类似于sub_problem(i，j)
-</code></pre><h4 id="longestValidParentheses-最长的有效的括号序列-Leetcode32"><a href="#longestValidParentheses-最长的有效的括号序列-Leetcode32" class="headerlink" title="longestValidParentheses   最长的有效的括号序列(Leetcode32)"></a>longestValidParentheses   最长的有效的括号序列(Leetcode32)</h4><pre><code>需要一个dp数组记录以当前元素作为最后一个元素的有效的括号序列的长度
-dp[i - 1] 记录的长度为l  
-当前的元素为&apos;(&apos;，直接跳过，所以&apos;(&apos;的dp值都为0
-当前的元素为&apos;)&apos;，前一个元素为&apos;(&apos;时即l=0的情况
-                            前一个元素为&apos;)&apos;即获取前一个元素的最长序列
-    则说明   0  1  2  3  4  5  6  7  8  9    注意边界条件 即t &gt; 0
-    l = 3           t-1 t    i-1 i
-    l = 0                    t-1 i          此时为相邻的两个元素                       
-       此时比较s.charAt(t - 1)和s.charAt(i)的形式是否符合&quot;()&quot;. 如果符合，则有效的长度为dp[i - 1] + 2 + dp[t - 2] if i &gt; 1. 
-
-初始化：所有元素的dp数组值全部初始化为0.
-dp公式：dp[i] = dp[i - 1] + dp[i - dp[i - 1] - 2] + 2 if valid &amp;&amp; i - dp[i - 1] &gt;= 2
-               dp[i - 1] + 2             if valid &amp;&amp; t &lt; 2
-               0                         if not valid.
-复杂度：
-
-本道题的dp数组就是当前符合条件的组合必须以当前元素结尾
-同时需要一个变量记录以不同元素结尾的所有情况的最长序列
-</code></pre><h4 id="largest-sum-of-subarray-最大子数组和-Leetcode53"><a href="#largest-sum-of-subarray-最大子数组和-Leetcode53" class="headerlink" title="largest sum of subarray  最大子数组和(Leetcode53)"></a>largest sum of subarray  最大子数组和(Leetcode53)</h4><pre><code>针对数组对象，需要注意子数组和子序列的区别，一个包含的元素必须**连续**，另一个包含的元素不需要连续，但需要保持之间的先后关系
-一开始可能觉得应该使用子数组的范围来定义dp数组
-但是实际上只需要记录子数组的最后一个元素的下标
-dp[j] 实际上可以等效为dp[0][j] 而dp[0][j]实际上是dp[i][j]，其中0&lt;= i&lt;= j -1的最大值
-
-初始化：所有元素的dp数组初始化为0
-dp公式：dp[i] = num[i] + Math.max(0,dp[i - 1]) 
-复杂度：
-       需要注意的就是如果数组中存在负数，则需要添加0作为比较元素
-</code></pre><h4 id="longest-increase-subsequence-最长递增子序列-Leetcode300"><a href="#longest-increase-subsequence-最长递增子序列-Leetcode300" class="headerlink" title="longest increase subsequence  最长递增子序列(Leetcode300)"></a>longest increase subsequence  最长递增子序列(Leetcode300)</h4><pre><code>最长递增子序列 因为可选取的元素不一定是连续的，所以与上面两个题目不同，不能只通过遍历一次即可获取到最大的值  
-
-初始化：全部元素的dp数组全部初始化为1
-dp公式：dp[i] =  Math.max(dp[i - k] + num[i] &gt; num[i - k]) 其中1 &lt;= k &lt;= i
-复杂度：普通的方法时间复杂度为O(n^2) 
-               想要把时间复杂度降低至O(nlgn) 则需要减少k的个数
-               ~~ ##很明显 num[i] &gt; 或者 &lt; num[i - k]都只会增加1##~~
-               ~~##所以可以记录最大的dp值的下标 并比较这些元素即可##~~
-</code></pre><h4 id="largest-sum-of-elements-inside-rectangle-矩阵中任意长方形中的元素和-Leetcode304"><a href="#largest-sum-of-elements-inside-rectangle-矩阵中任意长方形中的元素和-Leetcode304" class="headerlink" title="largest sum of elements inside rectangle 矩阵中任意长方形中的元素和(Leetcode304)"></a>largest sum of elements inside rectangle 矩阵中任意长方形中的元素和(Leetcode304)</h4><pre><code>矩阵一般使用二维数组来表示 所以很明显可以使用二维数组来存放指定row和column的元素和
-e.g            1  2  3  4                   
-            1  0  2  1  3
-            2  2  1  1  3 
-            3  0  0  1  1             
-            4  2  2  2  2    
-则dp[row][col] = sum(matrix[1...row][1...col])
-如何获取row1，row2，col1，col2范围内的数组和呢？(明显 row1 &lt;= row2 col1 &lt;= col2)
-通过公式 sum = dp[row2][col2] - dp[row1][col2] - dp[row2][col1] + dp[row1][col1]
-而dp数组的需要事先通过计算获取
-
-初始化：dp数组全部初始化为0. 注意边界条件 [0][0],[0][j],[i][0]
-dp公式: dp[i][j] = dp[i - 1][j] + dp[i][j - 1] - dp[i - 1][j - 1] + matrix[i][j]
-复杂度: 时间复杂度为O(n^2)        
-</code></pre><h4 id="largest-sum-of-elements-inside-square-矩阵中所有元素全部为1的最大的正方形的面积-Leetcode221"><a href="#largest-sum-of-elements-inside-square-矩阵中所有元素全部为1的最大的正方形的面积-Leetcode221" class="headerlink" title="largest sum of elements inside square 矩阵中所有元素全部为1的最大的正方形的面积(Leetcode221)"></a>largest sum of elements inside square 矩阵中所有元素全部为1的最大的正方形的面积(Leetcode221)</h4><pre><code>因为要求正方形内的元素必须全部为1，所以其实与连续子数组类似，不过从一维的形式转变为二维，所以需要二维的数组作为dp数组
-定义dp[i][j]表示包含matrix[i][j]作为右下角元素的最大正方形的面积
-则当matrix[i][j] == &apos;0&apos;时dp[i][j] = 0
-e.g            1  2  3  4                   
-            1  0  1  1  1
-            2  1  1  0  1 
-            3  0  0  1  1             
-            4  0  1  1  0    
-
-初始化：注意边界条件 matrix[0][j]  matrix[i][0]的元素 为0则为0 为1则为1
-dp数组：dp[i][j] = Math.min(dp[i - 1][j - 1],dp[i][j - 1],dp[i - 1][j]) + 1
-复杂度：O(N ^2)的时间复杂度
-</code></pre><h4 id="sum-of-elements-between-i-and-j-in-array-指定下标范围中的数组和-Leetcode303"><a href="#sum-of-elements-between-i-and-j-in-array-指定下标范围中的数组和-Leetcode303" class="headerlink" title="sum of elements between i and j in array 指定下标范围中的数组和(Leetcode303)"></a>sum of elements between i and j in array 指定下标范围中的数组和(Leetcode303)</h4><pre><code>给定范围下的数组和，因为数组的元素是连续的，所以只需要O(n)的时间复杂度遍历一次数组
-可以定义dp数组保存array[0...j]的所有元素和
-查询sum[i...j]时利用公式dp[j] - dp[i - 1] if i &gt; 0
-                      dp[j]             if i == 0     
-
-初始化：全部元素的dp数组初始化为0
-dp数组：dp[j] = dp[j - 1] + num[j]
-复杂度：O(n)的时间复杂度和空间复杂度
-</code></pre><h4 id="least-num-of-perfect-square-numbers-which-sum-to-n-使用最少的完全平方数相加得到n-Leetcode279"><a href="#least-num-of-perfect-square-numbers-which-sum-to-n-使用最少的完全平方数相加得到n-Leetcode279" class="headerlink" title="least num of perfect square numbers which sum to n 使用最少的完全平方数相加得到n(Leetcode279)"></a>least num of perfect square numbers which sum to n 使用最少的完全平方数相加得到n(Leetcode279)</h4><pre><code>想要获取sum为n的情况，通常会利用dp数组得到sum为0...n-1的情况，逐步迭代直至获取n
-此种情况和非连续的子序列相类似，当前的dp数组需要通过遍历前面的dp数组从而获取到最优的值，但是本题中完全平方数的个数有限，所以可以进一步缩小内部循环的次数 利用Math.sqrt(i)来获取内部循环的最大值
-
-初始化：全部元素初始化为最大值
-dp数组：dp[i] = Math.min(dp[i - k] + 1) 其中k = 1，4，9，16，25....
-复杂度：时间复杂度为O()  ??
-</code></pre><h4 id="NTH-ugly-number-第n个丑数-Leetcode264"><a href="#NTH-ugly-number-第n个丑数-Leetcode264" class="headerlink" title="NTH ugly number 第n个丑数(Leetcode264)"></a>NTH ugly number 第n个丑数(Leetcode264)</h4><pre><code>丑数的定义：质因数只包含2，3，5，同时默认1为第一个丑数
-如何获取第n个丑数，我们可以发现，所有的丑数都是通过不断的乘以2，3，5得到的
-所以为了保证获取到的元素的有序性，我们通过比较2，3，5当前对应的元素分别乘以2，3，5得到的最小值作为下一个元素，所以需要三个下标存放2，3，5对应的元素下标 
-dp[i] = Math.min(2 * dp[m],3 * dp[n],5 * dp[k]) 
-本题的特点在于当前dp数组的元素值的确定需要三个不同下标的元素来确定
-
-初始化：m=n=k = 0;
-dp数组：dp[i] = Math.min(2 * dp[m],3 * dp[n],5 * dp[k]) 
-复杂度： O(N) 每获取一个元素需要O(1)的时间
-</code></pre><h4 id="Partition-equal-subset-sum-将集合内的元素切分成sum相等的两个子集-Leetcode416"><a href="#Partition-equal-subset-sum-将集合内的元素切分成sum相等的两个子集-Leetcode416" class="headerlink" title="Partition equal subset sum 将集合内的元素切分成sum相等的两个子集(Leetcode416)"></a>Partition equal subset sum 将集合内的元素切分成sum相等的两个子集(Leetcode416)</h4><pre><code>要切分成sum相等的两个部分，首先可以计算获取所有元素的总和
-因为同样是涉及到sum值所以dp数组通常设计为dp[0...sum]通过迭代获取
-所以题目就转化为选取集合中的部分元素使之和为sum/2
-这种类型的题目通常需要O(N^2)的时间，通过两层循环，外层为数组的下标，通过不断获取数组中新的元素更新dp数组内层循环则为sum值得迭代, 内层循环需要从大到小保证元素不会重复使用
-需要注意集合内的每个元素只能使用一次
-
-初始化：dp数组的全部元素初始化为0
-dp数组： dp[i] = || (dp[i - num[j]]) 其中0 &lt;= j &lt;= num.length-1
-复杂度：O(NK)
-</code></pre><h4 id="num-of-arithmetric-in-array-数组中arithmetric的个数-Leetcode413"><a href="#num-of-arithmetric-in-array-数组中arithmetric的个数-Leetcode413" class="headerlink" title="num of arithmetric in array 数组中arithmetric的个数(Leetcode413)"></a>num of arithmetric in array 数组中arithmetric的个数(Leetcode413)</h4><pre><code>随着数组下标的增加，序列的长度和个数也随之增加，所以dp数组以数组元素的下标作为元素
-则我们可以得到dp[j] = dp[j - 1] + 1 if num[j] - num[j - 1] = num[j - 1] - num[j - 2]
-                    0             otherwise.
-然后求sum = sum(dp[k]) 其中0 &lt;= k &lt;= num.length - 1          
-面对这种情况的时候，可以省略到O(N)的空间复杂度 因为我们最终的结果只需要一个sum
-
-初始化：cur = 0 sum = 0
-dp数组：
-复杂度：O(N)的时间复杂度  
-</code></pre><h4 id="max-number-of-evenlopes-信封嵌套的最大数量-Leetcode354"><a href="#max-number-of-evenlopes-信封嵌套的最大数量-Leetcode354" class="headerlink" title="max number of evenlopes 信封嵌套的最大数量(Leetcode354)"></a>max number of evenlopes 信封嵌套的最大数量(Leetcode354)</h4><pre><code>信封为二维变量 包含x和y
-这类题目需要对数组事先进行排序，排序的定义需要根据题目决定，例如本题的信封就需要先对x进行升序排序，当x相等的时候，需要对y进行降序排序，接着题目就转变成求最长的递增子序列
-</code></pre><h4 id="sum-of-paths-from-top-left-to-right-bottom-从左上角到右下角的路径总数-Leetcode62"><a href="#sum-of-paths-from-top-left-to-right-bottom-从左上角到右下角的路径总数-Leetcode62" class="headerlink" title="sum of paths from top-left to right-bottom 从左上角到右下角的路径总数(Leetcode62)"></a>sum of paths from top-left to right-bottom 从左上角到右下角的路径总数(Leetcode62)</h4><pre><code>初始化：
-dp数组：
-复杂度: O(NM)的时间复杂度 O(MIN(m，n))的空间复杂度
-</code></pre><h4 id="minimum-number-of-steps-convert-s-to-t-使用最少的操作将字符串s转换成t"><a href="#minimum-number-of-steps-convert-s-to-t-使用最少的操作将字符串s转换成t" class="headerlink" title="minimum number of steps convert s to t 使用最少的操作将字符串s转换成t"></a>minimum number of steps convert s to t 使用最少的操作将字符串s转换成t</h4>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/06/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/06/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-06T12:46:22+08:00">
-                2016-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
           
           </div>
@@ -2784,6 +1482,10 @@ dp数组：
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -2803,8 +1505,17 @@ dp数组：
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -2857,6 +1568,22 @@ dp数组：
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#同步-1-synchronized-2-volatile-3-lock-4-AtomicXX"><span class="nav-number">1.</span> <span class="nav-text">同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile"><span class="nav-number"></span> <span class="nav-text">volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景："><span class="nav-number">1.</span> <span class="nav-text">应用场景：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Synchronized"><span class="nav-number"></span> <span class="nav-text">Synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Deeper…"><span class="nav-number">1.</span> <span class="nav-text">Deeper…</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#volatile和synchronized的区别："><span class="nav-number">1.1.</span> <span class="nav-text">volatile和synchronized的区别：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lock"><span class="nav-number"></span> <span class="nav-text">Lock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#锁的两种特性："><span class="nav-number">1.</span> <span class="nav-text">锁的两种特性：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#正确的使用方式："><span class="nav-number">1.1.</span> <span class="nav-text">正确的使用方式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基本锁的获取过程"><span class="nav-number">1.2.</span> <span class="nav-text">基本锁的获取过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#释放锁过程"><span class="nav-number">1.3.</span> <span class="nav-text">释放锁过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">1.4.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ReentrantReadWriteLock-当主要操作为读访问时，可以使用提供性能"><span class="nav-number">1.5.</span> <span class="nav-text">ReentrantReadWriteLock  当主要操作为读访问时，可以使用提供性能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Condition对象"><span class="nav-number">2.</span> <span class="nav-text">Condition对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#await-过程："><span class="nav-number">2.1.</span> <span class="nav-text">await()过程：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#正确的使用方式：-1"><span class="nav-number">2.2.</span> <span class="nav-text">正确的使用方式：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA中线程的状态"><span class="nav-number"></span> <span class="nav-text">JAVA中线程的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原子变量类"><span class="nav-number"></span> <span class="nav-text">原子变量类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Happens-Before原则"><span class="nav-number"></span> <span class="nav-text">Happens-Before原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步工具"><span class="nav-number"></span> <span class="nav-text">同步工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池"><span class="nav-number"></span> <span class="nav-text">线程池</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#⑴-原子性（Atomicity）"><span class="nav-number"></span> <span class="nav-text">⑴ 原子性（Atomicity）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#⑵-一致性（Consistency）"><span class="nav-number"></span> <span class="nav-text">⑵ 一致性（Consistency）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#⑶-隔离性（Isolation）"><span class="nav-number"></span> <span class="nav-text">⑶ 隔离性（Isolation）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#⑷-持久性（Durability）"><span class="nav-number"></span> <span class="nav-text">⑷ 持久性（Durability）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1，脏读"><span class="nav-number"></span> <span class="nav-text">1，脏读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2，不可重复读"><span class="nav-number"></span> <span class="nav-text">2，不可重复读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3，虚读-幻读"><span class="nav-number"></span> <span class="nav-text">3，虚读(幻读)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tcp、ip、udp头部格式"><span class="nav-number"></span> <span class="nav-text">tcp、ip、udp头部格式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#object类的结构"><span class="nav-number"></span> <span class="nav-text">object类的结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数说明"><span class="nav-number"></span> <span class="nav-text">函数说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#clone"><span class="nav-number"></span> <span class="nav-text">clone()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode-和equale"><span class="nav-number"></span> <span class="nav-text">hashCode()和equale()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-和getClass"><span class="nav-number"></span> <span class="nav-text">toString()和getClass()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wait-wait-long-wait-long-int-notify-notifyAll"><span class="nav-number"></span> <span class="nav-text">wait(),wait(long),wait(long,int),notify(),notifyAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finalize"><span class="nav-number"></span> <span class="nav-text">finalize()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、cookie"><span class="nav-number"></span> <span class="nav-text">一、cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、session"><span class="nav-number"></span> <span class="nav-text">二、session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、用cookie记录最近10条记录"><span class="nav-number"></span> <span class="nav-text">三、用cookie记录最近10条记录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java死锁范例"><span class="nav-number"></span> <span class="nav-text">Java死锁范例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析死锁"><span class="nav-number"></span> <span class="nav-text">分析死锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#避免死锁"><span class="nav-number"></span> <span class="nav-text">避免死锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql并发时经典常见的死锁原因及解决方法"><span class="nav-number"></span> <span class="nav-text">Mysql并发时经典常见的死锁原因及解决方法</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -2962,6 +1689,10 @@ dp数组：
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
