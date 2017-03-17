@@ -143,7 +143,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 <meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
 <meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
 <meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:updated_time" content="2017-03-16T16:40:53.000Z">
+<meta property="og:updated_time" content="2017-03-17T06:06:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 关键字">
 <meta name="twitter:description" content="同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX参考链接：http://www.cnblogs.com/paddix/p/5405678.html
@@ -251,7 +251,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -261,7 +261,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -338,7 +338,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-15T22:44:27+08:00">
                 2017-03-15
@@ -1405,6 +1405,13 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 <p>这个跟案例一其它是差不多的情况，只是session1不按常理出牌了，</p>
 <p>Session2在等待Session1的id=9的锁，session2又持了1到8的锁（注意9到19的范围并没有被session2锁住），最后，session1在插入新行时又得等待session2,故死锁发生了。</p>
 <p>这种一般是在业务需求中基本不会出现，因为你锁住了id=9，却又想插入id=7的行，这就有点跳了，当然肯定也有解决的方法，那就是重理业务需求，避免这样的写法。</p>
+<p>需要用以下模式来设定锁定模式</p>
+<p>1、SELECT …… LOCK IN SHARE MODE（共享锁）<br>查询到的数据，就是数据库在这一时刻的数据（其他已commit事务的结果，已经反应到这里了）<br>SELECT 必须等待，某个事务结束后才能执行</p>
+<p>2、SELECT …… FOR UPDATE（排它锁）<br>例如 SELECT * FROM tablename WHERE id&lt;200<br>那么id&lt;200的数据，被查询到的数据，都将不能再进行修改、删除、SELECT …… LOCK IN SHARE MODE操作<br>一直到此事务结束</p>
+<p>共享锁 和 排它锁 的区别：在于是否阻断其他客户发出的 SELECT …… LOCK IN SHARE MODE命令</p>
+<p>3、INSERT / UPDATE / DELETE<br>所有关联数据都会被锁定，加上排它锁</p>
+<p>4、防插入锁<br>例如 SELECT * FROM tablename WHERE id&gt;200<br>那么id&gt;200的记录无法被插入</p>
+<p>5、死锁<br>自动识别死锁<br>先进来的进程被执行，后来的进程收到出错消息，并按ROLLBACK方式回滚<br>innodb_lock_wait_timeout = n 来设置最长等待时间，默认是50秒</p>
 <p>附记，推荐两篇好文章</p>
 <p>案例4：</p>
 <p><a href="http://hedengcheng.com/?p=844" target="_blank" rel="external">http://hedengcheng.com/?p=844</a></p>
@@ -1507,10 +1514,10 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -1530,8 +1537,8 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -1544,7 +1551,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               
             </div>
           
@@ -1610,7 +1617,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

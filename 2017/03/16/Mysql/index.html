@@ -90,12 +90,10 @@
 <meta name="description" content="Mysql知识点总结并发控制涉及两个层面的控制：服务器层和存储引擎层
 锁策略：在锁的开销和数据的安全性之间寻求平衡  同时需要根据特定的场景进行选取
 锁粒度在mysql中涉及到的对象 数据库 表 属性 行记录
-表锁 即锁定整张表
+表锁 即锁定整张表 此时不会发生死锁
 用户在对表进行写操作的时候，需要获取写锁，此时会阻塞其他用户对表的所有读写操作 读锁不会相互阻塞
 行级锁 只在存储引擎层实现
-
-schema和数据类型优化
-添加计数表和汇">
+页面锁 与行级锁都会出现死">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql">
 <meta property="og:url" content="http://yoursite.com/2017/03/16/Mysql/index.html">
@@ -103,24 +101,23 @@ schema和数据类型优化
 <meta property="og:description" content="Mysql知识点总结并发控制涉及两个层面的控制：服务器层和存储引擎层
 锁策略：在锁的开销和数据的安全性之间寻求平衡  同时需要根据特定的场景进行选取
 锁粒度在mysql中涉及到的对象 数据库 表 属性 行记录
-表锁 即锁定整张表
+表锁 即锁定整张表 此时不会发生死锁
 用户在对表进行写操作的时候，需要获取写锁，此时会阻塞其他用户对表的所有读写操作 读锁不会相互阻塞
 行级锁 只在存储引擎层实现
-
-schema和数据类型优化
-添加计数表和汇">
-<meta property="og:updated_time" content="2017-03-16T10:27:16.000Z">
+页面锁 与行级锁都会出现死">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/Desktop/0_1314877463Mm91.gif">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/Desktop/Jietu20170317-150337.png">
+<meta property="og:updated_time" content="2017-03-17T07:28:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql">
 <meta name="twitter:description" content="Mysql知识点总结并发控制涉及两个层面的控制：服务器层和存储引擎层
 锁策略：在锁的开销和数据的安全性之间寻求平衡  同时需要根据特定的场景进行选取
 锁粒度在mysql中涉及到的对象 数据库 表 属性 行记录
-表锁 即锁定整张表
+表锁 即锁定整张表 此时不会发生死锁
 用户在对表进行写操作的时候，需要获取写锁，此时会阻塞其他用户对表的所有读写操作 读锁不会相互阻塞
 行级锁 只在存储引擎层实现
-
-schema和数据类型优化
-添加计数表和汇">
+页面锁 与行级锁都会出现死">
+<meta name="twitter:image" content="http://yoursite.com/Users/wuxinyua/Desktop/0_1314877463Mm91.gif">
 
 
 
@@ -220,7 +217,7 @@ schema和数据类型优化
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -230,7 +227,7 @@ schema和数据类型优化
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -307,7 +304,7 @@ schema和数据类型优化
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-16T09:20:22+08:00">
                 2017-03-16
@@ -348,15 +345,118 @@ schema和数据类型优化
         <h1 id="Mysql知识点总结"><a href="#Mysql知识点总结" class="headerlink" title="Mysql知识点总结"></a>Mysql知识点总结</h1><h3 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h3><p>涉及两个层面的控制：服务器层和存储引擎层</p>
 <p>锁策略：在锁的开销和数据的安全性之间寻求平衡  同时需要根据特定的场景进行选取</p>
 <h4 id="锁粒度"><a href="#锁粒度" class="headerlink" title="锁粒度"></a><strong>锁粒度</strong></h4><p>在mysql中涉及到的对象 数据库 表 属性 行记录</p>
-<p><strong>表锁</strong> 即锁定整张表</p>
+<p><strong>表锁</strong> 即锁定整张表 此时不会发生死锁</p>
 <p>用户在对表进行写操作的时候，需要获取写锁，此时会阻塞其他用户对表的所有读写操作 读锁不会相互阻塞</p>
 <p><strong>行级锁</strong> 只在存储引擎层实现</p>
+<p><strong>页面锁 </strong>与行级锁都会出现死锁</p>
+<h4 id="死锁："><a href="#死锁：" class="headerlink" title="死锁："></a><strong>死锁</strong>：</h4><p>含义：死锁指两个或者多个事务在同一个资源上相互占用，并请求锁定对方占用的资源，从而导致恶性循环 </p>
+<p>如何产生:</p>
+<p>1.多个事务试图以不同的顺序锁定资源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">start TRANSACTION;  #1</div><div class="line">update stockPrice set close = 20 where stockid = 2</div><div class="line">update stockPrice set close = 30 where stockid = 3</div><div class="line">commit;</div><div class="line"></div><div class="line">start TRANSACTION;  #2</div><div class="line">update stockPrice set close = 30 where stockid = 3</div><div class="line">update stockPrice set close = 20 where stockid = 2</div><div class="line">commit;</div></pre></td></tr></table></figure>
+<p>解决方式：加锁顺序保持一致</p>
+<p>2.使用事务插入新行  两个事务同时插入新的行  <!--好像没有死锁啊--></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#第一种情况：假设当前该表的主键值的范围为1-1000</div><div class="line">start TRANSACTION;  #1</div><div class="line">① select * from `police` where id = 1020 for update;</div><div class="line">③ insert into `police` values (&apos;a&apos;,&apos;b&apos;,1020);</div><div class="line">#commit;</div><div class="line"></div><div class="line">start TRANSACTION;  #2</div><div class="line">② select * from `police` where id = 1022 for update;</div><div class="line">④ insert into `police` values (&apos;a&apos;,&apos;b&apos;,1022);</div><div class="line">#commit;</div><div class="line">#这种情况下，如果事务1未执行commit，则事务2无法执行insert操作，因为事务1使用gap锁将(1000,正无穷)进行锁定</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#第二种情况：假设当前该表的主键值的范围为1-1050</div><div class="line">start TRANSACTION;  #1</div><div class="line">① select * from `police` where id = 1020 for update;</div><div class="line">③ insert into `police` values (&apos;a&apos;,&apos;b&apos;,1020);</div><div class="line">#commit;</div><div class="line"></div><div class="line">start TRANSACTION;  #2</div><div class="line">② select * from `police` where id = 1060 for update;</div><div class="line">④ insert into `police` values (&apos;a&apos;,&apos;b&apos;,1060);</div><div class="line">#commit;</div><div class="line">#这种情况下，如果事务1未执行commit，则事务2也可以执行insert操作，因为事务1使用gap锁将(1,1000)进行锁定,不会影响到事务2的key值</div></pre></td></tr></table></figure>
+<p>3.多个事务同时锁定一个资源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">start TRANSACTION;  #1</div><div class="line">① select * from `police` where id = 20 for update;</div><div class="line">③ insert into `police` values (&apos;a&apos;,&apos;b&apos;,18);</div><div class="line">#commit;</div><div class="line"></div><div class="line">start TRANSACTION;  #2</div><div class="line">② select * from `police` where id &lt; 30 for update;</div><div class="line">#commit;</div><div class="line"></div><div class="line">#按执行顺序来看，首先事务1锁定键为20的行，然后事务2锁定键为1-19的行，此时事务1需要锁定键为18的行，发生死锁</div></pre></td></tr></table></figure>
+<p>死锁检测和死锁超时机制：</p>
+<p>InnoDB：将持有最少行级排它锁的事务进行回滚</p>
 <hr>
 <p>schema和数据类型优化</p>
 <p>添加计数表和汇总表<!--：待查询--></p>
 <p>1.尽量使用可以正确存储数据的最小数据类型</p>
 <p>2.尽量避免Null 对MyISAM来说，可为Null的列需要更多的存储空间，索引的构建也更加复杂</p>
 <p>3.</p>
+<hr>
+<h3 id="mysql加锁机制"><a href="#mysql加锁机制" class="headerlink" title="mysql加锁机制"></a>mysql加锁机制</h3><hr>
+<h3 id="mysql的事务"><a href="#mysql的事务" class="headerlink" title="mysql的事务"></a>mysql的事务</h3><p><strong>事务</strong>：一组原子性的sql查询 用户可以根据业务是否需要事务处理来选择合适的存储引擎</p>
+<p>为什么要使用事务：</p>
+<p>1.提供一种从失败中恢复的可靠机制，同时在系统故障的时候摆正数据的一致性</p>
+<p>2.为并发访问数据库提供隔离机制</p>
+<h5 id="ACID特性"><a href="#ACID特性" class="headerlink" title="ACID特性"></a><strong><u><em>ACID</em></u></strong>特性</h5><p>原子性：事务可以视为不可分割的最小工作单元，要么全部成功，要么执行回滚(全部失败)</p>
+<p>一致性：从一个一致的状态转移到另一个一致的状态 (可以举在A,B之间转账的例子)</p>
+<p>隔离性：一个事务所做的修改在提交之前，对其他事务不可见，即对个并发的事务不会相互影响</p>
+<p>持久性：一旦事务提交，相应的修改永久保存在数据库之中</p>
+<h5 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a><strong>隔离级别</strong></h5><p><u>read uncommitted</u></p>
+<p>事务A未提交，但是其中的修改可以对其他事务可见</p>
+<p><u>read committed</u></p>
+<p>事务从开始到提交之前，包含的修改对其他事务不可见</p>
+<p><u>repeatable read</u> –Mysql默认级别</p>
+<p>保证在同一个事务之中多次执行同样的读取记录的结果是一致的</p>
+<p><u>serializable</u></p>
+<p>强制事务串行执行，对读取的每一行数据都进行加锁</p>
+<table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read committed</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Read uncommited</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Repeatable read</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>serializable</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h5 id="事务日志"><a href="#事务日志" class="headerlink" title="事务日志"></a><strong>事务日志</strong></h5><p>1.事务型存储引擎 InnoDB NDB Cluster</p>
+<p>2.自动提交 在不使用事务的时候，mysql默认视每个sql语句为一个事务</p>
+<p>​    部分语句会强制触发commit语句的执行</p>
+<p>3.查看事务隔离级别：  select @@tx_isolation</p>
+<p>4.设置事务隔离级别     set session(global) transaction isolation level XXXX</p>
+<p><strong>SavePoint</strong></p>
+<p>Mysql逻辑架构    </p>
+<p><img src="/Users/wuxinyua/Desktop/0_1314877463Mm91.gif" alt="0_1314877463Mm91"><img src="/Users/wuxinyua/Desktop/Jietu20170317-150337.png" alt="Jietu20170317-150337"></p>
+<p>架构主要分为三层</p>
+<p>第一层负责连接处理(线程池获取线程，一个连接对应一个线程)，授权认证，安全等</p>
+<p>第二层包括查询解析，分析优化，缓存 所有跨存储引擎的功能在这一层实现(触发器，存储过程，视图)</p>
+<p>在内部创建解析树，包括语法解析和词法解析，进行各种优化</p>
+<p>第三层为存储引擎，负责数据的存储和提取</p>
+<p><strong>Session 和Connection 事务</strong></p>
+<p>session是通信双方从开始通信到通信结束的一个上下文环境，记录连接的相关信息</p>
+<p>connection是从客户端到数据库的一条物理连接路径</p>
+<p>session和connection是同时建立的，两者是对同一事件不同层次的描述，有点类似OSI分层中的传输层和会话层</p>
+<p>一个连接可以进行多次会话，一个会话可以不依赖于某个连接</p>
+<h5 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h5><p>读锁(共享锁)</p>
+<p>写锁(排它锁)</p>
+<p>如何设置锁定模式：</p>
+<p>1.select …… lock in share mode</p>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><h4 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a><strong>分区表</strong></h4><p>将数据按照较粗的粒度分布在不同的物理子表当中</p>
+<p>1.在创建表的时候使用partition by子句定义每个分区存放的数据</p>
+<p>2.在执行查询的时候，优化器根据分区定义过滤没有需要数据的分区</p>
+<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景:"></a><strong>使用场景:</strong></h5><p>1.表的数据量大于可用的内存，或者表中的部分数据为热点数据</p>
+<p>优势：可以以分区为单位进行维护，备份和恢复。不同分区的数据可以分布在不同的物理设备上</p>
+<p>局限性：无法使用外键约束 最多只能有1024个分区</p>
+<h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><p>视图本身是一个虚拟表，不存放任何的数据</p>
+<h4 id="应用层优化"><a href="#应用层优化" class="headerlink" title="应用层优化"></a>应用层优化</h4><p>思路：1.应用创建的数据库连接是否过多？是否使用了连接池？</p>
+<p>​        2.应用是否在处理应该有数据库处理的事情？</p>
+<p>​        3.应用是否在不使用的时候还保持连接打开？</p>
+<h4 id="mysql查询优化"><a href="#mysql查询优化" class="headerlink" title="mysql查询优化"></a>mysql查询优化</h4><p>数据库连接池</p>
+<p>数据库索引</p>
+<p>单点失效</p>
+<p>负载均衡</p>
 
       
     </div>
@@ -402,6 +502,10 @@ schema和数据类型优化
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/17/Focus-JAVA/" rel="prev" title="Focus JAVA">
+                Focus JAVA <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -450,10 +554,10 @@ schema和数据类型优化
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -473,8 +577,8 @@ schema和数据类型优化
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -487,7 +591,7 @@ schema和数据类型优化
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               
             </div>
           
@@ -521,7 +625,7 @@ schema和数据类型优化
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql知识点总结"><span class="nav-number">1.</span> <span class="nav-text">Mysql知识点总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并发控制"><span class="nav-number">1.0.1.</span> <span class="nav-text">并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#锁粒度"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">锁粒度</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql知识点总结"><span class="nav-number">1.</span> <span class="nav-text">Mysql知识点总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并发控制"><span class="nav-number">1.0.1.</span> <span class="nav-text">并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#锁粒度"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">锁粒度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁："><span class="nav-number">1.0.1.2.</span> <span class="nav-text">死锁：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql加锁机制"><span class="nav-number">1.0.2.</span> <span class="nav-text">mysql加锁机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql的事务"><span class="nav-number">1.0.3.</span> <span class="nav-text">mysql的事务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ACID特性"><span class="nav-number">1.0.3.0.1.</span> <span class="nav-text">ACID特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#隔离级别"><span class="nav-number">1.0.3.0.2.</span> <span class="nav-text">隔离级别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事务日志"><span class="nav-number">1.0.3.0.3.</span> <span class="nav-text">事务日志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#锁"><span class="nav-number">1.0.3.0.4.</span> <span class="nav-text">锁</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化"><span class="nav-number">1.0.4.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分区表"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">分区表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用场景"><span class="nav-number">1.0.4.1.1.</span> <span class="nav-text">使用场景:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#视图"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用层优化"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">应用层优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mysql查询优化"><span class="nav-number">1.0.4.4.</span> <span class="nav-text">mysql查询优化</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -553,7 +657,7 @@ schema和数据类型优化
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

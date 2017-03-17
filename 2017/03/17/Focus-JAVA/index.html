@@ -1,0 +1,983 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1.a == b  和 a.equals(b)的区别两种情况：如果a,b都是基本类型，a == b直接比较值,不存在a.equals(b)的调用方式
+​           如果a,b都是对象引用，a == b判断两个引用是否指向堆中的同一个对象，而a.equals(b)则需要视情况而定，如果类中没有覆盖Object中自带的equals方法，则与a == b相同；如果覆盖该方法，则根据覆盖后的语义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Focus JAVA">
+<meta property="og:url" content="http://yoursite.com/2017/03/17/Focus-JAVA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.a == b  和 a.equals(b)的区别两种情况：如果a,b都是基本类型，a == b直接比较值,不存在a.equals(b)的调用方式
+​           如果a,b都是对象引用，a == b判断两个引用是否指向堆中的同一个对象，而a.equals(b)则需要视情况而定，如果类中没有覆盖Object中自带的equals方法，则与a == b相同；如果覆盖该方法，则根据覆盖后的语义">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/08171028-a5e372741b18431591bb577b1e1c95e6.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/08221402-aa63b46891d0466a87e54411cd920237.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/Jietu20170317-212150.png">
+<meta property="og:updated_time" content="2017-03-17T15:54:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Focus JAVA">
+<meta name="twitter:description" content="1.a == b  和 a.equals(b)的区别两种情况：如果a,b都是基本类型，a == b直接比较值,不存在a.equals(b)的调用方式
+​           如果a,b都是对象引用，a == b判断两个引用是否指向堆中的同一个对象，而a.equals(b)则需要视情况而定，如果类中没有覆盖Object中自带的equals方法，则与a == b相同；如果覆盖该方法，则根据覆盖后的语义">
+<meta name="twitter:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/08171028-a5e372741b18431591bb577b1e1c95e6.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/17/Focus-JAVA/"/>
+
+
+
+
+
+  <title> Focus JAVA | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/17/Focus-JAVA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Focus JAVA
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T15:31:48+08:00">
+                2017-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1-a-b-和-a-equals-b-的区别"><a href="#1-a-b-和-a-equals-b-的区别" class="headerlink" title="1.a == b  和 a.equals(b)的区别"></a>1.a == b  和 a.equals(b)的区别</h4><p>两种情况：如果a,b都是基本类型，a == b直接比较值,不存在a.equals(b)的调用方式</p>
+<p>​           如果a,b都是对象引用，a == b判断两个引用是否指向堆中的同一个对象，而a.equals(b)则需要视情况而定，如果类中没有覆盖Object中自带的equals方法，则与a == b相同；如果覆盖该方法，则根据覆盖后的语义进行判断，通常会比较值是否相同</p>
+<p>引申：</p>
+<h5 id="1-1-Object类包含的方法及作用"><a href="#1-1-Object类包含的方法及作用" class="headerlink" title="1.1    Object类包含的方法及作用"></a>1.1    Object类包含的方法及作用</h5><table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hashcode() 和 equals()</td>
+<td style="text-align:left">1.符合自反性，传递性，对称性，一致性     2.hashcode默认返回对象在JVM中的内部地址并转成int类型的值  3.equals返回true的两个对象必须拥有相同的hashcode</td>
+</tr>
+<tr>
+<td>wait() 和notify() notifyAll()</td>
+<td style="text-align:left">进行线程间的同步</td>
+</tr>
+<tr>
+<td>finalize()</td>
+<td style="text-align:left">该对象没有被任何引用时，JVM调用该对象的finalize() 每个对象只会被调用一次</td>
+</tr>
+<tr>
+<td>getClass()</td>
+<td style="text-align:left">返回对象的运行时类对象</td>
+</tr>
+<tr>
+<td>clone()</td>
+<td style="text-align:left">对象必须实现cloneable接口 默认执行</td>
+</tr>
+<tr>
+<td>toString()</td>
+<td style="text-align:left">返回对象的字符串表示     默认是对象的名称和hashcode的十六进制表示</td>
+</tr>
+</tbody>
+</table>
+<p>1.1.1 wait()的正确调用方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">synchronized</span>(lock)&#123;</div><div class="line">  <span class="keyword">while</span>(!conditionPredicate())</div><div class="line">      lock.wait(); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1.1.2equals()的正确写法</p>
+<h4 id="2-final-finally-finalize"><a href="#2-final-finally-finalize" class="headerlink" title="2.final finally finalize"></a>2.final finally finalize</h4><h5 id="final"><a href="#final" class="headerlink" title="final"></a>final</h5><table>
+<thead>
+<tr>
+<th>JVM final</th>
+<th>1.putfield 更新final字段的值时必须处于声明该字段的类的<init>方法中 2.putstatic更新静态final字段时必须在声明该字段的类的<clinit>方法中</clinit></init></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>修饰方法</td>
+<td>1.保证方法不会被重载 2.同意编译器将该方法的调用转为内嵌(inline)调用</td>
+</tr>
+<tr>
+<td>修饰类</td>
+<td>保证类不会被继承</td>
+</tr>
+<tr>
+<td>修饰基本类型</td>
+<td>基本类型的变量值无法修改</td>
+</tr>
+<tr>
+<td>修饰成员变量</td>
+<td>必须直接初始化或者在构造器内部初始化  同时只能保证引用对象的地址不变，内部值可以变化</td>
+</tr>
+<tr>
+<td>修饰局部变量</td>
+<td>可以在定义时赋值，也可以随后赋值，但是不能重新赋值</td>
+</tr>
+</tbody>
+</table>
+<h5 id="finally"><a href="#finally" class="headerlink" title="finally"></a>finally</h5><p>finally与try…catch联合使用，保证不管是否抛出异常都需要执行的语句，通常用于资源的释放</p>
+<h5 id="finalize"><a href="#finalize" class="headerlink" title="finalize"></a>finalize</h5><p>在对象被回收之前由JVM调<!--待细化--></p>
+<h4 id="3-编译期常量"><a href="#3-编译期常量" class="headerlink" title="3.编译期常量"></a>3.编译期常量</h4><p>定义：使用static final修饰的基本类型变量和直接声明的string变量(没有使用new String创建的)</p>
+<p>1.编译期常量的访问不会导致类的初始化</p>
+<p>2.在编译时期即可确定该变量的值</p>
+<h4 id="4-String-StringBuffer-和-StringBuilder"><a href="#4-String-StringBuffer-和-StringBuilder" class="headerlink" title="4.String StringBuffer 和 StringBuilder"></a>4.String StringBuffer 和 StringBuilder</h4><table>
+<thead>
+<tr>
+<th>StringBuffer</th>
+<th>可变</th>
+<th>与StringBuilder类似，不过使用synchronized修饰方法</th>
+<th>线程安全</th>
+<th>实现 AbstractStringBuilder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String</td>
+<td>不可变</td>
+<td>final修饰类和内部char[]数组</td>
+<td>线程安全</td>
+<td>实现Comparable接口</td>
+</tr>
+<tr>
+<td>StringBuilder</td>
+<td>可变</td>
+<td>内部是一个动态增长的char类型的数组 默认为2倍+2，如果仍然不够则视情况增加</td>
+<td>非线程安全</td>
+<td>实现 AbstractStringBuilder</td>
+</tr>
+</tbody>
+</table>
+<p>String.intern()方法</p>
+<hr>
+<h3 id="JAVA-NIO"><a href="#JAVA-NIO" class="headerlink" title="JAVA NIO"></a>JAVA NIO</h3><p>相对于IO的区别：</p>
+<h4 id="1-ByteBuffer"><a href="#1-ByteBuffer" class="headerlink" title="1.ByteBuffer"></a>1.ByteBuffer</h4><p>应用场景：</p>
+<p>1.socket通信的数据的传输(读写)</p>
+<p>2.访问本地文件内容</p>
+<p>包含两种形式：</p>
+<p>HeapByteBuffer</p>
+<p>DirectByteBuffer 使用Unsafe的api接口操作堆外内存</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">byteBuffer = ByteBuffer.allocate(N);</div><div class="line"><span class="comment">//读取数据，写入byteBuffer</span></div><div class="line">readableByteChannel.read(byteBuffer);</div><div class="line"><span class="comment">//变读为写</span></div><div class="line">byteBuffer.flip();</div><div class="line"><span class="comment">//读取byteBuffer，写入数据</span></div><div class="line">writableByteChannel.write(byteBuffer);</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte[] buff</td>
+<td>字节类型的缓冲数组</td>
+<td>位于ByteBuffer对象中</td>
+</tr>
+<tr>
+<td>position</td>
+<td>新字节的插入位置</td>
+<td>the index of the next element to be read or written.  A buffer’s position is never negative and is never greater than its limit.</td>
+</tr>
+<tr>
+<td>mark</td>
+<td>标记</td>
+<td>the index to which its position will be reset when the reset method is invoked</td>
+</tr>
+<tr>
+<td>capacity</td>
+<td>数组的容量</td>
+<td>The number of elements it contains.  The capacity of a buffer is never negative and never changes.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>读写的上限</td>
+<td>the index of the first element that should not be read or written.  A buffer’s limit is never negative and is never greater than its capacity.</td>
+</tr>
+</tbody>
+</table>
+<p>Invariants: mark &lt;= position &lt;= limit &lt;= capacity</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flip()</td>
+<td>将position复位到0，同时将limit设置为当前的position值，mark置为-1</td>
+<td>从通道读完数据写到buffer后在进行读取buffer内容之前调用</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>将position复位到0，limit设置为capacity，同时mark置为-1</td>
+<td>清空buffer</td>
+</tr>
+<tr>
+<td>rewind()</td>
+<td>将position置为0，mark置为-1</td>
+<td>buffer内的数据已经读完</td>
+</tr>
+<tr>
+<td>mark() reset()</td>
+<td>设置mark为position  设置position为mark</td>
+</tr>
+</tbody>
+</table>
+<h5 id="创建ByteBuffer"><a href="#创建ByteBuffer" class="headerlink" title="创建ByteBuffer"></a>创建ByteBuffer</h5><p>1.ByteBuffer buffer=ByteBuffer.allocate(N);        直接分配内存</p>
+<p>2.ByteBuffer buffer=ByteBuffer.wrap(byteArray);    对已有的字节数组进行封装</p>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><p>1、ByteBuffer默认的字节序为大端模式</p>
+<p>2、Java API中有ByteOrder类，定义了大端模式和小端模式</p>
+<p>3、java.nio.ByteOrder类中的nativeOrder()可以获取当前系统的字节顺序</p>
+<h5 id="内存映射缓存区-NIO相对于IO包的区别-通过-FileChannel-类创建"><a href="#内存映射缓存区-NIO相对于IO包的区别-通过-FileChannel-类创建" class="headerlink" title="内存映射缓存区(NIO相对于IO包的区别)  通过 FileChannel 类创建"></a>内存映射缓存区(NIO相对于IO包的区别)  通过 FileChannel 类创建</h5><p><strong><u>基础铺垫：</u></strong></p>
+<p>传统的文件I/O操作，通过调用操作系统底层的标准IO系统调用函数read()和write(),此时调用该函数的进程从用户态切换到内核态，OS负责将文件的数据读取到内核的IO缓冲区，然后再把数据从内核IO缓冲区拷贝到进程的私有空间。</p>
+<p>内核缓冲区的作用：减少磁盘的IO操作，根据局部性原理，当访问一个文件的某段数据时，很大概率会接着访问相邻的数据，所以OS会在一次read系统调用中预读文件的内容放在缓冲区中，如果继续访问的数据已在缓冲区中，便直接拷贝到进程的私有空间中，从而避免IO操作。</p>
+<p>BufferedInputStream中缓冲区作用：因为线程读取内核缓冲区的数据时需要发起系统调用(native的c函数调用)，而系统调用涉及到用户态和内核态的上下文切换，所以缓冲区的作用是为了减少系统调用的次数</p>
+<p><strong><em><u>内存映射文件和标准的IO操作的区别在于不需要将从磁盘读取的数据写到OS的内核缓冲区</u></em></strong>，而是<strong>直接将进程的用户私有地址空间中的一部分与文件建立起映射关系</strong>。在进程的虚拟地址空间中有一部分共享库的内存映射区可以用来使用。当进程的代码第一次引用该地址时，触发缺页异常，OS根据映射关系直接将文件的相关数据拷贝到相应的位置。</p>
+<p>Java提供三种内存映射模式，只读，读写和专用</p>
+<p>只读：顾名思义，不能修改文件</p>
+<p>读写：可以修改文件，同时会立刻反应到磁盘文件中，而且别的进程也可以看到最新的修改</p>
+<p>专用：OS的写时拷贝原则，在没有写操作的时候，多个进程共享同一块物理内存，一旦某个进程进行写操作时，将受影响的文件拷贝一份到进程的私有缓冲区。</p>
+<p>内存映射缓存区属于JVM中的直接缓冲区，可以通过Byte.allocateDirect()进行创建。</p>
+<h5 id="直接缓冲区和非直接缓冲区"><a href="#直接缓冲区和非直接缓冲区" class="headerlink" title="直接缓冲区和非直接缓冲区"></a>直接缓冲区和非直接缓冲区</h5><p>1.所处的区域不同，直接缓冲区的内存分配独立于JVM，使用native接口直接利用OS的内存空间，可用的最大空间通常与OS的虚拟内存空间相关，而非直接缓冲区直接在JVM的堆中分配</p>
+<p>2.使用直接缓冲区可以尝试避免拷贝缓冲区内容到临时缓冲区的操作</p>
+<hr>
+<h4 id="JAVA-集合框架"><a href="#JAVA-集合框架" class="headerlink" title="JAVA 集合框架"></a>JAVA 集合框架</h4><p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/08171028-a5e372741b18431591bb577b1e1c95e6.jpg" alt="08171028-a5e372741b18431591bb577b1e1c95e6"></p>
+<hr>
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><h4 id="1-ArrayList"><a href="#1-ArrayList" class="headerlink" title="1.ArrayList"></a>1.ArrayList</h4><p>1.基于数组实现的，是一个动态数组，其容量能自动增长</p>
+<p>​    增长的策略：默认情况下为oldCapacity + (oldCapacity &gt;&gt; 1) </p>
+<p>​                如果仍然小于minCapacity直接使用minCapacity</p>
+<p>2.非线程安全的</p>
+<p>3.数组的初始大小为10，能够存储的最大空间为Integer.MAX_VALUE - 8</p>
+<p>4.根据modcount的值判断是否抛出ConcurrentModificationException</p>
+<p>5.允许Null元素</p>
+<p>6.默认的clone方法为浅拷贝</p>
+<p>7.支持迭代器遍历(包括Itr和ListItr两种迭代器)，forEach遍历和随机访问</p>
+<h4 id="2-LinkedList"><a href="#2-LinkedList" class="headerlink" title="2.LinkedList"></a>2.LinkedList</h4><p>1.内部利用双向链表存储元素，可以作为队列或者栈进行使用</p>
+<p>2.包含多套接口，其中</p>
+<table>
+<thead>
+<tr>
+<th>peek() 和 poll()</th>
+<th>如果队列为空，返回<code>null</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>element() 和 remove()</td>
+<td>如果队列为空的话，抛出NoSuchElementException</td>
+</tr>
+</tbody>
+</table>
+<p>3.同样可以随机访问，迭代器遍历(ListItr迭代器)</p>
+<p>4.查找特定下标的元素时，先判断下标处于链表的前半段还是后半段再遍历</p>
+<p>5.允许Null元素</p>
+<p><u>!!如何在遍历List的同时删除元素，而且 不抛出ConcurrentModificationException</u></p>
+<p><strong>使用Iterator迭代器对list进行遍历，同时使用它iterator提供的方法remove()删除元素</strong></p>
+<p><strong>综上：随机访问使用ArrayList  元素频繁插入和删除使用LinkedList</strong></p>
+<h4 id="3-Fail-Fast原理"><a href="#3-Fail-Fast原理" class="headerlink" title="3.Fail-Fast原理"></a>3.Fail-Fast原理</h4><p>多个线程访问并修改同一个容器，当一个线程在遍历容器的同时容器的元素被另一个线程修改，则会抛出并发异常</p>
+<p>fail-fast机制只是用来检测并发错误的发生，通过比较modCount和迭代器创建时设置的ExpectedModCount的大小</p>
+<h4 id="4-CopyOnWriteArrayList"><a href="#4-CopyOnWriteArrayList" class="headerlink" title="4.CopyOnWriteArrayList"></a>4.CopyOnWriteArrayList</h4><h5 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h5><p>1.读取容器元素的时候不需要同步机制</p>
+<p>2.修改容器的元素时先拷贝一份数组，然后在新的数组中修改</p>
+<p>3.迭代器不支持对容器的修改</p>
+<h5 id="适用场景："><a href="#适用场景：" class="headerlink" title="适用场景："></a>适用场景：</h5><p>1.读取操作远多于修改操作的情况，比如黑名单或者白名单，抑或者定期更新商品类目</p>
+<h5 id="存在的问题："><a href="#存在的问题：" class="headerlink" title="存在的问题："></a>存在的问题：</h5><p>1.写时复制如果数组自身较大，可能会导致频繁的GC操作</p>
+<p>所以应该减少扩容的开销，同时批量进行添加新的元素</p>
+<hr>
+<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/08221402-aa63b46891d0466a87e54411cd920237.jpg" alt="08221402-aa63b46891d0466a87e54411cd920237"></p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/Jietu20170317-212150.png" alt="Jietu20170317-212150"></p>
+<h4 id="1-HashMap"><a href="#1-HashMap" class="headerlink" title="1.HashMap"></a>1.HashMap</h4><p>1.基于哈希表实现的,每个元素都是一个键值对使用Node类表示</p>
+<p>2.因为使用hash方法进行存储，所以通过单链表的形式解决hash冲突</p>
+<p>3.非线程安全</p>
+<p>4.允许Null的键和值</p>
+<p>5.使用两个变量支持容器的扩容，Capacity表示内部bin的数量，loadFactor表示负载因子，当容器内的bin的使用数量达到capacity*loadfactor的大小时，进行自动扩容</p>
+<p>默认的初始容量为16，负载因子为0.75，负载因子过高，可以减少空间的浪费，同时提高了hash冲突的可能性，从而降低查询效率。容量过高，可以降低hash冲突，但是无用空间增多</p>
+<p>6.每个bin的内部存在两种形式：</p>
+<p>1.单链表形式  2.红黑树形式</p>
+<p>前提在容器的大小超过64之后，当bin中节点的个数超过8个时，便会从1的形式转化为2，当bin中个数减少为6个时，又从2的形式转化为1.</p>
+<p>7.如何确定元素所在的bin下标</p>
+<p>首先获取key的hashcode值，如果key为null，直接赋0，否则再与右移16位后的值进行异或，然后与当前容器的大小-1进行与操作，保证其值在[0,len - 1]的范围内</p>
+<p>原因是避免当容器的大小偏小时，在经过上述与操作(容器大小的掩码mask)之后增加了hash冲突的可能性</p>
+<p>8.容器的大小必须是2的倍数</p>
+<p>保证在扩容的时候减少元素的移动，因为在扩容的时候，每个元素只会存在两种选择。</p>
+<h4 id="2-ConcurrentHashMap"><a href="#2-ConcurrentHashMap" class="headerlink" title="2.ConcurrentHashMap"></a>2.ConcurrentHashMap</h4><p>1.迭代器中保持在创建迭代器时的容器状态，所以之后容器被修改，不会抛出并发异常</p>
+<p>2.不允许Null元素</p>
+<p>3.在最小化update竞争的同时，提供并发可读性</p>
+<p>   支持在初始时对空容器的多线程插入</p>
+<p>4.三种类型的Node，包括Node,TreeNode,<u><strong>TreeBin,ReservationNode,ForwardNode</strong></u></p>
+<p>后面三种特殊的节点hash值为-1，且key和value为null hashcode值的最高位用来表示节点类型</p>
+<p>5.当bin为空时，插入新的节点只需要CAS操作即可，当bin不为空的时候，需要锁机制(使用每个bin list的第一个节点)</p>
+<p>6.变量<strong>sizeCtl</strong>控制扩容和初始化</p>
+<p>-1表示初始化</p>
+<p>小于-1表示正在扩容</p>
+<p>容器为空的时候，记录初始化的容器大小</p>
+<p>否则记录下一次扩容的阈值</p>
+<h4 id="3-TreeMap"><a href="#3-TreeMap" class="headerlink" title="3.TreeMap"></a>3.TreeMap</h4><p>1.有序的键值对集合，基于红黑树实现</p>
+<p>2.非线程安全的</p>
+<p>3.排序机制可以基于自然序，或者是给定的Comparator类</p>
+<p>4.存在六个通用的接口</p>
+<table>
+<thead>
+<tr>
+<th>firstEntry()</th>
+<th>中序遍历的第一个节点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lastEntry()</td>
+<td>中序遍历的最后一个节点</td>
+</tr>
+<tr>
+<td>lowerEntry()</td>
+<td>返回小于当前key的最大entry</td>
+</tr>
+<tr>
+<td>higherEntry()</td>
+<td>返回大于当前key的最小entry</td>
+</tr>
+<tr>
+<td>floorEntry()</td>
+<td>如果存在key，返回key，否则返回小于当前key的最大entry</td>
+</tr>
+<tr>
+<td>ceilingEntry()</td>
+<td>如果存在key，返回key，否则返回大于当前key的最小entry</td>
+</tr>
+</tbody>
+</table>
+<p>5.包含两种迭代器，可以进行顺序遍历和逆序遍历</p>
+<p>3.1红黑树的特性:</p>
+<p>（1）每个节点或者是黑色，或者是红色。<br>（2）根节点是黑色。<br>（3）每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]<br>（4）如果一个节点是红色的，则它的子节点必须是黑色的。<br>（5）从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</p>
+<h4 id="4-WeakHashMap"><a href="#4-WeakHashMap" class="headerlink" title="4.WeakHashMap"></a>4.WeakHashMap</h4><p>1.与hashMap的区别在于key的类型是WeakReference的</p>
+<h4 id="5-LinkedHashMap"><a href="#5-LinkedHashMap" class="headerlink" title="5.LinkedHashMap"></a>5.LinkedHashMap</h4><p>1.在hashMap的基础上添加了两种访问顺序</p>
+<p>2.每个bin之间使用指针相连，形成一个双向链表</p>
+<p>用于实现LRU缓存算法</p>
+<p>1.存在一个接口removeEldestEntry()，在进行put()或者putAll()操作时调用</p>
+<p>可以通过覆盖该方法的默认实现,实现自己需要的逻辑</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LruCache</span> <span class="keyword">implements</span> <span class="title">Cache</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Object, Object&gt; store;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> initialCapacity = <span class="number">16</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> loadFactor = <span class="number">0.75f</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> accessOrder = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LruCache</span><span class="params">(URL url)</span> </span>&#123;</div><div class="line">        <span class="keyword">final</span> <span class="keyword">int</span> max = <span class="number">1000</span>;  <span class="comment">// 缓存中最多1000个元素</span></div><div class="line">        <span class="keyword">this</span>.store = <span class="keyword">new</span> LinkedHashMap&lt;Object, Object&gt;(initialCapacity,loadFactor,accessOrder)&#123;</div><div class="line">            <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">3834209229668463829L</span>;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">removeEldestEntry</span><span class="params">(Entry&lt;Object, Object&gt; eldest)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> size() &gt; max;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="JAVA的四种引用类型"><a href="#JAVA的四种引用类型" class="headerlink" title="JAVA的四种引用类型"></a>JAVA的四种引用类型</h4><p>1.StrongReference</p>
+<p>对象具有强引用时，GC不会回收该对象 </p>
+<p>2.SoftReference</p>
+<p>当内存空间充足的时候，不会回收该对象，反之则会回收</p>
+<p>3.WeakReference</p>
+<p>弱引用具有更加短暂的生命周期，GC回收内存时，发现只具有弱引用的对象就会回收</p>
+<p>4.PhantomReference</p>
+<p>虚引用不决定对象的生命周期，虚引用主要用来跟踪对象被垃圾回收器回收的<!--啥意思--></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/16/Mysql/" rel="next" title="Mysql">
+                <i class="fa fa-chevron-left"></i> Mysql
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-a-b-和-a-equals-b-的区别"><span class="nav-number">1.</span> <span class="nav-text">1.a == b  和 a.equals(b)的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-Object类包含的方法及作用"><span class="nav-number">1.1.</span> <span class="nav-text">1.1    Object类包含的方法及作用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-final-finally-finalize"><span class="nav-number">2.</span> <span class="nav-text">2.final finally finalize</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#final"><span class="nav-number">2.1.</span> <span class="nav-text">final</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#finally"><span class="nav-number">2.2.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#finalize"><span class="nav-number">2.3.</span> <span class="nav-text">finalize</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-编译期常量"><span class="nav-number">3.</span> <span class="nav-text">3.编译期常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-String-StringBuffer-和-StringBuilder"><span class="nav-number">4.</span> <span class="nav-text">4.String StringBuffer 和 StringBuilder</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA-NIO"><span class="nav-number"></span> <span class="nav-text">JAVA NIO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ByteBuffer"><span class="nav-number">1.</span> <span class="nav-text">1.ByteBuffer</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建ByteBuffer"><span class="nav-number">1.1.</span> <span class="nav-text">创建ByteBuffer</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内存映射缓存区-NIO相对于IO包的区别-通过-FileChannel-类创建"><span class="nav-number">1.3.</span> <span class="nav-text">内存映射缓存区(NIO相对于IO包的区别)  通过 FileChannel 类创建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接缓冲区和非直接缓冲区"><span class="nav-number">1.4.</span> <span class="nav-text">直接缓冲区和非直接缓冲区</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JAVA-集合框架"><span class="nav-number">2.</span> <span class="nav-text">JAVA 集合框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ArrayList"><span class="nav-number">4.</span> <span class="nav-text">1.ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-LinkedList"><span class="nav-number">5.</span> <span class="nav-text">2.LinkedList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Fail-Fast原理"><span class="nav-number">6.</span> <span class="nav-text">3.Fail-Fast原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-CopyOnWriteArrayList"><span class="nav-number">7.</span> <span class="nav-text">4.CopyOnWriteArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#原理："><span class="nav-number">7.1.</span> <span class="nav-text">原理：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#适用场景："><span class="nav-number">7.2.</span> <span class="nav-text">适用场景：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存在的问题："><span class="nav-number">7.3.</span> <span class="nav-text">存在的问题：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map"><span class="nav-number">8.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-HashMap"><span class="nav-number">9.</span> <span class="nav-text">1.HashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-ConcurrentHashMap"><span class="nav-number">10.</span> <span class="nav-text">2.ConcurrentHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-TreeMap"><span class="nav-number">11.</span> <span class="nav-text">3.TreeMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-WeakHashMap"><span class="nav-number">12.</span> <span class="nav-text">4.WeakHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-LinkedHashMap"><span class="nav-number">13.</span> <span class="nav-text">5.LinkedHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JAVA的四种引用类型"><span class="nav-number">14.</span> <span class="nav-text">JAVA的四种引用类型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
