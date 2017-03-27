@@ -98,7 +98,8 @@
 <meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/08171028-a5e372741b18431591bb577b1e1c95e6.jpg">
 <meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/08221402-aa63b46891d0466a87e54411cd920237.jpg">
 <meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/Jietu20170317-212150.png">
-<meta property="og:updated_time" content="2017-03-17T15:54:35.000Z">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/07231601-3ee0f7defe5847289e6e308d1d312ed1.jpg">
+<meta property="og:updated_time" content="2017-03-18T03:20:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Focus JAVA">
 <meta name="twitter:description" content="1.a == b  和 a.equals(b)的区别两种情况：如果a,b都是基本类型，a == b直接比较值,不存在a.equals(b)的调用方式
@@ -203,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -213,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -290,7 +291,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T15:31:48+08:00">
                 2017-03-17
@@ -633,12 +634,17 @@
 <p>3.1红黑树的特性:</p>
 <p>（1）每个节点或者是黑色，或者是红色。<br>（2）根节点是黑色。<br>（3）每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]<br>（4）如果一个节点是红色的，则它的子节点必须是黑色的。<br>（5）从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</p>
 <h4 id="4-WeakHashMap"><a href="#4-WeakHashMap" class="headerlink" title="4.WeakHashMap"></a>4.WeakHashMap</h4><p>1.与hashMap的区别在于key的类型是WeakReference的</p>
+<p>2.实现原理：基于WeakReference对象和ReferenceQueue队列</p>
+<p>2.1.新建WeakHashMap，将“<strong>键值对</strong>”添加到WeakHashMap中。实际上，WeakHashMap是通过数组table保存Entry(键值对)；每一个Entry实际上是一个单向链表，即Entry是键值对链表。</p>
+<p>2.2.当<strong>某“弱键”不再被其它对象引用</strong>，并<strong>被GC回收</strong>时。在GC回收该“弱键”时，<strong>这个“弱键”也同时会被添加到ReferenceQueue(queue)队列</strong>中。</p>
+<p>2.3.当下一次我们需要操作WeakHashMap时，会先同步table和queue。table中保存了全部的键值对，而queue中保存被GC回收的键值对；同步它们，就是<strong>删除table中被GC回收的键值对</strong></p>
 <h4 id="5-LinkedHashMap"><a href="#5-LinkedHashMap" class="headerlink" title="5.LinkedHashMap"></a>5.LinkedHashMap</h4><p>1.在hashMap的基础上添加了两种访问顺序</p>
 <p>2.每个bin之间使用指针相连，形成一个双向链表</p>
 <p>用于实现LRU缓存算法</p>
 <p>1.存在一个接口removeEldestEntry()，在进行put()或者putAll()操作时调用</p>
 <p>可以通过覆盖该方法的默认实现,实现自己需要的逻辑</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LruCache</span> <span class="keyword">implements</span> <span class="title">Cache</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Object, Object&gt; store;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> initialCapacity = <span class="number">16</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> loadFactor = <span class="number">0.75f</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> accessOrder = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LruCache</span><span class="params">(URL url)</span> </span>&#123;</div><div class="line">        <span class="keyword">final</span> <span class="keyword">int</span> max = <span class="number">1000</span>;  <span class="comment">// 缓存中最多1000个元素</span></div><div class="line">        <span class="keyword">this</span>.store = <span class="keyword">new</span> LinkedHashMap&lt;Object, Object&gt;(initialCapacity,loadFactor,accessOrder)&#123;</div><div class="line">            <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">3834209229668463829L</span>;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">removeEldestEntry</span><span class="params">(Entry&lt;Object, Object&gt; eldest)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> size() &gt; max;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
 <h4 id="JAVA的四种引用类型"><a href="#JAVA的四种引用类型" class="headerlink" title="JAVA的四种引用类型"></a>JAVA的四种引用类型</h4><p>1.StrongReference</p>
 <p>对象具有强引用时，GC不会回收该对象 </p>
 <p>2.SoftReference</p>
@@ -647,6 +653,75 @@
 <p>弱引用具有更加短暂的生命周期，GC回收内存时，发现只具有弱引用的对象就会回收</p>
 <p>4.PhantomReference</p>
 <p>虚引用不决定对象的生命周期，虚引用主要用来跟踪对象被垃圾回收器回收的<!--啥意思--></p>
+<p>通常可以使用软引用和弱引用实现缓存</p>
+<h4 id="JAVA的Comparator和Comparable"><a href="#JAVA的Comparator和Comparable" class="headerlink" title="JAVA的Comparator和Comparable"></a>JAVA的Comparator和Comparable</h4><hr>
+<h4 id="JAVA线程池"><a href="#JAVA线程池" class="headerlink" title="JAVA线程池"></a>JAVA线程池</h4><p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/07231601-3ee0f7defe5847289e6e308d1d312ed1.jpg" alt="07231601-3ee0f7defe5847289e6e308d1d312ed1"></p>
+<table>
+<thead>
+<tr>
+<th>Executor</th>
+<th>提供execute接口执行已提交的任务，将任务的提交和执行进行解耦</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ExecutorService</td>
+<td>提供结束，提交或者执行的接口</td>
+</tr>
+<tr>
+<td>AbstractExecutorService</td>
+<td>提供ExecutorService的默认实现，将提交的任务包装为RunnableFuture</td>
+</tr>
+<tr>
+<td>ThreadPoolExecutor</td>
+<td>提供在执行大量异步任务的时候优化的性能</td>
+</tr>
+<tr>
+<td>ScheduledExecutorService</td>
+<td>提供延时和周期执行的服务</td>
+</tr>
+<tr>
+<td>ScheduledThreadPoolExecutor</td>
+<td>提供上一个的默认实现</td>
+</tr>
+<tr>
+<td>Executors</td>
+<td>静态工厂类，返回各种对象</td>
+</tr>
+</tbody>
+</table>
+<h5 id="ThreadPoolExecutor类"><a href="#ThreadPoolExecutor类" class="headerlink" title="ThreadPoolExecutor类"></a>ThreadPoolExecutor类</h5><p>1.原子整型ctl包含两个状态：</p>
+<p>workerCount        有效的线程个数</p>
+<p><u><strong>runState</strong></u>        显示线程池的运行状态        状态位位于最高的3位</p>
+<table>
+<thead>
+<tr>
+<th>RUNNING</th>
+<th>Accept new tasks and process queued tasks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SHUTDOWN</td>
+<td>Don’t accept new tasks, but process queued tasks</td>
+</tr>
+<tr>
+<td>STOP</td>
+<td>Don’t accept new tasks, don’t process queued tasks,and interrupt in-progress tasks</td>
+</tr>
+<tr>
+<td>TIDYING</td>
+<td>All tasks have terminated, workerCount is zero,the thread transitioning to state TIDYING will run the terminated() hook method</td>
+</tr>
+<tr>
+<td>TERMINATED</td>
+<td>terminated() has completed</td>
+</tr>
+</tbody>
+</table>
+<p>2.使用Set存放当前所有的worker线程，通过锁机制进行访问</p>
+<p>每个worker线程继承自AbstractQueuedSynchronizer</p>
+<hr>
 
       
     </div>
@@ -692,6 +767,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/18/计算机网络/" rel="prev" title="计算机网络">
+                计算机网络 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -740,10 +819,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -763,8 +842,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -777,7 +856,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -811,7 +890,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-a-b-和-a-equals-b-的区别"><span class="nav-number">1.</span> <span class="nav-text">1.a == b  和 a.equals(b)的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-Object类包含的方法及作用"><span class="nav-number">1.1.</span> <span class="nav-text">1.1    Object类包含的方法及作用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-final-finally-finalize"><span class="nav-number">2.</span> <span class="nav-text">2.final finally finalize</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#final"><span class="nav-number">2.1.</span> <span class="nav-text">final</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#finally"><span class="nav-number">2.2.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#finalize"><span class="nav-number">2.3.</span> <span class="nav-text">finalize</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-编译期常量"><span class="nav-number">3.</span> <span class="nav-text">3.编译期常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-String-StringBuffer-和-StringBuilder"><span class="nav-number">4.</span> <span class="nav-text">4.String StringBuffer 和 StringBuilder</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA-NIO"><span class="nav-number"></span> <span class="nav-text">JAVA NIO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ByteBuffer"><span class="nav-number">1.</span> <span class="nav-text">1.ByteBuffer</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建ByteBuffer"><span class="nav-number">1.1.</span> <span class="nav-text">创建ByteBuffer</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内存映射缓存区-NIO相对于IO包的区别-通过-FileChannel-类创建"><span class="nav-number">1.3.</span> <span class="nav-text">内存映射缓存区(NIO相对于IO包的区别)  通过 FileChannel 类创建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接缓冲区和非直接缓冲区"><span class="nav-number">1.4.</span> <span class="nav-text">直接缓冲区和非直接缓冲区</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JAVA-集合框架"><span class="nav-number">2.</span> <span class="nav-text">JAVA 集合框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ArrayList"><span class="nav-number">4.</span> <span class="nav-text">1.ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-LinkedList"><span class="nav-number">5.</span> <span class="nav-text">2.LinkedList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Fail-Fast原理"><span class="nav-number">6.</span> <span class="nav-text">3.Fail-Fast原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-CopyOnWriteArrayList"><span class="nav-number">7.</span> <span class="nav-text">4.CopyOnWriteArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#原理："><span class="nav-number">7.1.</span> <span class="nav-text">原理：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#适用场景："><span class="nav-number">7.2.</span> <span class="nav-text">适用场景：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存在的问题："><span class="nav-number">7.3.</span> <span class="nav-text">存在的问题：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map"><span class="nav-number">8.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-HashMap"><span class="nav-number">9.</span> <span class="nav-text">1.HashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-ConcurrentHashMap"><span class="nav-number">10.</span> <span class="nav-text">2.ConcurrentHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-TreeMap"><span class="nav-number">11.</span> <span class="nav-text">3.TreeMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-WeakHashMap"><span class="nav-number">12.</span> <span class="nav-text">4.WeakHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-LinkedHashMap"><span class="nav-number">13.</span> <span class="nav-text">5.LinkedHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JAVA的四种引用类型"><span class="nav-number">14.</span> <span class="nav-text">JAVA的四种引用类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-a-b-和-a-equals-b-的区别"><span class="nav-number">1.</span> <span class="nav-text">1.a == b  和 a.equals(b)的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-Object类包含的方法及作用"><span class="nav-number">1.1.</span> <span class="nav-text">1.1    Object类包含的方法及作用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-final-finally-finalize"><span class="nav-number">2.</span> <span class="nav-text">2.final finally finalize</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#final"><span class="nav-number">2.1.</span> <span class="nav-text">final</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#finally"><span class="nav-number">2.2.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#finalize"><span class="nav-number">2.3.</span> <span class="nav-text">finalize</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-编译期常量"><span class="nav-number">3.</span> <span class="nav-text">3.编译期常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-String-StringBuffer-和-StringBuilder"><span class="nav-number">4.</span> <span class="nav-text">4.String StringBuffer 和 StringBuilder</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA-NIO"><span class="nav-number"></span> <span class="nav-text">JAVA NIO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ByteBuffer"><span class="nav-number">1.</span> <span class="nav-text">1.ByteBuffer</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建ByteBuffer"><span class="nav-number">1.1.</span> <span class="nav-text">创建ByteBuffer</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内存映射缓存区-NIO相对于IO包的区别-通过-FileChannel-类创建"><span class="nav-number">1.3.</span> <span class="nav-text">内存映射缓存区(NIO相对于IO包的区别)  通过 FileChannel 类创建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接缓冲区和非直接缓冲区"><span class="nav-number">1.4.</span> <span class="nav-text">直接缓冲区和非直接缓冲区</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JAVA-集合框架"><span class="nav-number">2.</span> <span class="nav-text">JAVA 集合框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ArrayList"><span class="nav-number">4.</span> <span class="nav-text">1.ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-LinkedList"><span class="nav-number">5.</span> <span class="nav-text">2.LinkedList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Fail-Fast原理"><span class="nav-number">6.</span> <span class="nav-text">3.Fail-Fast原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-CopyOnWriteArrayList"><span class="nav-number">7.</span> <span class="nav-text">4.CopyOnWriteArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#原理："><span class="nav-number">7.1.</span> <span class="nav-text">原理：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#适用场景："><span class="nav-number">7.2.</span> <span class="nav-text">适用场景：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存在的问题："><span class="nav-number">7.3.</span> <span class="nav-text">存在的问题：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map"><span class="nav-number">8.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-HashMap"><span class="nav-number">9.</span> <span class="nav-text">1.HashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-ConcurrentHashMap"><span class="nav-number">10.</span> <span class="nav-text">2.ConcurrentHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-TreeMap"><span class="nav-number">11.</span> <span class="nav-text">3.TreeMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-WeakHashMap"><span class="nav-number">12.</span> <span class="nav-text">4.WeakHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-LinkedHashMap"><span class="nav-number">13.</span> <span class="nav-text">5.LinkedHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JAVA的四种引用类型"><span class="nav-number">14.</span> <span class="nav-text">JAVA的四种引用类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JAVA的Comparator和Comparable"><span class="nav-number">15.</span> <span class="nav-text">JAVA的Comparator和Comparable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JAVA线程池"><span class="nav-number">16.</span> <span class="nav-text">JAVA线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ThreadPoolExecutor类"><span class="nav-number">16.1.</span> <span class="nav-text">ThreadPoolExecutor类</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -843,7 +922,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

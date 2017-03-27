@@ -112,8 +112,8 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 <meta property="og:image" content="http://img.blog.csdn.net/20160316085319130">
 <meta property="og:image" content="http://img.blog.csdn.net/20160316085415800">
 <meta property="og:image" content="http://img.blog.csdn.net/20160316085627162">
-<meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337910943_1128.jpg">
 <meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337910956_9817.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/1337910956_9817.jpg">
 <meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337910963_6079.jpg">
 <meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337910967_8133.jpg">
 <meta property="og:image" content="http://my.csdn.net/uploads/201205/25/1337910978_9542.jpg">
@@ -143,7 +143,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 <meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
 <meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
 <meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:updated_time" content="2017-03-17T06:06:30.000Z">
+<meta property="og:updated_time" content="2017-03-27T13:44:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 关键字">
 <meta name="twitter:description" content="同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX参考链接：http://www.cnblogs.com/paddix/p/5405678.html
@@ -251,7 +251,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -261,7 +261,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -338,7 +338,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-15T22:44:27+08:00">
                 2017-03-15
@@ -385,7 +385,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 <p>可见性: 对一个变量的读，总是能看到（任意线程）对这个变量最后的写入</p>
 <p><strong>volatile修饰的变量具有可见性</strong></p>
 <p>如何保证该特性的实现：</p>
-<p>在操作该变量的指令前后插入四种类型的内存屏障来禁止指令的重排序  保证happens-before原则</p>
+<p>在操作该变量的指令前后插入四种类型的内存屏障来禁止指令的重排序  保证<strong>happens-before原则</strong></p>
 <p><em><u>使用条件</u></em>保证线程安全：</p>
 <p>1.对变量的写操作不依赖于当前值</p>
 <p>2.变量不在具有其他变量的不变式当中</p>
@@ -429,9 +429,9 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 <p>​    1.1.成功则从await()方法中返回</p>
 <p>​    1.2 否则继续阻塞在await()方法中</p>
 <p><strong><u>Attention</u></strong>：wait/notify等方法依赖于monitor对象，所以只有在同步的块或者方法中才能调用wait/notify等方法，否则会抛出java.lang.IllegalMonitorStateException的异常的原因</p>
-<h5 id="正确的使用方式：-1"><a href="#正确的使用方式：-1" class="headerlink" title="正确的使用方式："></a>正确的使用方式：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">synchronized(lock)&#123;</div><div class="line">  while(!conditionPredicate())</div><div class="line">      lock.wait(); //condition.await();</div><div class="line">  //开始执行操作</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="正确的使用方式：-1"><a href="#正确的使用方式：-1" class="headerlink" title="正确的使用方式："></a>正确的使用方式：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">synchronized</span>(lock)&#123;</div><div class="line">  <span class="keyword">while</span>(!conditionPredicate())</div><div class="line">      lock.wait(); <span class="comment">//condition.await();</span></div><div class="line">  <span class="comment">//开始执行操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><u><strong><em>lock和synchronized的区别</em></strong>：</u></p>
-<p>1.lock加锁和解锁通过java代码调用native的CAS方法实现(基于类库)，synchronized通过JVM实现加锁和解锁</p>
+<p>1.lock加锁和解锁通过java代码调用<strong>native的CAS</strong>方法实现(基于类库)，synchronized通过<strong>JVM实现加锁和解锁</strong></p>
 <p>2.synchronzied的使用方法比较单一，多个线程竞争锁的时候，竞争失败的锁处于阻塞状态，不能中断正在等待获取锁的线程</p>
 <p>   lock锁提供多个特性的方法，包括超时机制，可中断机制，可轮询机制等</p>
 <p>​    2.1可轮询：需要获取多个锁的情况  在只能获取到部分锁的时候释放已获取到的锁</p>
@@ -458,7 +458,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 <hr>
 <h3 id="原子变量类"><a href="#原子变量类" class="headerlink" title="原子变量类"></a>原子变量类</h3><hr>
 <h3 id="Happens-Before原则"><a href="#Happens-Before原则" class="headerlink" title="Happens-Before原则"></a>Happens-Before原则</h3><hr>
-<h3 id="同步工具"><a href="#同步工具" class="headerlink" title="同步工具"></a>同步工具</h3><hr>
+<h3 id="并发的数据结构"><a href="#并发的数据结构" class="headerlink" title="并发的数据结构"></a>并发的数据结构</h3><hr>
 <h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><p>本篇讲诉数据库中事务的四大特性（ACID），并且将会详细地说明事务的隔离级别。</p>
 <p>　　如果一个数据库声称支持事务的操作，那么该数据库必须要具备以下四个特性：</p>
 <h2 id="⑴-原子性（Atomicity）"><a href="#⑴-原子性（Atomicity）" class="headerlink" title="⑴ 原子性（Atomicity）"></a>⑴ 原子性（Atomicity）</h2><p>　　原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚，这和前面两篇博客介绍事务的功能是一样的概念，因此事务的操作如果成功就必须要完全应用到数据库，如果操作失败则不能对数据库有任何影响。</p>
@@ -803,10 +803,10 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 <p>/<em>数据帧定义，头14个字节，尾4个字节</em>/<br>typedef struct _MAC_FRAME_HEADER<br>{<br> char m_cDstMacAddress[6];    //目的mac地址<br> char m_cSrcMacAddress[6];    //源mac地址<br> short m_cType;       　　　　　//上一层协议类型，如0x0800代表上一层是IP协议，0x0806为arp<br>}<strong>attribute</strong>((packed))MAC_FRAME_HEADER,*PMAC_FRAME_HEADER;</p>
 <p>typedef struct _MAC_FRAME_TAIL<br>{<br> unsigned int m_sCheckSum;    //数据帧尾校验和<br>}<strong>attribute</strong>((packed))MAC_FRAME_TAIL, *PMAC_FRAME_TAIL;</p>
 <p><strong>二、IP头结构的定义</strong></p>
-<p><img src="http://my.csdn.net/uploads/201205/25/1337910943_1128.jpg" alt="img"></p>
 <p>/<em>IP头定义，共20个字节</em>/<br>typedef struct _IP_HEADER<br>{<br> char m_cVersionAndHeaderLen;     　　//版本信息(前4位)，头长度(后4位)<br> char m_cTypeOfService;      　　　　　 // 服务类型8位<br> short m_sTotalLenOfPacket;    　　　　//数据包长度<br> short m_sPacketID;      　　　　　　　 //数据包标识<br> short m_sSliceinfo;      　　　　　　　  //分片使用<br> char m_cTTL;        　　　　　　　　　　//存活时间<br> char m_cTypeOfProtocol;    　　　　　 //协议类型<br> short m_sCheckSum;      　　　　　　 //校验和<br> unsigned int m_uiSourIp;     　　　　　//源ip<br> unsigned int m_uiDestIp;     　　　　　//目的ip<br>} <strong>attribute</strong>((packed))IP_HEADER, *PIP_HEADER ;</p>
 <p><strong>三、tcp头结构定义</strong></p>
 <p><img src="http://my.csdn.net/uploads/201205/25/1337910956_9817.jpg" alt="img"></p>
+<p> <img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/1337910956_9817.jpg" alt="1337910956_9817"></p>
 <p>/<em>TCP头定义，共20个字节</em>/<br>typedef struct _TCP_HEADER<br>{<br> short m_sSourPort;        　　　　　　// 源端口号16bit<br> short m_sDestPort;       　　　　　　 // 目的端口号16bit<br> unsigned int m_uiSequNum;       　　// 序列号32bit<br> unsigned int m_uiAcknowledgeNum;  // 确认号32bit<br> short m_sHeaderLenAndFlag;      　　// 前4位：TCP头长度；中6位：保留；后6位：标志位<br> short m_sWindowSize;       　　　　　// 窗口大小16bit<br> short m_sCheckSum;        　　　　　 // 检验和16bit<br> short m_surgentPointer;      　　　　 // 紧急数据偏移量16bit<br>}<strong>attribute</strong>((packed))TCP_HEADER, *PTCP_HEADER;</p>
 <p>/*TCP头中的选项定义</p>
 <p>kind(8bit)+Length(8bit，整个选项的长度，包含前两部分)+内容(如果有的话)</p>
@@ -1417,6 +1417,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 <p><a href="http://hedengcheng.com/?p=844" target="_blank" rel="external">http://hedengcheng.com/?p=844</a></p>
 <p>MySQL 加锁处理分析：</p>
 <p><a href="http://hedengcheng.com/?p=771" target="_blank" rel="external">http://hedengcheng.com/?p=771</a></p>
+<p>Skip lists are a data structure that can <strong>be used in place of balanced trees</strong>. Skip lists use <strong>probabilistic balancing</strong> rather than strictly enforced balancing and as a result the algorithms for insertion and deletion in skip lists are much simpler and significantly faster than equivalent algorithms for balanced trees.</p>
 
       
     </div>
@@ -1514,10 +1515,10 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -1537,8 +1538,8 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -1551,7 +1552,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -1585,7 +1586,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#同步-1-synchronized-2-volatile-3-lock-4-AtomicXX"><span class="nav-number">1.</span> <span class="nav-text">同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile"><span class="nav-number"></span> <span class="nav-text">volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景："><span class="nav-number">1.</span> <span class="nav-text">应用场景：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Synchronized"><span class="nav-number"></span> <span class="nav-text">Synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Deeper…"><span class="nav-number">1.</span> <span class="nav-text">Deeper…</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#volatile和synchronized的区别："><span class="nav-number">1.1.</span> <span class="nav-text">volatile和synchronized的区别：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lock"><span class="nav-number"></span> <span class="nav-text">Lock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#锁的两种特性："><span class="nav-number">1.</span> <span class="nav-text">锁的两种特性：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#正确的使用方式："><span class="nav-number">1.1.</span> <span class="nav-text">正确的使用方式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基本锁的获取过程"><span class="nav-number">1.2.</span> <span class="nav-text">基本锁的获取过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#释放锁过程"><span class="nav-number">1.3.</span> <span class="nav-text">释放锁过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">1.4.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ReentrantReadWriteLock-当主要操作为读访问时，可以使用提供性能"><span class="nav-number">1.5.</span> <span class="nav-text">ReentrantReadWriteLock  当主要操作为读访问时，可以使用提供性能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Condition对象"><span class="nav-number">2.</span> <span class="nav-text">Condition对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#await-过程："><span class="nav-number">2.1.</span> <span class="nav-text">await()过程：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#正确的使用方式：-1"><span class="nav-number">2.2.</span> <span class="nav-text">正确的使用方式：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA中线程的状态"><span class="nav-number"></span> <span class="nav-text">JAVA中线程的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原子变量类"><span class="nav-number"></span> <span class="nav-text">原子变量类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Happens-Before原则"><span class="nav-number"></span> <span class="nav-text">Happens-Before原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步工具"><span class="nav-number"></span> <span class="nav-text">同步工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池"><span class="nav-number"></span> <span class="nav-text">线程池</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#⑴-原子性（Atomicity）"><span class="nav-number"></span> <span class="nav-text">⑴ 原子性（Atomicity）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#⑵-一致性（Consistency）"><span class="nav-number"></span> <span class="nav-text">⑵ 一致性（Consistency）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#⑶-隔离性（Isolation）"><span class="nav-number"></span> <span class="nav-text">⑶ 隔离性（Isolation）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#⑷-持久性（Durability）"><span class="nav-number"></span> <span class="nav-text">⑷ 持久性（Durability）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1，脏读"><span class="nav-number"></span> <span class="nav-text">1，脏读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2，不可重复读"><span class="nav-number"></span> <span class="nav-text">2，不可重复读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3，虚读-幻读"><span class="nav-number"></span> <span class="nav-text">3，虚读(幻读)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tcp、ip、udp头部格式"><span class="nav-number"></span> <span class="nav-text">tcp、ip、udp头部格式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#object类的结构"><span class="nav-number"></span> <span class="nav-text">object类的结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数说明"><span class="nav-number"></span> <span class="nav-text">函数说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#clone"><span class="nav-number"></span> <span class="nav-text">clone()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode-和equale"><span class="nav-number"></span> <span class="nav-text">hashCode()和equale()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-和getClass"><span class="nav-number"></span> <span class="nav-text">toString()和getClass()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wait-wait-long-wait-long-int-notify-notifyAll"><span class="nav-number"></span> <span class="nav-text">wait(),wait(long),wait(long,int),notify(),notifyAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finalize"><span class="nav-number"></span> <span class="nav-text">finalize()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、cookie"><span class="nav-number"></span> <span class="nav-text">一、cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、session"><span class="nav-number"></span> <span class="nav-text">二、session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、用cookie记录最近10条记录"><span class="nav-number"></span> <span class="nav-text">三、用cookie记录最近10条记录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java死锁范例"><span class="nav-number"></span> <span class="nav-text">Java死锁范例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析死锁"><span class="nav-number"></span> <span class="nav-text">分析死锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#避免死锁"><span class="nav-number"></span> <span class="nav-text">避免死锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql并发时经典常见的死锁原因及解决方法"><span class="nav-number"></span> <span class="nav-text">Mysql并发时经典常见的死锁原因及解决方法</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#同步-1-synchronized-2-volatile-3-lock-4-AtomicXX"><span class="nav-number">1.</span> <span class="nav-text">同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile"><span class="nav-number"></span> <span class="nav-text">volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景："><span class="nav-number">1.</span> <span class="nav-text">应用场景：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Synchronized"><span class="nav-number"></span> <span class="nav-text">Synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Deeper…"><span class="nav-number">1.</span> <span class="nav-text">Deeper…</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#volatile和synchronized的区别："><span class="nav-number">1.1.</span> <span class="nav-text">volatile和synchronized的区别：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lock"><span class="nav-number"></span> <span class="nav-text">Lock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#锁的两种特性："><span class="nav-number">1.</span> <span class="nav-text">锁的两种特性：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#正确的使用方式："><span class="nav-number">1.1.</span> <span class="nav-text">正确的使用方式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基本锁的获取过程"><span class="nav-number">1.2.</span> <span class="nav-text">基本锁的获取过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#释放锁过程"><span class="nav-number">1.3.</span> <span class="nav-text">释放锁过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">1.4.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ReentrantReadWriteLock-当主要操作为读访问时，可以使用提供性能"><span class="nav-number">1.5.</span> <span class="nav-text">ReentrantReadWriteLock  当主要操作为读访问时，可以使用提供性能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Condition对象"><span class="nav-number">2.</span> <span class="nav-text">Condition对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#await-过程："><span class="nav-number">2.1.</span> <span class="nav-text">await()过程：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#正确的使用方式：-1"><span class="nav-number">2.2.</span> <span class="nav-text">正确的使用方式：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA中线程的状态"><span class="nav-number"></span> <span class="nav-text">JAVA中线程的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原子变量类"><span class="nav-number"></span> <span class="nav-text">原子变量类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Happens-Before原则"><span class="nav-number"></span> <span class="nav-text">Happens-Before原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发的数据结构"><span class="nav-number"></span> <span class="nav-text">并发的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池"><span class="nav-number"></span> <span class="nav-text">线程池</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#⑴-原子性（Atomicity）"><span class="nav-number"></span> <span class="nav-text">⑴ 原子性（Atomicity）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#⑵-一致性（Consistency）"><span class="nav-number"></span> <span class="nav-text">⑵ 一致性（Consistency）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#⑶-隔离性（Isolation）"><span class="nav-number"></span> <span class="nav-text">⑶ 隔离性（Isolation）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#⑷-持久性（Durability）"><span class="nav-number"></span> <span class="nav-text">⑷ 持久性（Durability）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1，脏读"><span class="nav-number"></span> <span class="nav-text">1，脏读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2，不可重复读"><span class="nav-number"></span> <span class="nav-text">2，不可重复读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3，虚读-幻读"><span class="nav-number"></span> <span class="nav-text">3，虚读(幻读)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tcp、ip、udp头部格式"><span class="nav-number"></span> <span class="nav-text">tcp、ip、udp头部格式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#object类的结构"><span class="nav-number"></span> <span class="nav-text">object类的结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数说明"><span class="nav-number"></span> <span class="nav-text">函数说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#clone"><span class="nav-number"></span> <span class="nav-text">clone()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode-和equale"><span class="nav-number"></span> <span class="nav-text">hashCode()和equale()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-和getClass"><span class="nav-number"></span> <span class="nav-text">toString()和getClass()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wait-wait-long-wait-long-int-notify-notifyAll"><span class="nav-number"></span> <span class="nav-text">wait(),wait(long),wait(long,int),notify(),notifyAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finalize"><span class="nav-number"></span> <span class="nav-text">finalize()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、cookie"><span class="nav-number"></span> <span class="nav-text">一、cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、session"><span class="nav-number"></span> <span class="nav-text">二、session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、用cookie记录最近10条记录"><span class="nav-number"></span> <span class="nav-text">三、用cookie记录最近10条记录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java死锁范例"><span class="nav-number"></span> <span class="nav-text">Java死锁范例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析死锁"><span class="nav-number"></span> <span class="nav-text">分析死锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#避免死锁"><span class="nav-number"></span> <span class="nav-text">避免死锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql并发时经典常见的死锁原因及解决方法"><span class="nav-number"></span> <span class="nav-text">Mysql并发时经典常见的死锁原因及解决方法</span></a></div>
             
 
           </div>
@@ -1617,7 +1618,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

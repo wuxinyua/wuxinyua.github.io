@@ -1,0 +1,1236 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="计算机网络OSI七层协议和TCP/IP分层TCP表头、IP表头、Http表头
+
+
+
+字段
+含义
+字段
+含义
+
+
+
+
+version
+ip协议的版本号
+标志位
+是否要求分段
+
+
+Internet Header Length
+报头的头部长度，默认长度为20字节
+段偏移
+报文被分段的时候，记录偏移量
+
+
+Type Of Service
+第4-7位分别表示延迟，吞吐量，可靠性和费用，根据设置的值在进行网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络">
+<meta property="og:url" content="http://yoursite.com/2017/03/18/计算机网络/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="计算机网络OSI七层协议和TCP/IP分层TCP表头、IP表头、Http表头
+
+
+
+字段
+含义
+字段
+含义
+
+
+
+
+version
+ip协议的版本号
+标志位
+是否要求分段
+
+
+Internet Header Length
+报头的头部长度，默认长度为20字节
+段偏移
+报文被分段的时候，记录偏移量
+
+
+Type Of Service
+第4-7位分别表示延迟，吞吐量，可靠性和费用，根据设置的值在进行网络">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/1337910943_1128.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/1337910956_9817.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/2012021116181545.png">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/64bd78296562f1b7410c195554fc5231_b.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image023.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image003.png">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image005.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image004.png">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image002.png">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image025.png">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image020.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/origin_image006.png">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/origin_image010.png">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image007.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image010.jpg">
+<meta property="og:updated_time" content="2017-03-26T07:08:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络">
+<meta name="twitter:description" content="计算机网络OSI七层协议和TCP/IP分层TCP表头、IP表头、Http表头
+
+
+
+字段
+含义
+字段
+含义
+
+
+
+
+version
+ip协议的版本号
+标志位
+是否要求分段
+
+
+Internet Header Length
+报头的头部长度，默认长度为20字节
+段偏移
+报文被分段的时候，记录偏移量
+
+
+Type Of Service
+第4-7位分别表示延迟，吞吐量，可靠性和费用，根据设置的值在进行网络">
+<meta name="twitter:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/1337910943_1128.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/18/计算机网络/"/>
+
+
+
+
+
+  <title> 计算机网络 | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/18/计算机网络/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                计算机网络
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-18T11:21:32+08:00">
+                2017-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h3><h4 id="OSI七层协议和TCP-IP分层"><a href="#OSI七层协议和TCP-IP分层" class="headerlink" title="OSI七层协议和TCP/IP分层"></a>OSI七层协议和TCP/IP分层</h4><h4 id="TCP表头、IP表头、Http表头"><a href="#TCP表头、IP表头、Http表头" class="headerlink" title="TCP表头、IP表头、Http表头"></a>TCP表头、IP表头、Http表头</h4><p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/1337910943_1128.jpg" alt="1337910943_1128"></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version</td>
+<td>ip协议的版本号</td>
+<td>标志位</td>
+<td>是否要求分段</td>
+</tr>
+<tr>
+<td>Internet Header Length</td>
+<td>报头的头部长度，默认长度为20字节</td>
+<td>段偏移</td>
+<td>报文被分段的时候，记录偏移量</td>
+</tr>
+<tr>
+<td>Type Of Service</td>
+<td>第4-7位分别表示延迟，吞吐量，可靠性和费用，根据设置的值在进行网络传输时如何处理</td>
+<td>TTL</td>
+<td>设置最多可以经过的路由数</td>
+</tr>
+<tr>
+<td>Total Length</td>
+<td>总长度，以字节为单位</td>
+<td>协议</td>
+<td>指明上层的协议类型</td>
+</tr>
+<tr>
+<td>标志字段</td>
+<td>每个报文的唯一识别</td>
+<td>校验和</td>
+<td>头部校验，按2字节进行二进制反码求和</td>
+</tr>
+<tr>
+<td>IP地址</td>
+<td>源IP地址和目的IP地址</td>
+<td>可选项字段</td>
+<td>必须为4字节的整数倍</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/1337910956_9817.jpg" alt="1337910956_9817"></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>端口号</td>
+<td>源端口号和目的端口号</td>
+<td>Seq序号</td>
+<td>报文的标识</td>
+</tr>
+<tr>
+<td>ACK序号</td>
+<td>ACK位置1时，表示期望收到的报文标识</td>
+<td>头部长度</td>
+<td>默认20字节</td>
+</tr>
+<tr>
+<td>标志位</td>
+<td>SYN 发起连接  FIN 释放链接  RST 重建连接 ACK 确认序号 URG 紧急指针有效 PSH 接收方尽快将报文传给应用层</td>
+<td>窗口大小</td>
+<td>期望接收到的字节数</td>
+</tr>
+<tr>
+<td>校验和</td>
+<td>包括头部和数据</td>
+<td>紧急指针</td>
+<td>偏移量，和Seq相加后表示紧急数据的最后一个字节的序号</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/2012021116181545.png" alt="2012021116181545"></p>
+<table>
+<thead>
+<tr>
+<th>TCP</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP</td>
+<td></td>
+</tr>
+<tr>
+<td>HTTP</td>
+</tr>
+</tbody>
+</table>
+<p>浏览器输入URL之后的执行过程：</p>
+<p>1.浏览器发起一个Http请求，通过DNS解析url到特定的IP地址</p>
+<p>2.Http数据包在传输层分成报文段，添加TCP头部后发起TCP请求连接</p>
+<p>3.TCP数据包在IP层添加IP头部信息，通过IP地址查找路由表确定传送路径</p>
+<p>4.IP数据包在数据链路层添加以太网帧头和帧尾形成以太网帧，进行数据传输</p>
+<p>5.以太网帧通过物理层转换成高低电平并开始在传输介质上传输</p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/64bd78296562f1b7410c195554fc5231_b.jpg" alt="64bd78296562f1b7410c195554fc5231_b"></p>
+<p>6.服务器接收到后反向进行上述步骤，处理该请求后返回一个Response应答</p>
+<h4 id="Http协议"><a href="#Http协议" class="headerlink" title="Http协议"></a>Http协议</h4><h5 id="头部内容"><a href="#头部内容" class="headerlink" title="头部内容:"></a>头部内容:</h5><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accept</td>
+<td>接受媒体类型</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Accept-Charset</td>
+<td>接收字符集</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td>接收编码方式</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Accept-Language</td>
+<td>接收自然语言</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Age</td>
+<td>通知接收端响应产生的时间</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Allow</td>
+<td>通知客户端可以对特定资源使用哪些HTTP方法</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h5><p>1.无状态的 同一个客户端的多个连续请求之间没有联系</p>
+<p>用户识别机制：</p>
+<p>1.</p>
+<p>Web程序通过使用Cookie来维护状态</p>
+<p>2.</p>
+<p><strong>状态码：</strong></p>
+<p>HTTP/1.1中定义了5类状态码， 状态码由三位数字组成，第一个数字定义了响应的类别</p>
+<p>1XX  信息状态码 </p>
+<p>2XX  成功 - 表示请求已被成功接收，理解，接受</p>
+<p>3XX  重定向 - 要完成请求必须进行更进一步的处理</p>
+<p>​    301    请求的url已被移除使用</p>
+<p>​    302  临时定位资源</p>
+<p>​    304 Not Modified  资源未被修改</p>
+<p>4XX  客户端错误 -  请求有语法错误或请求无法实现</p>
+<p>​    400   Bad Request 客户端发送了一个错误的请求</p>
+<p>​    403   Forbidden  请求被服务器拒绝</p>
+<p>​    404   Not Found  服务器无法找到请求的url</p>
+<p>5XX  服务器端错误 -   服务器未能实现合法的请求</p>
+<p>​    500  Internal Server Error  服务器内部错误</p>
+<p>​    503 Server Unavaliable  服务器当前无法处理客户端的请求</p>
+<h4 id="ARP-RARP-地址解析协议-反地址解析协议"><a href="#ARP-RARP-地址解析协议-反地址解析协议" class="headerlink" title="ARP/RARP    地址解析协议/反地址解析协议"></a>ARP/RARP    地址解析协议/反地址解析协议</h4><p>ARP地址解析协议：<u>为IP地址到对应的硬件地址之间提供动态映射</u></p>
+<p>对于以太网，数据链路层上是根据48bit的以太网地址来确定目的接口，设备驱动程序从不检查IP数据报中的目的IP地址。</p>
+<p>在以太网（ARP协议只适用于局域网）中，如果本地主机想要向某一个IP地址的主机（路由表中的下一跳路由器或者直连的主机，注意此处IP地址不一定是IP数据报中的目的IP）发包，但是并不知道其硬件地址，此时利用ARP协议提供的机制来获取硬件地址，具体过程如下：</p>
+<p>1) 本地主机在局域网中广播ARP请求，ARP请求数据帧中包含目的主机的IP地址。意思是“如果你是这个IP地址的拥有者，请回答你的硬件地址”。</p>
+<p>2) 目的主机的ARP层解析这份广播报文，识别出是询问其硬件地址。于是发送ARP应答包，里面包含IP地址及其对应的硬件地址。</p>
+<p>3) 本地主机收到ARP应答后，知道了目的地址的硬件地址，之后的数据报就可以传送</p>
+<p>将局域网中某个主机的物理地址转换为IP地址，比如局域网中有一台主机只知道物理地址而不知道IP地址，那么可以通过RARP协议发出征求自身IP地址的广播请求，然后由RARP服务器负责回答。RARP协议广泛应用于无盘工作站引导时获取IP地址</p>
+<p>DHCP、NAT <!--待补充--></p>
+<p>DHCP动态主机设置协议（Dynamic Host Configuration Protocol）是一个局域网的网络协议，使用UDP协议工作，主要有两个用途：给内部网络或网络服务供应商自动分配IP地址，给用户或者内部网络管理员作为对所有计算机作中央管理的手段</p>
+<p>NAT网络地址转换(Network Address Translation)属接入广域网(WAN)技术，是一种将私有（保留）地址转化为合法IP地址的转换技术，它被广泛应用于各种类型Internet接入方式和各种类型的网络中。原因很简单，NAT不仅完美地解决了lP地址不足的问题，而且还能够有效地避免来自网络外部的攻击，隐藏并保护网络内部的计算机</p>
+<h4 id="DNS域名解析原理"><a href="#DNS域名解析原理" class="headerlink" title="DNS域名解析原理"></a>DNS域名解析原理</h4><p>DNS是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作</p>
+<p>客户端通过发送包含指定的域名，查询类别，以及DNS域名的指定类别请求报文(UDP类型)给本地DNS服务器，获取对应的IP地址</p>
+<p>DNS 数据库中包含资源记录 (RR)。 每个 RR 标识数据库中的特定资源。我们在建立DNS服务器时，经常会用到<u><strong>SOA,NS,A</strong></u>之类的记录，在维护DNS服务器时，会用到<strong><u>MX，CNAME</u></strong>记录</p>
+<h5 id="DNS服务过程"><a href="#DNS服务过程" class="headerlink" title="DNS服务过程"></a>DNS服务过程</h5><p>当 DNS 客户机需要查询程序中使用的名称时，它会查询本地DNS 服务器来解析该名称。客户机发送的每条查询消息都包括3条信息，以指定服务器应回答的问题。<br>● 指定的 DNS 域名，表示为完全合格的域名 (FQDN) 。<br>● 指定的查询类型，它可根据类型指定资源记录，或作为查询操作的专门类型。<br>● DNS域名的指定类别。</p>
+<p>1、在浏览器中输入www.qq.com域名，操作系统会先检查自己本地的hosts文件是否有这个网址映射关系，如果有，就先调用这个IP地址映射，完成域名解析。 </p>
+<p>2、如果hosts里没有这个域名的映射，则查找本地DNS解析器缓存，是否有这个网址映射关系，如果有，直接返回，完成域名解析。 </p>
+<p>3、如果hosts与本地DNS解析器缓存都没有相应的网址映射关系，首先会找TCP/ip参数中设置的首选DNS服务器，在此我们叫它本地DNS服务器，此服务器收到查询时，如果要查询的域名，包含在本地配置区域资源中，则返回解析结果给客户机，完成域名解析，此解析具有权威性。 </p>
+<p>4、如果要查询的域名，不由本地DNS服务器区域解析，但该服务器已缓存了此网址映射关系，则调用这个IP地址映射，完成域名解析，此解析不具有权威性。 </p>
+<p>5、如果本地DNS服务器本地区域文件与缓存解析都失效，则根据本地DNS服务器的设置（是否设置转发器）进行查询，如果未用转发模式，本地DNS就把请求发至13台根DNS，根DNS服务器收到请求后会判断这个域名(.com)是谁来授权管理，并会返回一个负责该顶级域名服务器的一个IP。本地DNS服务器收到IP信息后，将会联系负责.com域的这台服务器。这台负责.com域的服务器收到请求后，如果自己无法解析，它就会找一个管理.com域的下一级DNS服务器地址(qq.com)给本地DNS服务器。当本地DNS服务器收到这个地址后，就会找qq.com域服务器，重复上面的动作，进行查询，直至找到www.qq.com主机。 </p>
+<p>6、如果用的是转发模式，此DNS服务器就会把请求转发至上一级DNS服务器，由上一级服务器进行解析，上一级服务器如果不能解析，或找根DNS或把转请求转至上上级，以此循环。不管是本地DNS服务器用是是转发，还是根提示，最后都是把结果返回给本地DNS服务器，由此DNS服务器再返回给客户机</p>
+<p>从客户端到本地DNS服务器是属于递归查询，而DNS服务器之间就是的交互查询就是迭代查询</p>
+<p><strong>DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配，这叫做DHCP机制；也有可能是事先指定的固定地址。Linux系统里面，DNS服务器的IP地址保存在<code>/etc/resolv.conf</code>文件</strong></p>
+<h5 id="DNS记录类型"><a href="#DNS记录类型" class="headerlink" title="DNS记录类型"></a>DNS记录类型</h5><p>1） <code>A</code>：地址记录（Address），返回域名指向的IP地址。</p>
+<p>2） <code>NS</code>：域名服务器记录（Name Server），返回保存下一级域名信息的服务器地址。该记录只能设置为域名，不能设置为IP地址。</p>
+<p>3）<code>MX</code>：邮件记录（Mail eXchange），返回接收电子邮件的服务器地址。</p>
+<p>4）<code>CNAME</code>：规范名称记录（Canonical Name），返回另一个域名，即当前查询的域名是另一个域名的跳转，详见下文。</p>
+<p>5）<code>PTR</code>：逆向查询记录（Pointer Record），只用于从IP地址查询域名，详见下文</p>
+<hr>
+<h4 id="Session和Cookie"><a href="#Session和Cookie" class="headerlink" title="Session和Cookie"></a>Session和Cookie</h4><h5 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h5><p><strong><u>会话Cookie</u></strong>：临时Cookie，记录用户访问站点的设置和偏好 用户退出浏览器即被删除  默认下MaxAge为负值</p>
+<p><u><strong>持久Cookie</strong></u>：存放在磁盘上，维护用户周期性访问的站点的配置信息</p>
+<p>默认情况下为会话Cookie，除非设置了Discard参数或者设置了Expires参数，Max-Age参数</p>
+<p>区别：过期时间不同</p>
+<p><strong>工作原理</strong>：浏览器积累一组服务器特有的信息，使得客户端每次访问该服务器时提供相应的信息给它</p>
+<p><strong><u>特点：</u></strong></p>
+<p>1.只能保存字符串信息，不能保存对象类型</p>
+<p>2.存放在客户端</p>
+<p>3.需要浏览器的支持，浏览器可以设置禁止使用Cookie</p>
+<p>4.Cookie可以设置域属性和路径属性来限制获取Cookie的站点</p>
+<p><strong><u>主要属性：</u></strong></p>
+<table>
+<thead>
+<tr>
+<th>Comment</th>
+<th>注释信息</th>
+<th>MaxAge</th>
+<th>设置生存周期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Domain</td>
+<td>设置符合的域</td>
+<td>Secure</td>
+<td>是否必须使用SSL连接</td>
+</tr>
+<tr>
+<td>Path</td>
+<td>设置符合的路径</td>
+<td>Version</td>
+<td>Cookie的版本号</td>
+</tr>
+<tr>
+<td>Key</td>
+<td>键名</td>
+<td>Value</td>
+<td>键值</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>主要目的：</strong></u></p>
+<p>1.标识用户</p>
+<p>2.定制站点和定向广告</p>
+<h5 id="发送和接收-删除："><a href="#发送和接收-删除：" class="headerlink" title="发送和接收 删除："></a><strong><u>发送和接收 删除：</u></strong></h5><p>发送：1.创建Cookie对象，设置最大时效，添加到HTTP的响应头</p>
+<p>接收：1.通过request.getCookies()遍历数组获取</p>
+<p>删除：1.服务端将Cookie设置setMaxAge(0)</p>
+<h5 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h5><p>Servlet中存在一个对象为HttpSession</p>
+<p>当调用HttpServletRequest的getSession接口时，Web容器创建HttpSession对象，同时对应一个唯一的JSESSIONID，客户端发送请求时如果附带JSESSIONID，wbe容器便会将相应的HttpSession对象放入request中</p>
+<p>当用户禁止使用Cookie时，利用url重写。HttpServletResponse对象的encodeURL接口对url重写根据情况添加JSESSIONID</p>
+<p>如何确定Session失效：</p>
+<p>1.Session可以设置MaxInActiveInterval的值，当超过该值，Session便处于非活跃状态可被删除</p>
+<p>2.主动调用invalidate()或者logout()接口</p>
+<p>3.服务器的web.xml文件可以配置session-timeout属性</p>
+<h5 id="Session和Cookie的区别："><a href="#Session和Cookie的区别：" class="headerlink" title="Session和Cookie的区别："></a><u>Session和Cookie的区别：</u></h5><p>1.存放位置不同，Cookie位于客户端，Session处于服务器端</p>
+<p>2.Cookie只能保存字符串信息，Session可以支持各种类型的对象</p>
+<p>3.Cookie可以通过设置MaxAge限制生存周期</p>
+<p>4.Session通过利用Cookie或者URL重写来维护用户的会话状态</p>
+<p>5.Cookie的数量和大小都存在限制</p>
+<p>6.Cookie的编码为ascii字符，如果需要保存中文的信息需要编码，使用URLEncoder.encode()</p>
+<p><strong><u>Session 与 Cookie 的作用都是为了保持访问用户与后端服务器的交互状态</u></strong>。</p>
+<p>使用 Cookie 来传递信息时，随着 Cookie 个数的增多和访问量的增加，它占用的网络带宽也很大，试想假如 Cookie 占用 200 个字节，如果一天的 PV 有几亿的时候，它要占用多少带宽。所以大访问量的时候希望用 Session，但是 Session 的致命弱点是不容易在多台服务器之间共享，所以这也限制了 Session 的使用</p>
+<p><strong>三种方式能可以让 Session 正常工作：</strong></p>
+<ol>
+<li>基于 URL Path Parameter，默认就支持</li>
+<li>基于 Cookie，如果你没有修改 Context 容器个 cookies 标识的话，默认也是支持的</li>
+<li>基于 SSL，默认不支持，只有 connector.getAttribute(“SSLEnabled”) 为 TRUE 时才支持</li>
+</ol>
+<p>第一种情况下，当浏览器不支持 Cookie 功能时，浏览器会将用户的 SessionCookieName 重写到用户请求的 URL 参数中，它的传递格式如 /path/Servlet;name=value;name2=value2? Name3=value3，其中“Servlet；”后面的 K-V 对就是要传递的 Path Parameters，服务器会从这个 Path Parameters 中拿到用户配置的 SessionCookieName。关于这个 SessionCookieName，如果你在 web.xml 中配置 session-config 配置项的话，其 cookie-config 下的 name 属性就是这个 SessionCookieName 值，如果你没有配置 session-config 配置项，默认的 SessionCookieName 就是大家熟悉的“JSESSIONID”。接着 Request 根据这个 SessionCookieName 到 Parameters 拿到 Session ID 并设置到 request.setRequestedSessionId 中。</p>
+<p>客户端也支持 Cookie 的话，Tomcat 仍然会解析 Cookie 中的 Session ID，并会覆盖 URL 中的 Session ID。</p>
+<p>根据 javax.servlet.request.ssl_session 属性值设置 Session ID。</p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image023.jpg" alt="image023"></p>
+<p><strong>购物车的会话跟踪</strong></p>
+<p>1.Cookie中记录JSESSIONID，服务器通过该值从hash表中查找相应的信息</p>
+<p>2.URL重写，将JSEESIONID的相关信息添加在url的末端</p>
+<p>3.隐藏的表单域，在input输入域添加隐藏的值，存在局限性</p>
+<h4 id="分布式Session"><a href="#分布式Session" class="headerlink" title="分布式Session"></a>分布式Session</h4><p>session记录用户的会话状态，当服务器从单台机器变成一个集群时，需要对session进行分布式管理</p>
+<p>1.缓存式集中管理   基于memcached 的session  、基于Redis 进行 session 共享</p>
+<p><strong>简介：</strong>将Session存入分布式缓存集群中的某台机器上，当用户访问不同节点时先从缓存中拿Session信息</p>
+<p><strong>使用场景</strong>：集群中机器数多、网络环境复杂</p>
+<p><strong>优点</strong>：可靠性好，高可用性</p>
+<p><strong>缺点</strong>：实现复杂、稳定性依赖于缓存的稳定性、Session信息放入缓存时要有合理的策略写入</p>
+<p>2.Session Sticky 方式管理</p>
+<p>简介：即粘性Session、当用户访问集群中某台机器后，强制指定后续所有请求均落到此机器上</p>
+<p>使用场景：机器数适中、对稳定性要求不是非常苛刻</p>
+<p>优点：实现简单、配置方便、没有额外网络开销</p>
+<p>缺点：网络中有机器离线时、用户Session会丢失、容易造成单点故障</p>
+<p>3.session复制</p>
+<p><strong>简介：</strong>将一台机器上的Session数据广播复制到集群中其余机器上</p>
+<p><strong>使用场景</strong>：机器较少，网络流量较小</p>
+<p><strong>优点</strong>：实现简单、配置较少、当网络中有机器离线时不影响用户访问</p>
+<p> <strong>缺点</strong>：广播式复制到其余机器有一定廷时，带来一定网络开销</p>
+<p>4.基于cookie 进行session共享</p>
+<hr>
+<p>####慢启动算法</p>
+<p>通过观察到新分组进入网络的速率应该与另一端返回确认的速率相同而进行工作</p>
+<p>拥塞窗口：当与另一个网络的主机建立TCP连接时，拥塞窗口被初始化为一个报文段，每收到一个ack，窗口增加一个报文段大小，发送方取拥塞窗口和通告窗口中的最小值作为发送上限、其中拥塞窗口是发送方使用的流量控制，通告窗口为接收方使用的流量控制。</p>
+<h4 id="快速重传算法"><a href="#快速重传算法" class="headerlink" title="快速重传算法"></a>快速重传算法</h4><p>Restful接口</p>
+<hr>
+<h4 id="Tomcat的工作原理"><a href="#Tomcat的工作原理" class="headerlink" title="Tomcat的工作原理"></a>Tomcat的工作原理</h4><h5 id="1-tomcat处理http请求-http-localhost-8080-wsota-wsota-index-jsp"><a href="#1-tomcat处理http请求-http-localhost-8080-wsota-wsota-index-jsp" class="headerlink" title="1.tomcat处理http请求        http://localhost:8080/wsota/wsota_index.jsp"></a>1.tomcat处理http请求        <a href="http://localhost:8080/wsota/wsota_index.jsp" target="_blank" rel="external">http://localhost:8080/wsota/wsota_index.jsp</a></h5><p>1) 请求被发送到本机端口8080，被在那里侦听的Coyote HTTP/1.1 Connector获得<br>2) Connector把该请求交给它所在的Service的Engine来处理，并等待来自Engine的回应<br>3) Engine获得请求localhost/wsota/wsota_index.jsp，匹配它所拥有的所有虚拟主机Host<br>4) Engine匹配到名为localhost的Host（即使匹配不到也把请求交给该Host处理，因为该Host被定义为该Engine的默认主机）<br>5) localhost Host获得请求/wsota/wsota_index.jsp，匹配它所拥有的所有Context<br>6) Host匹配到路径为/wsota的Context（如果匹配不到就把该请求交给路径名为””的Context去处理）<br>7) path=”/wsota”的Context获得请求/wsota_index.jsp，在它的mapping table中寻找对应的servlet<br>8) Context匹配到URL PATTERN为*.jsp的servlet，对应于JspServlet类<br>9) 构造HttpServletRequest对象和HttpServletResponse对象，作为参数调用JspServlet的doGet或doPost方法<br>10)Context把执行完了之后的HttpServletResponse对象返回给Host<br>11)Host把HttpServletResponse对象返回给Engine<br>12)Engine把HttpServletResponse对象返回给Connector<br>13)Connector把HttpServletResponse对象返回给客户browser</p>
+<h5 id="2-Servlet的生命周期"><a href="#2-Servlet的生命周期" class="headerlink" title="2.Servlet的生命周期"></a>2.Servlet的生命周期</h5><p>1.创建servlet实例    服务器在接收到对servlet的第一个请求时，创建一个唯一的实例</p>
+<p>2.调用init()方法进行初始化任务，init方法在servlet的生命周期中只被调用一次</p>
+<p>3.服务器在每接收到一个请求的时候，创建一个新的线程调用service方法，service方法检查http请求的类型相应的调用doGet(),doPost()…等方法。如果在处理过程中访问了全局的共享变量，需要增加同步控制</p>
+<p>4.调用destroy()方法，停止接收请求，servlet实例被GC回收</p>
+<h5 id="3-Tomcat的设计模式"><a href="#3-Tomcat的设计模式" class="headerlink" title="3.Tomcat的设计模式"></a>3.Tomcat的设计模式</h5><p><strong><u>1.观察者模式</u></strong>   控制组件生命周期的 Lifecycle </p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image003.png" alt="image003"></p>
+<table>
+<thead>
+<tr>
+<th>LifecycleListener</th>
+<th>抽象观察者</th>
+<th>定义一个 lifecycleEvent 方法，当主题变化时触发执行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ServerLifecycleListener</td>
+<td>具体的观察者</td>
+<td>实现了 LifecycleListener 接口的方法</td>
+</tr>
+<tr>
+<td>Lifecycle</td>
+<td>抽象主题</td>
+<td>定义了管理观察者的方法和它要所做的其它方法</td>
+</tr>
+<tr>
+<td>StandardServer</td>
+<td>具体主题</td>
+<td>实现了抽象主题的所有方法</td>
+</tr>
+<tr>
+<td>LifecycleEvent</td>
+<td></td>
+<td>定义事件类别，不同的事件可区别处理，更加灵活</td>
+</tr>
+<tr>
+<td>LifecycleSupport</td>
+<td>代理了主题对多观察者的管理</td>
+<td>将这个管理抽出来统一实现，以后如果修改只要修改 LifecycleSupport 类就可以了，不需要去修改所有具体主题，因为所有具体主题的对观察者的操作都被代理给 LifecycleSupport 类</td>
+</tr>
+</tbody>
+</table>
+<p>Tomcat 对观察者扩展，增加了另外两个类：LifecycleSupport、LifecycleEvent作为辅助类扩展了观察者的功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//LifecycleSupport 中的 fireLifecycleEvent 方法  对所有监听者的管理</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fireLifecycleEvent</span><span class="params">(String type, Object data)</span> </span>&#123;</div><div class="line">    LifecycleEvent event = <span class="keyword">new</span> LifecycleEvent(lifecycle, type, data);</div><div class="line">    LifecycleListener interested[] = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">synchronized</span> (listeners) &#123;</div><div class="line">        interested = (LifecycleListener[]) listeners.clone();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; interested.length; i++)</div><div class="line">        interested[i].lifecycleEvent(event);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//容器中的 start 方法</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> <span class="keyword">throws</span> LifecycleException </span>&#123;</div><div class="line">    lifecycle.fireLifecycleEvent(BEFORE_START_EVENT, <span class="keyword">null</span>);</div><div class="line">    lifecycle.fireLifecycleEvent(START_EVENT, <span class="keyword">null</span>);</div><div class="line">    started = <span class="keyword">true</span>;</div><div class="line">    <span class="keyword">synchronized</span> (services) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; services.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (services[i] <span class="keyword">instanceof</span> Lifecycle)</div><div class="line">                ((Lifecycle) services[i]).start();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    lifecycle.fireLifecycleEvent(AFTER_START_EVENT, <span class="keyword">null</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><u><strong><em>2.责任链模式</em></strong></u> 多个不同层次的容器通过责任链将请求正确的传递给最终处理请求的那个 Servlet</p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image005.jpg" alt="image005"></p>
+<p>上图基本描述了四个子容器使用责任链模式的类结构图，Container 扮演抽象处理者角色，具体处理者由 StandardEngine 等子容器扮演。</p>
+<p>与标准的责任链不同的是，这里引入了 <u><em>Pipeline 和 Valve 接口</em></u>。</p>
+<p>实际上 Pipeline 和 Valve 是扩展了这个链的功能，使得在链往下传递过程中，能够接受外界的干预。Pipeline 就是连接每个子容器的管子，里面传递的 Request 和 Response 对象好比管子里流的水，而 Valve 就是这个管子上开的一个个小口子，让你有机会能够接触到里面的水，做一些额外的事情。</p>
+<p>为了防止水被引出来而不能流到下一个容器中，每一段管子最后总有一个节点保证它一定能流到下一个子容器，所以每个容器都有一个 StandardXXXValve。</p>
+<p><strong><u>3.命令设计模式</u></strong>  Connector 和 Container 组件之间</p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image004.png" alt="image004"></p>
+<p>Connector 作为抽象请求者，HttpConnector 作为具体请求者。HttpProcessor 作为命令。Container 作为命令的抽象接受者，ContainerBase 作为具体的接受者。客户端就是应用服务器 Server 组件了。Server 首先创建命令请求者 HttpConnector 对象，然后创建命令 HttpProcessor 命令对象。再把命令对象交给命令接受者 ContainerBase 容器来处理命令。命令的最终是被 Tomcat 的 Container 执行的。命令可以以队列的方式进来，Container 也可以以不同的方式来处理请求，如 HTTP1.0 协议和 HTTP1.1 的处理方式就会不同</p>
+<p><strong><u>4.门面设计模式</u></strong></p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image002.png" alt="image002"></p>
+<p>HttpRequestFacade 类封装了 HttpRequest 接口能够提供数据，通过 HttpRequestFacade 访问到的数据都被代理到 HttpRequest 中，通常被封装的对象都被设为 Private 或者 Protected 访问修饰，以防止在 Façade 中被直接访问</p>
+<h5 id="4-servlet-Filter-Listener-interceptor"><a href="#4-servlet-Filter-Listener-interceptor" class="headerlink" title="4.servlet Filter Listener interceptor"></a>4.servlet Filter Listener interceptor</h5><table>
+<thead>
+<tr>
+<th>Servlet</th>
+<th>运行于服务器端的java应用程序，具有独立于平台和协议的特性，并且可以动态的生成web页面，工作在客户端请求与服务器响应的中间层</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filter</td>
+<td>主要的用途是转换HTTP请求、响应和头信息，进行字符编码、做一些业务逻辑判断(登录权限)， 不能直接向用户生成响应 一般的处理流程为  <strong>Filter对用户请求进行预处理，接着将请求交给Servlet进行处理并生成响应，最后Filter再对服务器响应进行后处理</strong></td>
+</tr>
+<tr>
+<td>Listener</td>
+<td>监听web服务器中某一个执行动作，并根据其要求作出相应的响应。随着web的启动而创建，与web容器拥有相同的生命周期。通常监听web容器的启动，session的创建和消失</td>
+</tr>
+<tr>
+<td>interceptor</td>
+<td>出现在web框架中，基于面向切面编程的思想，利用动态代理在处理前后添加额外的逻辑处理</td>
+</tr>
+</tbody>
+</table>
+<p>多个filter可以形成一个FilterChain，请求<strong>按照其在web.xml中配置的顺序</strong>依次经过各个filter进行处理后再到达servlet，类似一个栈式调用</p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image025.png" alt="image025"></p>
+<p><u><strong>Filter和interceptor的区别：</strong></u></p>
+<p>1.配置的位置不同  filter依赖于servlet容器的配置，interceptor在框架对应的XXX.xml文件进行配置</p>
+<p>2.实现的原理不同   filter基于函数回调，interceptor基于动态代理</p>
+<h5 id="5-Context容器的启动过程-一个context容器对应一个Web应用"><a href="#5-Context容器的启动过程-一个context容器对应一个Web应用" class="headerlink" title="5.Context容器的启动过程  一个context容器对应一个Web应用"></a><strong>5.Context容器的启动过程</strong>  一个context容器对应一个Web应用</h5><p>当 Context 容器初始化状态设为 init 时，添加在 Context 容器的 Listener -ContextConfig (继承 LifecycleListener )启动init方法。ContextConfig 类会负责整个 Web 应用的配置文件的解析工作</p>
+<p>ContextConfig 的 init 方法将会主要完成以下工作：</p>
+<ol>
+<li>创建用于解析 xml 配置文件的 contextDigester 对象</li>
+<li>读取默认 context.xml 配置文件，如果存在解析它</li>
+<li>读取默认 Host 配置文件，如果存在解析它</li>
+<li>读取默认 Context 自身的配置文件，如果存在解析它</li>
+<li>设置 Context 的 DocBase</li>
+</ol>
+<p>ContextConfig 的 init 方法完成后，Context 容器的会执行 startInternal 方法，主要包括如下几个部分：</p>
+<ol>
+<li>创建读取资源文件的对象</li>
+<li>创建 ClassLoader 对象</li>
+<li>设置应用的工作目录</li>
+<li>启动相关的辅助类如：logger、realm、resources 等</li>
+<li>修改启动状态，通知感兴趣的观察者（Web 应用的配置）</li>
+<li>子容器的初始化</li>
+<li>获取 ServletContext 并设置必要的参数</li>
+<li>初始化“load on startup”的 Servlet</li>
+</ol>
+<h5 id="6-Web应用的初始化"><a href="#6-Web应用的初始化" class="headerlink" title="6.Web应用的初始化"></a><strong>6.Web应用的初始化</strong></h5><p>Web 应用的初始化工作是在 ContextConfig 的 configureStart 方法中实现的，应用的初始化主要是要<strong>解析 web.xml 文件</strong>，这个文件描述了一个 Web 应用的关键信息，也是一个 Web 应用的入口。</p>
+<p>Tomcat 首先会找 globalWebXml 这个文件的搜索路径是在 engine 的工作目录下寻找以下两个文件中的任一个 org/apache/catalin/startup/NO_DEFAULT_XML 或 conf/web.xml。接着会找 hostWebXml 这个文件可能会在 System.getProperty(“catalina.base”)/conf/${EngineName}/${HostName}/web.xml.default，接着寻找<strong>应用的配置文件 examples/WEB-INF/web.xml</strong>。web.xml 文件中的各个配置项将会被解析成相应的属性保存在 WebXml 对象中。接下去将会将 WebXml 对象中的属性设置到 Context 容器中，这里包括创建 Servlet 对象、filter、listener 等等。这段代码在 WebXml 的 configureContext 方法中</p>
+<h5 id="7-Tomcat的映射原理"><a href="#7-Tomcat的映射原理" class="headerlink" title="7.Tomcat的映射原理"></a>7.Tomcat的映射原理</h5><p>当用户从浏览器向服务器发起一个请求，通常会包含如下信息：</p>
+<p><a href="http://hostname" target="_blank" rel="external">http://hostname</a>: port /contextpath/servletpath，</p>
+<p>hostname 和 port 是用来与服务器建立 TCP 连接，而后面的 URL 才是用来选择服务器中那个子容器服务用户的请求。那服务器是如何根据这个 URL 来达到正确的 Servlet 容器中的呢？</p>
+<p>这种映射工作有专门一个类来完成的，这个就是 <strong><u>org.apache.tomcat.util.http.mapper</u></strong>，这个类保存了 Tomcat 的 Container 容器中的所有子容器的信息，当 org.apache.catalina.connector. Request 类在进入 Container 容器之前，<strong>mapper 将会根据这次请求的 hostname 和 contextpath 将 host 和 context 容器设置到 Request 的 mappingData 属性中</strong>。所以当 Request 进入 Container 容器之前，它要访问那个子容器这时就已经确定</p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image020.jpg" alt="image020"></p>
+<h5 id="Connector组件"><a href="#Connector组件" class="headerlink" title="Connector组件"></a>Connector组件</h5><p>负责接收浏览器发送的tcp连接请求并创建request和response对象用于和请求端交互数据，同时启动一个线程HttpProcessor，HttpProcessor将request和response对象进行内容解析和填充后传递给container容器中相应的wrapper容器进行逻辑处理。</p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/origin_image006.png" alt="origin_image006"></p>
+<h5 id="Container容器-schema-host-port-contextPath-servletpath…"><a href="#Container容器-schema-host-port-contextPath-servletpath…" class="headerlink" title="Container容器   schema://host:port/contextPath/servletpath…"></a>Container容器   schema://host:port/contextPath/servletpath…</h5><p>组件的生命周期由包含它的父组件控制</p>
+<table>
+<thead>
+<tr>
+<th>Engine</th>
+<th>servlet引擎，将请求分配给虚拟主机处理，相当于一个container， 一个特定的Service的请求处理流水线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host</td>
+<td>解析每个war包的web.xml文件，加载，运行，结束多个应用</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>创建servlet，维持所有的servlet实例，代表一个web应用程序   url和path分别代表应用的访问路径和实际的物理路径</td>
+</tr>
+<tr>
+<td>Wrapper</td>
+<td>对每个servlet实例进行封装，负责servlet的 装载、初始化、执行以及资源回收</td>
+</tr>
+<tr>
+<td>service</td>
+<td>将多个connector绑定到container容器上</td>
+</tr>
+<tr>
+<td>server</td>
+<td>表示整个Catalina Servlet容器,包含一个或者多个service组件</td>
+</tr>
+<tr>
+<td>connector</td>
+<td>接收tcp请求，创建request和response对象，传递给相应的container处理</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/origin_image010.png" alt="origin_image010"></p>
+<h5 id="创建和初始化Servlet"><a href="#创建和初始化Servlet" class="headerlink" title="创建和初始化Servlet"></a>创建和初始化Servlet</h5><p>1.如果servlet的load-on-startup项大于0，那么在 Context 容器启动的时候就会被实例化</p>
+<p>2.Wrapper. loadServlet 获取 servletClass 然后 InstanceManager 创建一个基于 servletClass.class 的对象</p>
+<p>3.StandardWrapper调用initServlet方法，方法中调用servlet的init方法并传递ServletConfig对象给servlet</p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image007.jpg" alt="image007"></p>
+<h5 id="servlet的体系结构"><a href="#servlet的体系结构" class="headerlink" title="servlet的体系结构"></a>servlet的体系结构</h5><p>从上图可以看出 Servlet 规范就是基于这几个类运转的，与 Servlet 主动关联的是三个类，分别是 ServletConfig、ServletRequest 和 ServletResponse。这三个类都是通过容器传递给 Servlet 的，其中 ServletConfig 是在 Servlet 初始化时就传给 Servlet 了，而后两个是在请求达到时调用 Servlet 时传递过来的。我们很清楚 ServletRequest 和 ServletResponse 在 Servlet 运行的意义，但是 ServletConfig 和 ServletContext 对 Servlet 有何价值？仔细查看 ServletConfig 接口中声明的方法发现，这些方法都是为了获取这个 Servlet 的一些配置属性，而这些配置属性可能在 Servlet 运行时被用到。而 ServletContext 又是干什么的呢？ Servlet 的运行模式是一个典型的“握手型的交互式”运行模式。所谓“握手型的交互式”就是两个模块为了交换数据通常都会准备一个交易场景，这个场景一直跟随个这个交易过程直到这个交易完成为止。这个交易场景的初始化是根据这次交易对象指定的参数来定制的，这些指定参数通常就会是一个配置类。所以对号入座，交易场景就由 ServletContext 来描述，而定制的参数集合就由 ServletConfig 来描述。而 ServletRequest 和 ServletResponse 就是要交互的具体对象了，它们通常都是作为运输工具来传递交互结果</p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/image010.jpg" alt="image010"></p>
+<hr>
+<p>操作系统</p>
+<p>LRU和LFU页面替换算法</p>
+<p>LRU是最近最少使用页面置换<a href="http://lib.csdn.net/base/datastructure" target="_blank" rel="external">算法</a>(Least Recently Used),也就是首先淘汰最长时间未被使用的页面!</p>
+<p>LFU是最近最不常用页面置换算法(Least Frequently Used),也就是淘汰一定时期内被访问次数最少的页!</p>
+<p>比如,第二种方法的时期T为10分钟,如果每分钟进行一次调页,主存块为3,若所需页面走向为2 1 2 1 2 3 4</p>
+<p>注意,当调页面4时会发生缺页中断</p>
+<p>若按LRU算法,应换页面1(1页面最久未被使用) 但按LFU算法应换页面3(十分钟内,页面3只使用了一次)</p>
+<p>可见LRU关键是看页面最后一次被使用到发生调度的时间长短,</p>
+<p>而LFU关键是看一定时间段内页面被使用的频率!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/17/Focus-JAVA/" rel="next" title="Focus JAVA">
+                <i class="fa fa-chevron-left"></i> Focus JAVA
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/25/系统设计/" rel="prev" title="系统设计">
+                系统设计 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络"><span class="nav-number">1.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#OSI七层协议和TCP-IP分层"><span class="nav-number">1.1.</span> <span class="nav-text">OSI七层协议和TCP/IP分层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP表头、IP表头、Http表头"><span class="nav-number">1.2.</span> <span class="nav-text">TCP表头、IP表头、Http表头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Http协议"><span class="nav-number">1.3.</span> <span class="nav-text">Http协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#头部内容"><span class="nav-number">1.3.1.</span> <span class="nav-text">头部内容:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特点："><span class="nav-number">1.3.2.</span> <span class="nav-text">特点：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARP-RARP-地址解析协议-反地址解析协议"><span class="nav-number">1.4.</span> <span class="nav-text">ARP/RARP    地址解析协议/反地址解析协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS域名解析原理"><span class="nav-number">1.5.</span> <span class="nav-text">DNS域名解析原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DNS服务过程"><span class="nav-number">1.5.1.</span> <span class="nav-text">DNS服务过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DNS记录类型"><span class="nav-number">1.5.2.</span> <span class="nav-text">DNS记录类型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Session和Cookie"><span class="nav-number">1.6.</span> <span class="nav-text">Session和Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Cookie"><span class="nav-number">1.6.1.</span> <span class="nav-text">Cookie</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#发送和接收-删除："><span class="nav-number">1.6.2.</span> <span class="nav-text">发送和接收 删除：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Session"><span class="nav-number">1.6.3.</span> <span class="nav-text">Session</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Session和Cookie的区别："><span class="nav-number">1.6.4.</span> <span class="nav-text">Session和Cookie的区别：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式Session"><span class="nav-number">1.7.</span> <span class="nav-text">分布式Session</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速重传算法"><span class="nav-number">1.8.</span> <span class="nav-text">快速重传算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tomcat的工作原理"><span class="nav-number">1.9.</span> <span class="nav-text">Tomcat的工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-tomcat处理http请求-http-localhost-8080-wsota-wsota-index-jsp"><span class="nav-number">1.9.1.</span> <span class="nav-text">1.tomcat处理http请求        http://localhost:8080/wsota/wsota_index.jsp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Servlet的生命周期"><span class="nav-number">1.9.2.</span> <span class="nav-text">2.Servlet的生命周期</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Tomcat的设计模式"><span class="nav-number">1.9.3.</span> <span class="nav-text">3.Tomcat的设计模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-servlet-Filter-Listener-interceptor"><span class="nav-number">1.9.4.</span> <span class="nav-text">4.servlet Filter Listener interceptor</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-Context容器的启动过程-一个context容器对应一个Web应用"><span class="nav-number">1.9.5.</span> <span class="nav-text">5.Context容器的启动过程  一个context容器对应一个Web应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-Web应用的初始化"><span class="nav-number">1.9.6.</span> <span class="nav-text">6.Web应用的初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-Tomcat的映射原理"><span class="nav-number">1.9.7.</span> <span class="nav-text">7.Tomcat的映射原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Connector组件"><span class="nav-number">1.9.8.</span> <span class="nav-text">Connector组件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Container容器-schema-host-port-contextPath-servletpath…"><span class="nav-number">1.9.9.</span> <span class="nav-text">Container容器   schema://host:port/contextPath/servletpath…</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建和初始化Servlet"><span class="nav-number">1.9.10.</span> <span class="nav-text">创建和初始化Servlet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#servlet的体系结构"><span class="nav-number">1.9.11.</span> <span class="nav-text">servlet的体系结构</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
