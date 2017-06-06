@@ -87,31 +87,29 @@
 
 
 
-<meta name="description" content="1.首先协程的实现方式：通过在字节码层面织入相关的代码从而实现在不用挂起线程的方式切换不同的协作式任务进行执行
-Kilim工程的代码架构：
-kilim的代码织入分析：
-1.举个实例：
-1234567891011121314151617181920212223242526272829303132333435public class Chain extends Task &amp;#123;    Mailb">
+<meta name="description" content="Kilim-Introduction相关资料：1.Kilim: Isolation-Typed Actors for Java,Sriram Srinivasan and Alan Mycroft,08.
+2.A Thread of One’s Own,Sriram Srinivasan,06.
+3.ASM,a very small and fast Java bytecode manipulat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/2017/06/05/Kilim1/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.首先协程的实现方式：通过在字节码层面织入相关的代码从而实现在不用挂起线程的方式切换不同的协作式任务进行执行
-Kilim工程的代码架构：
-kilim的代码织入分析：
-1.举个实例：
-1234567891011121314151617181920212223242526272829303132333435public class Chain extends Task &amp;#123;    Mailb">
-<meta property="og:image" content="http://yoursite.com/2017/06/05/Kilim1/chain.png">
-<meta property="og:image" content="http://yoursite.com/2017/06/05/Kilim1/Chain_flow_1.png">
-<meta property="og:updated_time" content="2017-06-06T01:53:41.000Z">
+<meta property="og:title" content="Heaven">
+<meta property="og:url" content="http://wuxinyua.github.io/2017/06/05/Kilim1/index.html">
+<meta property="og:site_name" content="Heaven">
+<meta property="og:description" content="Kilim-Introduction相关资料：1.Kilim: Isolation-Typed Actors for Java,Sriram Srinivasan and Alan Mycroft,08.
+2.A Thread of One’s Own,Sriram Srinivasan,06.
+3.ASM,a very small and fast Java bytecode manipulat">
+<meta property="og:image" content="http://wuxinyua.github.io/2017/06/05/Kilim1/Event_Structure.png">
+<meta property="og:image" content="http://wuxinyua.github.io/2017/06/05/Kilim1/chain.png">
+<meta property="og:image" content="http://wuxinyua.github.io/2017/06/05/Kilim1/Chain_flow_1.png">
+<meta property="og:image" content="http://wuxinyua.github.io/2017/06/05/Kilim1/fiber_states.png">
+<meta property="og:image" content="http://wuxinyua.github.io/2017/06/05/Kilim1/task_states.png">
+<meta property="og:image" content="http://wuxinyua.github.io/2017/06/05/Kilim1/Weaver.png">
+<meta property="og:updated_time" content="2017-06-06T09:16:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="1.首先协程的实现方式：通过在字节码层面织入相关的代码从而实现在不用挂起线程的方式切换不同的协作式任务进行执行
-Kilim工程的代码架构：
-kilim的代码织入分析：
-1.举个实例：
-1234567891011121314151617181920212223242526272829303132333435public class Chain extends Task &amp;#123;    Mailb">
-<meta name="twitter:image" content="http://yoursite.com/2017/06/05/Kilim1/chain.png">
+<meta name="twitter:title" content="Heaven">
+<meta name="twitter:description" content="Kilim-Introduction相关资料：1.Kilim: Isolation-Typed Actors for Java,Sriram Srinivasan and Alan Mycroft,08.
+2.A Thread of One’s Own,Sriram Srinivasan,06.
+3.ASM,a very small and fast Java bytecode manipulat">
+<meta name="twitter:image" content="http://wuxinyua.github.io/2017/06/05/Kilim1/Event_Structure.png">
 
 
 
@@ -139,13 +137,13 @@ kilim的代码织入分析：
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/05/Kilim1/"/>
+  <link rel="canonical" href="http://wuxinyua.github.io/2017/06/05/Kilim1/"/>
 
 
 
 
 
-  <title>  | Hexo </title>
+  <title>  | Heaven </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -181,7 +179,7 @@ kilim的代码织入分析：
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Heaven</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -264,16 +262,16 @@ kilim的代码织入分析：
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/05/Kilim1/">
+    <link itemprop="mainEntityOfPage" href="http://wuxinyua.github.io/2017/06/05/Kilim1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Wuxinyua">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Heaven">
     </span>
 
     
@@ -336,20 +334,128 @@ kilim的代码织入分析：
       
 
       
-        <p>1.首先协程的实现方式：通过在字节码层面织入相关的代码从而实现在不用挂起线程的方式切换不同的协作式任务进行执行</p>
-<p>Kilim工程的代码架构：</p>
-<p>kilim的代码织入分析：</p>
-<p>1.举个实例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chain</span> <span class="keyword">extends</span> <span class="title">Task</span> </span>&#123;</div><div class="line"></div><div class="line">    Mailbox&lt;StringBuffer&gt; mymb, nextmb;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Chain</span><span class="params">(Mailbox&lt;StringBuffer&gt; mb, Mailbox&lt;StringBuffer&gt; next)</span> </span>&#123;</div><div class="line">        mymb = mb; </div><div class="line">        nextmb = next;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> Pausable</span>&#123;</div><div class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</div><div class="line">            StringBuffer sb = mymb.get();</div><div class="line">            <span class="keyword">if</span> (nextmb == <span class="keyword">null</span>) &#123;</div><div class="line">                System.out.print(sb);</div><div class="line">                System.out.println(<span class="string">"world"</span>);</div><div class="line">                System.exit(<span class="number">0</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                sb.append(<span class="string">"-hello "</span>);</div><div class="line">                nextmb.put(sb);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> n = args.length == <span class="number">0</span> ? <span class="number">10</span> : Integer.parseInt(args[<span class="number">0</span>]);</div><div class="line">        Mailbox&lt;StringBuffer&gt; mb = <span class="keyword">new</span> Mailbox&lt;&gt;();</div><div class="line">        Mailbox&lt;StringBuffer&gt; nextms = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">           <span class="keyword">new</span> Chain(mb, nextms).start();</div><div class="line">           nextms = mb;</div><div class="line">           mb = <span class="keyword">new</span> Mailbox&lt;&gt;();</div><div class="line">        &#125;</div><div class="line">        nextms.putnb(<span class="keyword">new</span> StringBuffer());        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>首先Chain类继承Task抽象类实现了execute()方法，execute()方法抛出pausable异常，说明该方法可以进行人工织入代码。</p>
-<p>下面给出Chain类的原始代码和织入后的代码：<img src="/2017/06/05/Kilim1/chain.png" alt="chain"></p>
-<p>kilim主要针对pausable方法从三个地方织入代码:</p>
-<p>1.prelude</p>
-<p>2.pre-call</p>
-<p>3.post-call</p>
-<p>方法调用链：</p>
-<p>1.第一次触发一个任务：</p>
-<p><img src="/2017/06/05/Kilim1/Chain_flow_1.png" alt="Chain_flow_1"></p>
+        <h1 id="Kilim-Introduction"><a href="#Kilim-Introduction" class="headerlink" title="Kilim-Introduction"></a>Kilim-Introduction</h1><h3 id="相关资料："><a href="#相关资料：" class="headerlink" title="相关资料："></a>相关资料：</h3><p>1.Kilim: Isolation-Typed Actors for Java,Sriram Srinivasan and Alan Mycroft,08.</p>
+<p>2.A Thread of One’s Own,Sriram Srinivasan,06.</p>
+<p>3.ASM,a very small and fast Java bytecode manipulation framework</p>
+<p>4.<strong><a href="https://en.wikipedia.org/wiki/Coroutine" target="_blank" rel="external">https://en.wikipedia.org/wiki/Coroutine</a></strong>    </p>
+<p>5.The Java® VirtualMachine Specification Java SE 8 Edition</p>
+<p>6.ASM-guide.pdf –ASM 4.0,A Java bytecode engineering library</p>
+<p>7.The Java® LanguageSpecification Java SE 8 Edition</p>
+<h3 id="相关概念："><a href="#相关概念：" class="headerlink" title="相关概念："></a>相关概念：</h3><p>需要了解的知识：</p>
+<p>1.JVM的字节码  工具：jclasslib bytecode viewer软件 或者 javap -verbose…</p>
+<p>​    ClassFile的格式</p>
+<p>​    JVM指令的含义以及对local variables和operand stack的影响</p>
+<p>2.协程的相关说明</p>
+<p>​    continuation</p>
+<p>​    CPS style</p>
+<p>​    coroutine</p>
+<p>​    lightweight</p>
+<p>3.协程的实现方式和优势</p>
+<p>​    首先协程的实现方式：通过在字节码层面织入相关的代码从而实现在不用挂起线程的方式切换不同的协作式任务进行执行</p>
+<h3 id="1-Kilim工程的代码架构"><a href="#1-Kilim工程的代码架构" class="headerlink" title="1.Kilim工程的代码架构"></a>1.Kilim工程的代码架构</h3><p>主要分为4个部分：</p>
+<table>
+<thead>
+<tr>
+<th>基于ASM依赖库，代码织入相关的类</th>
+<th>MethodFlow,MethodWeaver,ClassWeaver,ClassFlow,CallWeaver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>代码结构相关的类</td>
+<td>Frame,BasicBlock,Usage,Range,Handler,Value,ClassInfo,TypeDesc</td>
+</tr>
+<tr>
+<td>任务调度相关的类</td>
+<td>Task,Mailbox,Scheduler,fiber,State,WorkerThread,Cell</td>
+</tr>
+<tr>
+<td>http和NIO相关的类</td>
+<td>……</td>
+</tr>
+</tbody>
+</table>
+<p>任务调度的代码结构：</p>
+<p><img src="/2017/06/05/Kilim1/Event_Structure.png" alt="chain"></p>
+<h3 id="2-kilim的代码织入方式"><a href="#2-kilim的代码织入方式" class="headerlink" title="2.kilim的代码织入方式"></a>2.kilim的代码织入方式</h3><h4 id="举个实例："><a href="#举个实例：" class="headerlink" title="举个实例："></a>举个实例：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chain</span> <span class="keyword">extends</span> <span class="title">Task</span> </span>&#123;</div><div class="line"></div><div class="line">    Mailbox&lt;StringBuffer&gt; mymb, nextmb;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Chain</span><span class="params">(Mailbox&lt;StringBuffer&gt; mb, Mailbox&lt;StringBuffer&gt; next)</span> </span>&#123;</div><div class="line">        mymb = mb; </div><div class="line">        nextmb = next;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> Pausable</span>&#123; <span class="comment">//Pausable异常是重点</span></div><div class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</div><div class="line">            StringBuffer sb = mymb.get();</div><div class="line">            <span class="keyword">if</span> (nextmb == <span class="keyword">null</span>) &#123;</div><div class="line">                System.out.print(sb);</div><div class="line">                System.out.println(<span class="string">"world"</span>);</div><div class="line">                System.exit(<span class="number">0</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                sb.append(<span class="string">"-hello "</span>);</div><div class="line">                nextmb.put(sb);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> n = args.length == <span class="number">0</span> ? <span class="number">10</span> : Integer.parseInt(args[<span class="number">0</span>]);</div><div class="line">        Mailbox&lt;StringBuffer&gt; mb = <span class="keyword">new</span> Mailbox&lt;&gt;();</div><div class="line">        Mailbox&lt;StringBuffer&gt; nextms = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">           <span class="keyword">new</span> Chain(mb, nextms).start();</div><div class="line">           nextms = mb;</div><div class="line">           mb = <span class="keyword">new</span> Mailbox&lt;&gt;();</div><div class="line">        &#125;</div><div class="line">        nextms.putnb(<span class="keyword">new</span> StringBuffer());        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先Chain类继承Task抽象类实现了execute()方法，execute()方法抛出pausable异常，</p>
+<p>说明该方法可以进行人工织入代码。</p>
+<h4 id="下面给出Chain类的原始代码和织入后的代码："><a href="#下面给出Chain类的原始代码和织入后的代码：" class="headerlink" title="下面给出Chain类的原始代码和织入后的代码："></a>下面给出Chain类的原始代码和织入后的代码：</h4><p><img src="/2017/06/05/Kilim1/chain.png" alt="chain"></p>
+<h4 id="3-方法调用链：利用Chain类为例画出下面的方法调用流程图"><a href="#3-方法调用链：利用Chain类为例画出下面的方法调用流程图" class="headerlink" title="3.方法调用链：利用Chain类为例画出下面的方法调用流程图"></a>3.方法调用链：利用Chain类为例画出下面的方法调用流程图</h4><h5 id="1-第一次触发一个任务：pc-0"><a href="#1-第一次触发一个任务：pc-0" class="headerlink" title="1.第一次触发一个任务：pc = 0"></a>1.第一次触发一个任务：pc = 0</h5><p><img src="/2017/06/05/Kilim1/Chain_flow_1.png" alt="Chain_flow_1"></p>
+<h5 id="2-fiber的状态转换图"><a href="#2-fiber的状态转换图" class="headerlink" title="2.fiber的状态转换图"></a>2.fiber的状态转换图</h5><p><img src="/2017/06/05/Kilim1/fiber_states.png" alt="Chain_flow_1"></p>
+<h5 id="3-Task的状态转换图"><a href="#3-Task的状态转换图" class="headerlink" title="3.Task的状态转换图"></a>3.Task的状态转换图</h5><p><img src="/2017/06/05/Kilim1/task_states.png" alt="Chain_flow_1"></p>
+<h3 id="3-Kilim的Weaver—织入工具"><a href="#3-Kilim的Weaver—织入工具" class="headerlink" title="3.Kilim的Weaver—织入工具"></a>3.Kilim的Weaver—织入工具</h3><p>kilim中跟weave操作相关的类图如下所示：</p>
+<p><img src="/2017/06/05/Kilim1/Weaver.png" alt="Chain_flow_1"></p>
+<table>
+<thead>
+<tr>
+<th>ASM</th>
+<th>ClassVisitor</th>
+<th>ClassNode/ClassWriter/ClassReader</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>MethodVisitor</td>
+<td>MethodNode/MethodWriter</td>
+</tr>
+<tr>
+<td>kilim</td>
+<td>ClassWeaver</td>
+<td>This class is the main entry point for the Weave tool. It uses ClassFlow to parse and analyze a class file, and writes out a CPS transformed file if needed.</td>
+</tr>
+<tr>
+<td></td>
+<td>MethodWeaver</td>
+<td>This class takes the basic blocks from a MethodFlow and generates all the extra code to support continuations.</td>
+</tr>
+<tr>
+<td></td>
+<td>CallWeaver</td>
+<td>This class produces all the code associated with a specific pausable method invocation.</td>
+</tr>
+<tr>
+<td></td>
+<td>Weaver</td>
+<td>This class supports both command-line and run time weaving of Kilim bytecode.</td>
+</tr>
+<tr>
+<td></td>
+<td>ClassFlow</td>
+<td>This class reads a .class file (or stream), wraps each method with a MethodFlow object and optionally analyzes it.</td>
+</tr>
+<tr>
+<td></td>
+<td>MethodFlow</td>
+<td>This represents all the basic blocks of a method.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-织入字节码分析"><a href="#4-织入字节码分析" class="headerlink" title="4.织入字节码分析"></a>4.织入字节码分析</h3><p>kilim主要针对pausable方法从三个地方织入字节码</p>
+<h4 id="prelude"><a href="#prelude" class="headerlink" title="prelude:"></a>prelude:</h4><p>添加tableswitch，根据pc的值跳转到相应的位置</p>
+<p>tableswitch的范围由pc的取值范围决定，而pc的取值则由callWeavers的个数决定</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MethodWeaver.new TableSwitchInsnNode(<span class="number">0</span>, callWeavers.size(), errLabel, labels).accept(mv);</div></pre></td></tr></table></figure>
+<p>callWeavers的个数根据符合下列条件的BasicBlock的个数决定: </p>
+<p>1.pausable              调用了pausable的方法(except 方法getCurrentTask)</p>
+<p>2.startFrame !=null    方法的起始位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Chain.execute()方法 prelude织入</div><div class="line">0 aload_1  //从局部变量slot1加载变量fiber到栈内</div><div class="line">1 dup	    //拷贝栈顶变量fiber到栈内</div><div class="line">2 astore_2 //栈顶变量fiber出栈存放在局部变量slot2</div><div class="line">3 getfield #35 &lt;kilim/Fiber.pc&gt;  //获取fiber.pc的值，默认为0</div><div class="line">6 tableswitch 0 to 2	0:  59 (+53) //根据pc的值进行tableswitch pc=0跳转到59即原始代码位置</div><div class="line">	1:  36 (+30) //pc=1 说明方法之前执行过，直接跳到上一次位置</div><div class="line">	2:  46 (+40)</div><div class="line">		default:  32 (+26)</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="pre-call"><a href="#pre-call" class="headerlink" title="pre-call:"></a>pre-call:</h4><p>根据不同的pc值调用fiber.down()或者回复state</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Chain.execute()方法 pre-call织入 pc=0</div><div class="line">......</div><div class="line">63 aload_2   //从局部变量slot2加载变量fiber到栈内</div><div class="line">64 invokevirtual #48 &lt;kilim/Fiber.down&gt; //调用方法fiber.down() 返回fiber对象</div><div class="line">......</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Chain.execute()方法 pre-call织入 pc=1 //执行mailbox.get() 第一个pausable的basicblock</div><div class="line">36 aload_2 //从局部变量slot2加载变量fiber到栈内</div><div class="line">37 invokevirtual #42 &lt;kilim/Fiber.getCallee&gt; //调用方法fiber.getCallee返回fiber.state.self</div><div class="line">40 checkcast #44 &lt;kilim/Mailbox&gt; //检查对象是否为mailbox类型</div><div class="line">43 goto 63 (+20) //跳转到63</div><div class="line">63 aload_2 //从局部变量slot2加载变量fiber到栈内</div><div class="line">64 invokevirtual #48 &lt;kilim/Fiber.down&gt;</div><div class="line">......</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Chain.execute()方法 pre-call织入 pc=2 //执行mail.box.put() 第二个pausable的basicblock</div><div class="line">46 aconst_null</div><div class="line">47 astore_1</div><div class="line">48 aload_2</div><div class="line">49 invokevirtual #42 &lt;kilim/Fiber.getCallee&gt;</div><div class="line">52 checkcast #44 &lt;kilim/Mailbox&gt;</div><div class="line">55 aconst_null</div><div class="line">56 goto 176 (+120)</div><div class="line">......</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Chain.execute()方法 pre-call织入 pc !=[0,2] default //pc的值不正确的时候代码中抛出异常</div><div class="line">32 aload_2</div><div class="line">33 invokevirtual #38 &lt;kilim/Fiber.wrongPC&gt;</div><div class="line">.....</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="post-call："><a href="#post-call：" class="headerlink" title="post-call："></a>post-call：</h4><p>根据fiber.up方法返回的State对应的int值进行不同的处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Chain.execute()方法 post-call织入</div><div class="line">70 aload_2  //从局部变量slot2加载变量fiber到栈内</div><div class="line">71 invokevirtual #56 &lt;kilim/Fiber.up&gt; //调用方法fiber.up() 返回4中情况中的一种</div><div class="line">74 tableswitch 0 to 3	0:  131 (+57)  //NOT_PAUSING__NO_STATE，不需要pause，没有状态</div><div class="line">1:  131 (+57)   //NOT_PAUSING__HAS_STATE 不需要pause，但是需要清空状态</div><div class="line">2:  104 (+30)   //PAUSING__NO_STATE  需要pause但是还未存储状态</div><div class="line">3:  129 (+55)   //PAUSING__HAS_STATE 需要pause而且已经存储好状态</div><div class="line">default:  131 (+57)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">2-&gt;PAUSING__NO_STATE:</div><div class="line">104 pop   //从mailbox.get()返回  将返回值出栈</div><div class="line">105 new #58 &lt;kilim/State&gt;  //创建对象State</div><div class="line">108 dup  //拷贝栈顶变量state到栈内</div><div class="line">109 invokespecial #59 &lt;kilim/State.&lt;init&gt;&gt; //调用state的构造方法</div><div class="line">112 astore_3 //栈顶变量state出栈存放在局部变量slot3</div><div class="line">113 aload_3  //从局部变量slot3加载变量state到栈内</div><div class="line">114 aload_0  //从局部变量chain(this)加载变量state到栈内</div><div class="line">115 putfield #63 &lt;kilim/State.self&gt; //设置state.self = chain</div><div class="line">118 aload_3  //从局部变量slot3加载变量state到栈内</div><div class="line">119 iconst_1 //将整形常量1入栈</div><div class="line">120 putfield #64 &lt;kilim/State.pc&gt; //设置state.pc = 1</div><div class="line">123 aload_2  //从局部变量slot2加载变量fiber到栈内</div><div class="line">124 aload_3  //从局部变量slot3加载变量state到栈内</div><div class="line">125 invokevirtual #68 &lt;kilim/Fiber.setState&gt; //设置fiber.state = state</div><div class="line">128 return //返回void 栈被清空</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">3-&gt;PAUSING__HAS_STATE:  //需要pause同时已经记录好状态state</div><div class="line">129 pop</div><div class="line">130 return //返回void</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">0-&gt;NOT_PAUSING__NO_STATE,1-&gt;NOT_PAUSING__HAS_STATE:</div><div class="line">131 checkcast #70 &lt;java/lang/StringBuffer&gt;</div><div class="line">......  //正常返回后继续执行后续代码</div><div class="line">161 goto 241 (+80)</div></pre></td></tr></table></figure>
+<h3 id="5-kilim整体架构的优劣分析"><a href="#5-kilim整体架构的优劣分析" class="headerlink" title="5.kilim整体架构的优劣分析"></a>5.kilim整体架构的优劣分析</h3><p>剩余的工作：</p>
+<p>1.补全线程的相关概念</p>
+<p>2.分析整体架构的设计</p>
+<p>3.了解kilim如何应用在http和NIO环境下</p>
 
       
     </div>
@@ -396,10 +502,6 @@ kilim的代码织入分析：
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/06/kilim2/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
       
@@ -445,13 +547,22 @@ kilim的代码织入分析：
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
-               alt="John Doe" />
-          <p class="site-author-name" itemprop="name">John Doe</p>
+               alt="Wuxinyua" />
+          <p class="site-author-name" itemprop="name">Wuxinyua</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
           
@@ -461,7 +572,7 @@ kilim的代码织入分析：
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
@@ -500,6 +611,22 @@ kilim的代码织入分析：
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kilim-Introduction"><span class="nav-number">1.</span> <span class="nav-text">Kilim-Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关资料："><span class="nav-number">1.0.1.</span> <span class="nav-text">相关资料：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关概念："><span class="nav-number">1.0.2.</span> <span class="nav-text">相关概念：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Kilim工程的代码架构"><span class="nav-number">1.0.3.</span> <span class="nav-text">1.Kilim工程的代码架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-kilim的代码织入方式"><span class="nav-number">1.0.4.</span> <span class="nav-text">2.kilim的代码织入方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#举个实例："><span class="nav-number">1.0.4.1.</span> <span class="nav-text">举个实例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下面给出Chain类的原始代码和织入后的代码："><span class="nav-number">1.0.4.2.</span> <span class="nav-text">下面给出Chain类的原始代码和织入后的代码：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-方法调用链：利用Chain类为例画出下面的方法调用流程图"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">3.方法调用链：利用Chain类为例画出下面的方法调用流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-第一次触发一个任务：pc-0"><span class="nav-number">1.0.4.3.1.</span> <span class="nav-text">1.第一次触发一个任务：pc = 0</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-fiber的状态转换图"><span class="nav-number">1.0.4.3.2.</span> <span class="nav-text">2.fiber的状态转换图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Task的状态转换图"><span class="nav-number">1.0.4.3.3.</span> <span class="nav-text">3.Task的状态转换图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Kilim的Weaver—织入工具"><span class="nav-number">1.0.5.</span> <span class="nav-text">3.Kilim的Weaver—织入工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-织入字节码分析"><span class="nav-number">1.0.6.</span> <span class="nav-text">4.织入字节码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prelude"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">prelude:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pre-call"><span class="nav-number">1.0.6.2.</span> <span class="nav-text">pre-call:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#post-call："><span class="nav-number">1.0.6.3.</span> <span class="nav-text">post-call：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-kilim整体架构的优劣分析"><span class="nav-number">1.0.7.</span> <span class="nav-text">5.kilim整体架构的优劣分析</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -520,7 +647,7 @@ kilim的代码织入分析：
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">Wuxinyua</span>
 </div>
 
 
