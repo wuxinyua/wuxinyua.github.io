@@ -87,114 +87,19 @@
 
 
 
-<meta name="description" content="系统设计1.优化技术
-
-
-
-
-Cache
-缓存
-
-
-
-
-Queue
-消息队列，linkedin的kafka
-
-
-Asynchronized
-批处理+异步 减少IO的系统瓶颈
-
-
-Load Balance
-负载均衡，使用一致性的hash技术减少数据
-
-
-Parallelization
-并行化，MapReduce
-
-
-Replication
-提高可靠性
-
-
-Partition
-数据库分区，通过hash">
+<meta name="description" content="linux安装Mongodb
+1.openssl x509 -in &amp;lt;(openssl s_client -connect example.com:443 -prexit 2&amp;gt;/dev/null) -out ~/example.crtsudo keytool -importcert -file ~/example.crt -alias example -keystore $(/usr/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="系统设计">
-<meta property="og:url" content="http://yoursite.com/2017/03/25/系统设计/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/04/03/linux安装Mongodb/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="系统设计1.优化技术
-
-
-
-
-Cache
-缓存
-
-
-
-
-Queue
-消息队列，linkedin的kafka
-
-
-Asynchronized
-批处理+异步 减少IO的系统瓶颈
-
-
-Load Balance
-负载均衡，使用一致性的hash技术减少数据
-
-
-Parallelization
-并行化，MapReduce
-
-
-Replication
-提高可靠性
-
-
-Partition
-数据库分区，通过hash">
-<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/cc2a92e324587867c8cfba3022ea9cca_b.jpg">
-<meta property="og:updated_time" content="2017-03-30T08:36:50.000Z">
+<meta property="og:description" content="linux安装Mongodb
+1.openssl x509 -in &amp;lt;(openssl s_client -connect example.com:443 -prexit 2&amp;gt;/dev/null) -out ~/example.crtsudo keytool -importcert -file ~/example.crt -alias example -keystore $(/usr/">
+<meta property="og:updated_time" content="2017-04-03T13:52:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="系统设计">
-<meta name="twitter:description" content="系统设计1.优化技术
-
-
-
-
-Cache
-缓存
-
-
-
-
-Queue
-消息队列，linkedin的kafka
-
-
-Asynchronized
-批处理+异步 减少IO的系统瓶颈
-
-
-Load Balance
-负载均衡，使用一致性的hash技术减少数据
-
-
-Parallelization
-并行化，MapReduce
-
-
-Replication
-提高可靠性
-
-
-Partition
-数据库分区，通过hash">
-<meta name="twitter:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/cc2a92e324587867c8cfba3022ea9cca_b.jpg">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="linux安装Mongodb
+1.openssl x509 -in &amp;lt;(openssl s_client -connect example.com:443 -prexit 2&amp;gt;/dev/null) -out ~/example.crtsudo keytool -importcert -file ~/example.crt -alias example -keystore $(/usr/">
 
 
 
@@ -222,13 +127,13 @@ Partition
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/25/系统设计/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/03/linux安装Mongodb/"/>
 
 
 
 
 
-  <title> 系统设计 | Hexo </title>
+  <title>  | Hexo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -347,7 +252,7 @@ Partition
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/系统设计/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/03/linux安装Mongodb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -368,7 +273,7 @@ Partition
             
             
               
-                系统设计
+                
               
             
           </h1>
@@ -383,8 +288,8 @@ Partition
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T11:30:35+08:00">
-                2017-03-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-03T21:52:23+08:00">
+                2017-04-03
               </time>
             
 
@@ -419,55 +324,8 @@ Partition
       
 
       
-        <h1 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h1><p>1.优化技术</p>
-<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/cc2a92e324587867c8cfba3022ea9cca_b.jpg" alt="cc2a92e324587867c8cfba3022ea9cca_b"></p>
-<table>
-<thead>
-<tr>
-<th>Cache</th>
-<th>缓存</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Queue</td>
-<td>消息队列，linkedin的kafka</td>
-</tr>
-<tr>
-<td>Asynchronized</td>
-<td>批处理+异步 减少IO的系统瓶颈</td>
-</tr>
-<tr>
-<td>Load Balance</td>
-<td>负载均衡，使用一致性的hash技术减少数据</td>
-</tr>
-<tr>
-<td>Parallelization</td>
-<td>并行化，MapReduce</td>
-</tr>
-<tr>
-<td>Replication</td>
-<td>提高可靠性</td>
-</tr>
-<tr>
-<td>Partition</td>
-<td>数据库分区，通过hash取模</td>
-</tr>
-</tbody>
-</table>
-<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>客户端缓存</p>
-<p>CDN缓存  </p>
-<p>web服务器缓存</p>
-<p>数据库缓存</p>
-<p>缓存的优势和缺点：</p>
-<p>优势：1.加快请求的相应，减少延迟</p>
-<p>​    2.导致数据的不一致性，需要适合的策略处理缓存的过期</p>
-<h3 id="缓存的设计方案"><a href="#缓存的设计方案" class="headerlink" title="缓存的设计方案"></a>缓存的设计方案</h3><p>Caffeine 开源的java缓存库</p>
-<p>1.驱逐策略</p>
-<p>预测在短时间内最可能被再次利用到的数据，从而根据策略移除剩余的缓存，提高缓存的命中率</p>
-<p>常用的策略：LRU、LFU    <strong>CountMin Sketch算法</strong>     </p>
-<p> <a href="https://www.usenix.org/legacy/event/fast03/tech/full_papers/megiddo/megiddo.pdf" target="_blank" rel="external">ARC</a>，<a href="http://web.cse.ohio-state.edu/hpcs/WWW/HTML/publications/papers/TR-02-6.pdf" target="_blank" rel="external">LIRS</a>， <a href="https://arxiv.org/pdf/1512.00727.pdf" target="_blank" rel="external">W-TinyLFU</a></p>
-<p>2.过期策略</p>
+        <p>linux安装Mongodb</p>
+<p>1.openssl x509 -in &lt;(openssl s_client -connect example.com:443 -prexit 2&gt;/dev/null) -out ~/example.crtsudo keytool -importcert -file ~/example.crt -alias example -keystore $(/usr/libexec/java_home)/jre/lib/security/cacerts -storepass changeit</p>
 
       
     </div>
@@ -504,8 +362,8 @@ Partition
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/18/计算机网络/" rel="next" title="计算机网络">
-                <i class="fa fa-chevron-left"></i> 计算机网络
+              <a href="/2017/03/29/关于Integer的一些说明/" rel="next" title="关于Integer的一些说明">
+                <i class="fa fa-chevron-left"></i> 关于Integer的一些说明
               </a>
             
           </div>
@@ -514,8 +372,8 @@ Partition
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/29/关于Integer的一些说明/" rel="prev" title="关于Integer的一些说明">
-                关于Integer的一些说明 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/19/db慢查询/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -563,17 +421,8 @@ Partition
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -626,22 +475,6 @@ Partition
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#系统设计"><span class="nav-number">1.</span> <span class="nav-text">系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">1.0.1.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存的设计方案"><span class="nav-number">1.0.2.</span> <span class="nav-text">缓存的设计方案</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

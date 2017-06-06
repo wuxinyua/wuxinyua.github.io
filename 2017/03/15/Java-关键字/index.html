@@ -143,7 +143,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 <meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
 <meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
 <meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:updated_time" content="2017-03-27T13:44:05.000Z">
+<meta property="og:updated_time" content="2017-03-29T01:50:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 关键字">
 <meta name="twitter:description" content="同步: 1.synchronized     2.volatile     3.lock     4.AtomicXX参考链接：http://www.cnblogs.com/paddix/p/5405678.html
@@ -1010,7 +1010,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 <p><strong>概念介绍</strong></p>
 <p>​     通俗来讲，会话(Session) 是通信双方从开始通信到通信结束期间的一个上下文（Context）。这个上下文是一段位于服务器端的内存：记录了本次连接的客户端机器、通过哪个应用程序、哪个用户登录等信息.</p>
 <p>​     连接（Connection）：连接是从客户端到<a href="http://lib.csdn.net/base/oracle" target="_blank" rel="external">Oracle</a>实例的一条物理路径。连接可以在网络上建立，或者在本机通过IPC机制建立。通常会在客户端进程与一个专用服务器或一个调度器之间建立连接。</p>
-<p>​     会话(Session) 是和连接(Connection)是同时建立的，两者是对同一件事情不同层次的描述。简单讲，连接(Connection)是物理上的客户端同服务器的通信链路，会话(Session)是逻辑上的用户同服务器的通信交互。</p>
+<p>​     <strong>会话(Session) 是和连接(Connection)是同时建立的，两者是对同一件事情不同层次的描述。简单讲，连接(Connection)是物理上的客户端同服务器的通信链路，会话(Session)是逻辑上的用户同服务器的通信交互。</strong></p>
 <p>​     ORACLE中一个用户登录ORACLE服务器的前提，就是该用户具有ORACLE的 “CREATE SESSION”权限。ORACE允许同一个用户在同一个客户机上建立多个同服务器的会话，每个SESSION都代表了用户与服务器的一个交互。就像你用IE浏览器打开博客园网站，然后你再打开一个IE窗口，又打开一个博客园网站。两个IE窗口就相当于两个SESSION， 而物理链路就相当于连接（Connection）。后台进程PMON会每隔一段时间，就会检测用户连接状况，如果连接已断开，PMON会清理现场，释放相关的资源。</p>
 <p>​     在一条连接而无相应的会话。另外，一个会话可以有连接也可以没有连接。使用高级Oracle Net特性（如连接池）时，客户可以删除一条物理连接，而会话依然保留（但是会话会空闲）。客户在这个会话上执行某个操作时，它会重新建立物理连接。</p>
 <p>​    在专用服务器中，一个会话对应一个服务器进程（Process),如果<a href="http://lib.csdn.net/base/mysql" target="_blank" rel="external">数据库</a>运行在共享服务器方式，一个服务器进程可以为多个会话服务。</p>
@@ -1418,6 +1418,10 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
 <p>MySQL 加锁处理分析：</p>
 <p><a href="http://hedengcheng.com/?p=771" target="_blank" rel="external">http://hedengcheng.com/?p=771</a></p>
 <p>Skip lists are a data structure that can <strong>be used in place of balanced trees</strong>. Skip lists use <strong>probabilistic balancing</strong> rather than strictly enforced balancing and as a result the algorithms for insertion and deletion in skip lists are much simpler and significantly faster than equivalent algorithms for balanced trees.</p>
+<p>invokespecial    类的构造方法，类的私有方法        静态绑定</p>
+<p>invokestatic       类的静态方法</p>
+<p>invokeinterface      接口的方法</p>
+<p>invokevirtual       普通的实例方法                    动态绑定</p>
 
       
     </div>
@@ -1538,7 +1542,7 @@ volatile含义：volatile修饰变量 保证对变量的读取是对该变量最
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>

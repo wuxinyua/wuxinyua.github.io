@@ -87,114 +87,31 @@
 
 
 
-<meta name="description" content="系统设计1.优化技术
-
-
-
-
-Cache
-缓存
-
-
-
-
-Queue
-消息队列，linkedin的kafka
-
-
-Asynchronized
-批处理+异步 减少IO的系统瓶颈
-
-
-Load Balance
-负载均衡，使用一致性的hash技术减少数据
-
-
-Parallelization
-并行化，MapReduce
-
-
-Replication
-提高可靠性
-
-
-Partition
-数据库分区，通过hash">
+<meta name="description" content="JAVA源码分析之ThreadPoolExecutor1.各种线程池的基类    
+2.使用池化的线程执行提交的任务
+两个变量控制线程池的大小
+1.core pool size |  max pool size
+​    线程池中的线程个数少于core size的时候，线程池会创建一个新的线程，即使其他线程处于空闲状态
+​    线程池中的线程个数大于cor size而且小于max size的时候">
 <meta property="og:type" content="article">
-<meta property="og:title" content="系统设计">
-<meta property="og:url" content="http://yoursite.com/2017/03/25/系统设计/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/04/25/JAVA源码分析之ThreadPoolExecutor/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="系统设计1.优化技术
-
-
-
-
-Cache
-缓存
-
-
-
-
-Queue
-消息队列，linkedin的kafka
-
-
-Asynchronized
-批处理+异步 减少IO的系统瓶颈
-
-
-Load Balance
-负载均衡，使用一致性的hash技术减少数据
-
-
-Parallelization
-并行化，MapReduce
-
-
-Replication
-提高可靠性
-
-
-Partition
-数据库分区，通过hash">
-<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/cc2a92e324587867c8cfba3022ea9cca_b.jpg">
-<meta property="og:updated_time" content="2017-03-30T08:36:50.000Z">
+<meta property="og:description" content="JAVA源码分析之ThreadPoolExecutor1.各种线程池的基类    
+2.使用池化的线程执行提交的任务
+两个变量控制线程池的大小
+1.core pool size |  max pool size
+​    线程池中的线程个数少于core size的时候，线程池会创建一个新的线程，即使其他线程处于空闲状态
+​    线程池中的线程个数大于cor size而且小于max size的时候">
+<meta property="og:updated_time" content="2017-04-25T06:28:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="系统设计">
-<meta name="twitter:description" content="系统设计1.优化技术
-
-
-
-
-Cache
-缓存
-
-
-
-
-Queue
-消息队列，linkedin的kafka
-
-
-Asynchronized
-批处理+异步 减少IO的系统瓶颈
-
-
-Load Balance
-负载均衡，使用一致性的hash技术减少数据
-
-
-Parallelization
-并行化，MapReduce
-
-
-Replication
-提高可靠性
-
-
-Partition
-数据库分区，通过hash">
-<meta name="twitter:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/cc2a92e324587867c8cfba3022ea9cca_b.jpg">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="JAVA源码分析之ThreadPoolExecutor1.各种线程池的基类    
+2.使用池化的线程执行提交的任务
+两个变量控制线程池的大小
+1.core pool size |  max pool size
+​    线程池中的线程个数少于core size的时候，线程池会创建一个新的线程，即使其他线程处于空闲状态
+​    线程池中的线程个数大于cor size而且小于max size的时候">
 
 
 
@@ -222,13 +139,13 @@ Partition
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/25/系统设计/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/25/JAVA源码分析之ThreadPoolExecutor/"/>
 
 
 
 
 
-  <title> 系统设计 | Hexo </title>
+  <title>  | Hexo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -347,7 +264,7 @@ Partition
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/系统设计/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/JAVA源码分析之ThreadPoolExecutor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -368,7 +285,7 @@ Partition
             
             
               
-                系统设计
+                
               
             
           </h1>
@@ -383,8 +300,8 @@ Partition
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T11:30:35+08:00">
-                2017-03-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-25T14:28:53+08:00">
+                2017-04-25
               </time>
             
 
@@ -419,55 +336,17 @@ Partition
       
 
       
-        <h1 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h1><p>1.优化技术</p>
-<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/cc2a92e324587867c8cfba3022ea9cca_b.jpg" alt="cc2a92e324587867c8cfba3022ea9cca_b"></p>
-<table>
-<thead>
-<tr>
-<th>Cache</th>
-<th>缓存</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Queue</td>
-<td>消息队列，linkedin的kafka</td>
-</tr>
-<tr>
-<td>Asynchronized</td>
-<td>批处理+异步 减少IO的系统瓶颈</td>
-</tr>
-<tr>
-<td>Load Balance</td>
-<td>负载均衡，使用一致性的hash技术减少数据</td>
-</tr>
-<tr>
-<td>Parallelization</td>
-<td>并行化，MapReduce</td>
-</tr>
-<tr>
-<td>Replication</td>
-<td>提高可靠性</td>
-</tr>
-<tr>
-<td>Partition</td>
-<td>数据库分区，通过hash取模</td>
-</tr>
-</tbody>
-</table>
-<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>客户端缓存</p>
-<p>CDN缓存  </p>
-<p>web服务器缓存</p>
-<p>数据库缓存</p>
-<p>缓存的优势和缺点：</p>
-<p>优势：1.加快请求的相应，减少延迟</p>
-<p>​    2.导致数据的不一致性，需要适合的策略处理缓存的过期</p>
-<h3 id="缓存的设计方案"><a href="#缓存的设计方案" class="headerlink" title="缓存的设计方案"></a>缓存的设计方案</h3><p>Caffeine 开源的java缓存库</p>
-<p>1.驱逐策略</p>
-<p>预测在短时间内最可能被再次利用到的数据，从而根据策略移除剩余的缓存，提高缓存的命中率</p>
-<p>常用的策略：LRU、LFU    <strong>CountMin Sketch算法</strong>     </p>
-<p> <a href="https://www.usenix.org/legacy/event/fast03/tech/full_papers/megiddo/megiddo.pdf" target="_blank" rel="external">ARC</a>，<a href="http://web.cse.ohio-state.edu/hpcs/WWW/HTML/publications/papers/TR-02-6.pdf" target="_blank" rel="external">LIRS</a>， <a href="https://arxiv.org/pdf/1512.00727.pdf" target="_blank" rel="external">W-TinyLFU</a></p>
-<p>2.过期策略</p>
+        <h3 id="JAVA源码分析之ThreadPoolExecutor"><a href="#JAVA源码分析之ThreadPoolExecutor" class="headerlink" title="JAVA源码分析之ThreadPoolExecutor"></a>JAVA源码分析之ThreadPoolExecutor</h3><p>1.各种线程池的基类    </p>
+<p>2.使用池化的线程执行提交的任务</p>
+<p>两个变量控制线程池的大小</p>
+<p>1.core pool size |  max pool size</p>
+<p>​    线程池中的线程个数少于core size的时候，线程池会创建一个新的线程，即使其他线程处于空闲状态</p>
+<p>​    线程池中的线程个数大于cor size而且小于max size的时候，如果队列已满，创建新的线程</p>
+<p>当设置core size和max size的大小相同时，线程池为fixed-size thread pool</p>
+<p>2.按需在创建线程池的同时启动core 线程</p>
+<p>3.keep-alive机制</p>
+<p>​    如果当前的线程池的线程个数超过了core size，在设置了keep-alive机制的前提下，如果多余的线程处于空闲状态的时间超过了设置的keep-alive-time，则线程会被回收</p>
+<p>4.queue队列 - 存放提交的任务</p>
 
       
     </div>
@@ -504,8 +383,8 @@ Partition
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/18/计算机网络/" rel="next" title="计算机网络">
-                <i class="fa fa-chevron-left"></i> 计算机网络
+              <a href="/2017/04/19/db慢查询/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -514,8 +393,8 @@ Partition
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/29/关于Integer的一些说明/" rel="prev" title="关于Integer的一些说明">
-                关于Integer的一些说明 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/05/Kilim1/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -636,7 +515,7 @@ Partition
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#系统设计"><span class="nav-number">1.</span> <span class="nav-text">系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">1.0.1.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存的设计方案"><span class="nav-number">1.0.2.</span> <span class="nav-text">缓存的设计方案</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA源码分析之ThreadPoolExecutor"><span class="nav-number">1.</span> <span class="nav-text">JAVA源码分析之ThreadPoolExecutor</span></a></li></ol></div>
             
 
           </div>

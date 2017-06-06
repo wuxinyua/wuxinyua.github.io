@@ -87,114 +87,31 @@
 
 
 
-<meta name="description" content="系统设计1.优化技术
-
-
-
-
-Cache
-缓存
-
-
-
-
-Queue
-消息队列，linkedin的kafka
-
-
-Asynchronized
-批处理+异步 减少IO的系统瓶颈
-
-
-Load Balance
-负载均衡，使用一致性的hash技术减少数据
-
-
-Parallelization
-并行化，MapReduce
-
-
-Replication
-提高可靠性
-
-
-Partition
-数据库分区，通过hash">
+<meta name="description" content="1.首先协程的实现方式：通过在字节码层面织入相关的代码从而实现在不用挂起线程的方式切换不同的协作式任务进行执行
+Kilim工程的代码架构：
+kilim的代码织入分析：
+1.举个实例：
+1234567891011121314151617181920212223242526272829303132333435public class Chain extends Task &amp;#123;    Mailb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="系统设计">
-<meta property="og:url" content="http://yoursite.com/2017/03/25/系统设计/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/06/05/Kilim1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="系统设计1.优化技术
-
-
-
-
-Cache
-缓存
-
-
-
-
-Queue
-消息队列，linkedin的kafka
-
-
-Asynchronized
-批处理+异步 减少IO的系统瓶颈
-
-
-Load Balance
-负载均衡，使用一致性的hash技术减少数据
-
-
-Parallelization
-并行化，MapReduce
-
-
-Replication
-提高可靠性
-
-
-Partition
-数据库分区，通过hash">
-<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/cc2a92e324587867c8cfba3022ea9cca_b.jpg">
-<meta property="og:updated_time" content="2017-03-30T08:36:50.000Z">
+<meta property="og:description" content="1.首先协程的实现方式：通过在字节码层面织入相关的代码从而实现在不用挂起线程的方式切换不同的协作式任务进行执行
+Kilim工程的代码架构：
+kilim的代码织入分析：
+1.举个实例：
+1234567891011121314151617181920212223242526272829303132333435public class Chain extends Task &amp;#123;    Mailb">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/chain.png">
+<meta property="og:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/Chain_flow_1.png">
+<meta property="og:updated_time" content="2017-06-06T01:28:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="系统设计">
-<meta name="twitter:description" content="系统设计1.优化技术
-
-
-
-
-Cache
-缓存
-
-
-
-
-Queue
-消息队列，linkedin的kafka
-
-
-Asynchronized
-批处理+异步 减少IO的系统瓶颈
-
-
-Load Balance
-负载均衡，使用一致性的hash技术减少数据
-
-
-Parallelization
-并行化，MapReduce
-
-
-Replication
-提高可靠性
-
-
-Partition
-数据库分区，通过hash">
-<meta name="twitter:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/cc2a92e324587867c8cfba3022ea9cca_b.jpg">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="1.首先协程的实现方式：通过在字节码层面织入相关的代码从而实现在不用挂起线程的方式切换不同的协作式任务进行执行
+Kilim工程的代码架构：
+kilim的代码织入分析：
+1.举个实例：
+1234567891011121314151617181920212223242526272829303132333435public class Chain extends Task &amp;#123;    Mailb">
+<meta name="twitter:image" content="http://yoursite.com/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/chain.png">
 
 
 
@@ -222,13 +139,13 @@ Partition
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/25/系统设计/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/05/Kilim1/"/>
 
 
 
 
 
-  <title> 系统设计 | Hexo </title>
+  <title>  | Hexo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -347,7 +264,7 @@ Partition
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/系统设计/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/05/Kilim1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -368,7 +285,7 @@ Partition
             
             
               
-                系统设计
+                
               
             
           </h1>
@@ -383,8 +300,8 @@ Partition
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T11:30:35+08:00">
-                2017-03-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-05T19:51:34+08:00">
+                2017-06-05
               </time>
             
 
@@ -419,55 +336,20 @@ Partition
       
 
       
-        <h1 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h1><p>1.优化技术</p>
-<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/cc2a92e324587867c8cfba3022ea9cca_b.jpg" alt="cc2a92e324587867c8cfba3022ea9cca_b"></p>
-<table>
-<thead>
-<tr>
-<th>Cache</th>
-<th>缓存</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Queue</td>
-<td>消息队列，linkedin的kafka</td>
-</tr>
-<tr>
-<td>Asynchronized</td>
-<td>批处理+异步 减少IO的系统瓶颈</td>
-</tr>
-<tr>
-<td>Load Balance</td>
-<td>负载均衡，使用一致性的hash技术减少数据</td>
-</tr>
-<tr>
-<td>Parallelization</td>
-<td>并行化，MapReduce</td>
-</tr>
-<tr>
-<td>Replication</td>
-<td>提高可靠性</td>
-</tr>
-<tr>
-<td>Partition</td>
-<td>数据库分区，通过hash取模</td>
-</tr>
-</tbody>
-</table>
-<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>客户端缓存</p>
-<p>CDN缓存  </p>
-<p>web服务器缓存</p>
-<p>数据库缓存</p>
-<p>缓存的优势和缺点：</p>
-<p>优势：1.加快请求的相应，减少延迟</p>
-<p>​    2.导致数据的不一致性，需要适合的策略处理缓存的过期</p>
-<h3 id="缓存的设计方案"><a href="#缓存的设计方案" class="headerlink" title="缓存的设计方案"></a>缓存的设计方案</h3><p>Caffeine 开源的java缓存库</p>
-<p>1.驱逐策略</p>
-<p>预测在短时间内最可能被再次利用到的数据，从而根据策略移除剩余的缓存，提高缓存的命中率</p>
-<p>常用的策略：LRU、LFU    <strong>CountMin Sketch算法</strong>     </p>
-<p> <a href="https://www.usenix.org/legacy/event/fast03/tech/full_papers/megiddo/megiddo.pdf" target="_blank" rel="external">ARC</a>，<a href="http://web.cse.ohio-state.edu/hpcs/WWW/HTML/publications/papers/TR-02-6.pdf" target="_blank" rel="external">LIRS</a>， <a href="https://arxiv.org/pdf/1512.00727.pdf" target="_blank" rel="external">W-TinyLFU</a></p>
-<p>2.过期策略</p>
+        <p>1.首先协程的实现方式：通过在字节码层面织入相关的代码从而实现在不用挂起线程的方式切换不同的协作式任务进行执行</p>
+<p>Kilim工程的代码架构：</p>
+<p>kilim的代码织入分析：</p>
+<p>1.举个实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chain</span> <span class="keyword">extends</span> <span class="title">Task</span> </span>&#123;</div><div class="line"></div><div class="line">    Mailbox&lt;StringBuffer&gt; mymb, nextmb;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Chain</span><span class="params">(Mailbox&lt;StringBuffer&gt; mb, Mailbox&lt;StringBuffer&gt; next)</span> </span>&#123;</div><div class="line">        mymb = mb; </div><div class="line">        nextmb = next;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> Pausable</span>&#123;</div><div class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</div><div class="line">            StringBuffer sb = mymb.get();</div><div class="line">            <span class="keyword">if</span> (nextmb == <span class="keyword">null</span>) &#123;</div><div class="line">                System.out.print(sb);</div><div class="line">                System.out.println(<span class="string">"world"</span>);</div><div class="line">                System.exit(<span class="number">0</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                sb.append(<span class="string">"-hello "</span>);</div><div class="line">                nextmb.put(sb);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> n = args.length == <span class="number">0</span> ? <span class="number">10</span> : Integer.parseInt(args[<span class="number">0</span>]);</div><div class="line">        Mailbox&lt;StringBuffer&gt; mb = <span class="keyword">new</span> Mailbox&lt;&gt;();</div><div class="line">        Mailbox&lt;StringBuffer&gt; nextms = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">           <span class="keyword">new</span> Chain(mb, nextms).start();</div><div class="line">           nextms = mb;</div><div class="line">           mb = <span class="keyword">new</span> Mailbox&lt;&gt;();</div><div class="line">        &#125;</div><div class="line">        nextms.putnb(<span class="keyword">new</span> StringBuffer());        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先Chain类继承Task抽象类实现了execute()方法，execute()方法抛出pausable异常，说明该方法可以进行人工织入代码。</p>
+<p>下面给出Chain类的原始代码和织入后的代码：<img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/chain.png" alt="chain"></p>
+<p>kilim主要针对pausable方法从三个地方织入代码:</p>
+<p>1.prelude</p>
+<p>2.pre-call</p>
+<p>3.post-call</p>
+<p>方法调用链：</p>
+<p>1.第一次触发一个任务：</p>
+<p><img src="/Users/wuxinyua/wuxinyua.github.io/source/_posts/image/Chain_flow_1.png" alt="Chain_flow_1"></p>
 
       
     </div>
@@ -504,8 +386,8 @@ Partition
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/18/计算机网络/" rel="next" title="计算机网络">
-                <i class="fa fa-chevron-left"></i> 计算机网络
+              <a href="/2017/04/25/JAVA源码分析之ThreadPoolExecutor/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -513,10 +395,6 @@ Partition
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/29/关于Integer的一些说明/" rel="prev" title="关于Integer的一些说明">
-                关于Integer的一些说明 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -563,17 +441,8 @@ Partition
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -626,22 +495,6 @@ Partition
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#系统设计"><span class="nav-number">1.</span> <span class="nav-text">系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">1.0.1.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存的设计方案"><span class="nav-number">1.0.2.</span> <span class="nav-text">缓存的设计方案</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
